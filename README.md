@@ -2,6 +2,11 @@
 
 A browser extension that offers various (subjective!) improvements for the NYT Crossword website.
 
+- Resizes the puzzle to use all of your viewport
+- New menu buttons:
+  - "Scroll into View": Scrolls your browser window to the puzzle
+  - "Spam": Brute forces all letters, A to Z, on the currently selected cell
+
 ## Known Issues
 
 - Content below the puzzle may be overflowed onto at small screen heights
