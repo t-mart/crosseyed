@@ -1,6 +1,6 @@
 {
   "name": "crosseyed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A browser extension that offers various (subjective!) improvements for the NYT Crossword website.",
   "scripts": {
     "clean": "rimraf ./dist ./.parcel-cache",
