@@ -84,6 +84,16 @@ const spam = async () => {
       })
     );
     await wait(25);
+    const keepTrying = document.querySelector('button[aria-label="Keep trying"]');
+    const congrats = document.querySelector("div.xwd__congrats-modal--content");
+    if (keepTrying) {
+      keepTrying.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      log.info('closing "Keep trying" modal to resume spam');
+    } else if (congrats) {
+      log.info("puzzle solved -- stopping spam");
+      break;
+    }
+
     groupElement.dispatchEvent(new MouseEvent("click", { bubbles: true }));
   }
 };
