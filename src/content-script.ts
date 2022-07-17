@@ -107,6 +107,7 @@ whenElementAdded(".xwd__toolbar--tools", (element) => {
   scrollButton.append(scrollAnchor);
   scrollLi.append(scrollButton);
   element.append(scrollLi);
+  log.info(`Added Scroll into View button`);
 
   const spamLi = document.createElement("li");
   spamLi.setAttribute("class", "xwd__tool--button xwd__tool--texty");
@@ -118,5 +119,17 @@ whenElementAdded(".xwd__toolbar--tools", (element) => {
     await spam();
   });
   spamLi.append(spamButton);
+  log.info(`Added Spam button`);
   element.append(spamLi);
+});
+
+whenElementAdded(".xwd__start-modal button[aria-label=Play]", (button) => {
+  console.log("huh");
+  (button as HTMLButtonElement).addEventListener("click", () => {
+    const gameElement = document.querySelector("#js-hook-pz-moment__game");
+    if (!gameElement) {
+      throw new Error("Unable to find game element");
+    }
+    gameElement.scrollIntoView();
+  });
 });
