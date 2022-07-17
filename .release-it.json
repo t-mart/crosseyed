@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "after:bump": "pnpm run sign"
+  },
+  "github": {
+    "release": true,
+    "assets": ["web-ext-artifacts/*.xpi"]
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/bumper": {
+      "out": "./src/manifest.json",
+      "path": "version"
+    }
+  }
+}

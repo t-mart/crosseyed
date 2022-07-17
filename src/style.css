@@ -1,0 +1,151 @@
+:root {
+  --golden-ratio: calc(1 / 1.618);
+}
+
+/* un-sticky this header from the top of the page and just make it normal */
+#js-global-nav {
+  position: unset;
+}
+
+/* have only the logo be clickable, don't stretch the <a> */
+#js-logo-nav {
+  max-width: min-content;
+}
+
+/* use the full width of your viewport */
+.pz-row,
+.xwd__header--wrapper {
+  max-width: 100vw;
+}
+
+/* let flex manage these placements ("The Crossword" heading and print button) */
+.xwd__header--row > * {
+  width: unset !important;
+  margin: unset !important;
+}
+
+/* fix that print button that looks weird after removing widths */
+.xwd__printtools--button {
+  gap: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* this is the content we care about. make it as tall as our viewports */
+#js-hook-pz-moment__game {
+  height: 100vh;
+}
+
+/* use our entire viewport width */
+#puzzle {
+  max-width: unset;
+}
+
+/* let the toolbar spread out*/
+.xwd__toolbar--tools {
+  max-width: unset;
+}
+
+/*
+START HEIGHT ADJUSTMENTS
+The nested structure of the puzzle HTML is complex and required numerous adjustments to
+properly use all the height available.
+*/
+.xwd__franklin {
+  height: 100%;
+}
+
+.xwd__layout_container {
+  height: 100%;
+}
+
+.xwd__layout_container > div {
+  height: 100%;
+}
+
+#puzzle {
+  height: 100%;
+  min-height: 100%;
+}
+
+.xwd__layout--cluelists {
+  min-height: 100%;
+}
+/* END HEIGHT ADJUSTMENTS */
+
+/* make the modals (at puzzle start, finish, etc) use only as much height as they need */
+.xwd__modal--body {
+  height: unset;
+}
+
+/* style this like an NYT link, more or less */
+#scroll-to-puzzle:hover {
+  text-decoration: underline;
+}
+
+/* ditto */
+#scroll-to-puzzle {
+  color: #2860d8;
+}
+
+/* proportional clue font size and other minor fixes */
+.xwd__clue--li {
+  font-size: 1.5vmax;
+  gap: 1vmax;
+  align-items: baseline;
+}
+
+/* the gap above is better for this */
+.xwd__clue--li span {
+  margin-right: unset;
+}
+
+/* don't wrap the menu buttons' text */
+.xwd__tool--texty {
+  width: fit-content;
+}
+
+/* give some padding to those buttons now that width is dynamic */
+.xwd__tool--texty button {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/*
+some dev rules that were really helpful for figuring out the height issues
+keeping for later, in case we need to revisit.
+*/
+/*
+#js-hook-pz-moment__game {
+  background-color: red;
+}
+#js-hook-pz-moment__game > * {
+  background-color: orangered;
+}
+#js-hook-pz-moment__game > * > * {
+  background-color: orange;
+}
+#js-hook-pz-moment__game > * > * > * {
+  background-color: yellow;
+}
+#js-hook-pz-moment__game > * > * > * > * {
+  background-color: yellowgreen;
+}
+#js-hook-pz-moment__game > * > * > * > * > * {
+  background-color: green;
+}
+#js-hook-pz-moment__game > * > * > * > * > * > * {
+  background-color: blue;
+}
+#js-hook-pz-moment__game > * > * > * > * > * > * > * {
+  background-color: indigo;
+}
+#js-hook-pz-moment__game > * > * > * > * > * > * > * > * {
+  background-color: purple;
+}
+#js-hook-pz-moment__game > * > * > * > * > * > * > * > * > * {
+  background-color: lightgray;
+}
+#js-hook-pz-moment__game > * > * > * > * > * > * > * > * > * > * {
+  background-color: gray;
+} */

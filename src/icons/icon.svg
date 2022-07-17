@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-1 -1 98 98">
+  <!-- the xlink namespace is an unfortunate concession for the lack of support for bare hrefs -->
+  <!-- even tho the xlink stuff is deprecated, many programs require it to work. -->
+  <!-- https://gitlab.com/inkscape/inbox/-/issues/620 -->
+  <style>
+    text {
+      font-family: sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+  </style>
+  <defs>
+    <rect id="white-box" width="30" height="30" stroke="none" fill="white" />
+    <g id="e-box">
+      <use xlink:href="#white-box" />
+      <text x="15" y="24" text-anchor="middle">E</text>
+    </g>
+    <g id="y-box">
+      <use xlink:href="#white-box" />
+      <text x="15" y="24" text-anchor="middle">Y</text>
+    </g>
+  </defs>
+
+  <rect width="96" height="96" stroke="black" stroke-width="2" />
+
+  <use xlink:href="#e-box" x="1" y="1" />
+  <use xlink:href="#e-box" x="65" y="1" />
+
+  <use xlink:href="#y-box" x="33" y="33" />
+
+  <use xlink:href="#e-box" x="1" y="65" />
+  <use xlink:href="#e-box" x="65" y="65" />
+</svg>

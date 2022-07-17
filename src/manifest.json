@@ -1,0 +1,44 @@
+{
+  "$schema": "../schema/manifest-strict.schema.json",
+  "manifest_version": 2,
+  "name": "Crosseyed",
+  "description": "Offers various (subjective!) improvements for the NYT Crossword website",
+  "version": "0.0.1",
+  "background": {
+    "scripts": [
+      "background.ts"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.nytimes.com/crosswords/game/*"
+      ],
+      "js": [
+        "content-script.ts"
+      ],
+      "css": [
+        "style.css"
+      ]
+    }
+  ],
+  "page_action": {
+    "default_icon": {
+      "38": "icons/icon-38px.png"
+    },
+    "show_matches": [
+      "*://www.nytimes.com/crosswords/game/*"
+    ]
+  },
+  "icons": {
+    "16": "icons/icon.svg",
+    "48": "icons/icon.svg",
+    "128": "icons/icon.svg",
+    "256": "icons/icon.svg"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{f54789f2-e1dd-4f9d-a0a5-d981ae52aeb8}"
+    }
+  }
+}

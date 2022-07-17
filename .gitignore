@@ -1,0 +1,8 @@
+dist
+node_modules
+.parcel-cache
+.pnpm-debug.log
+tsconfig.tsbuildinfo
+parcel-bundle-reports
+parcel-metrics.json
+web-ext-artifacts

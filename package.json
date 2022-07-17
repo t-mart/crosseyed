@@ -1,0 +1,31 @@
+{
+  "name": "crosseyed",
+  "version": "1.0.0",
+  "description": "A browser extension that offers various (subjective!) improvements for the NYT Crossword website.",
+  "scripts": {
+    "clean": "rimraf ./dist ./.parcel-cache",
+    "dev": "pnpm clean && parcel watch --host localhost",
+    "build": "pnpm clean && parcel build",
+    "sign": "pnpm build && web-ext sign --source-dir ./dist --api-key $WEB_EXT_API_KEY --api-secret $WEB_EXT_API_SECRET",
+    "release": "release-it"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.6.2",
+    "@release-it/bumper": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-unicorn": "^43.0.1",
+    "parcel": "^2.6.2",
+    "prettier": "^2.7.1",
+    "release-it": "^15.1.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4",
+    "web-ext": "^7.1.1"
+  },
+  "source": "src/manifest.json"
+}
