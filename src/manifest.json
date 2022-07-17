@@ -4,11 +4,6 @@
   "name": "Crosseyed",
   "description": "Offers various (subjective!) improvements for the NYT Crossword website",
   "version": "1.0.1",
-  "background": {
-    "scripts": [
-      "background.ts"
-    ]
-  },
   "content_scripts": [
     {
       "matches": [
