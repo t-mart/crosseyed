@@ -6,6 +6,8 @@
 
 A browser extension that offers various (subjective!) improvements for the NYT Crossword website.
 
+**Download at <https://addons.mozilla.org/en-US/firefox/addon/crosseyed/>**
+
 - Resizes the puzzle to use all of your viewport.
 - Automatically scrolls your viewport to the puzzle when you start the puzzle.
 - Add new menu buttons:
@@ -30,7 +32,7 @@ specific case.
 
 ## Known Issues
 
-- *None right now, just a placeholder.*
+- _None right now, just a placeholder._
 
 ## Development
 
@@ -50,13 +52,16 @@ Then, choose what you need:
 - `pnpm build-zip`: create an add-on zip file in `web-ext-artifacts`. This zip can only be loaded as
   a temporary add-on like above.
 - `pnpm sign`: do the above, but also get the add-on signed by mozilla, so you can install it like a
-  normal add-on. The generated `.xpi` file will also be in `web-ext-artifacts`.
+  normal add-on. The generated `.xpi` file will also be in `web-ext-artifacts`. **Note**: this will
+  "fail" because listed add-ons (like this one) must be submitted for review, and
+  [web-ext always fails on submission](https://github.com/mozilla/web-ext/issues/804)
+- `pnpm sign-deferred-review`: do the above, but search the output for text that indicates
+  submission was successful, the addon will be reviewed later, and we've done everything we can.
 
 There's also an automated release process with Github Actions. See
 [.github/worflows/release.yml](https://github.com/t-mart/crosseyed/blob/master/.github/workflows/release.yml).
 
 ## TODO
 
-- is automated publishing on addons.mozilla.org possible with `--channel=listed` in release command
-  if `package.json`? Currently in review. Test GH action if review passes and keep or remove that
-  channel option depending on if our script can handle it.
+- offer the zip in releases
+- figure out where the output went of release it

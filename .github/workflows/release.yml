@@ -53,9 +53,13 @@ jobs:
         run: pnpm install
 
       - name: Perform Release
-        run: pnpm release --increment=${{ github.event.inputs.releaseType }}
+        run: pnpm release --increment=${{ github.event.inputs.releaseType }} --verbose
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Submit for Review
+        run: pnpm sign-deferred-review
+        env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
 

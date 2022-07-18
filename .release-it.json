@@ -1,10 +1,10 @@
 {
   "hooks": {
-    "after:bump": "pnpm run sign-ok-review"
+    "after:bump": "pnpm run build-zip"
   },
   "github": {
     "release": true,
-    "assets": ["web-ext-artifacts/*.xpi"]
+    "assets": ["web-ext-artifacts/*.zip"]
   },
   "npm": {
     "publish": false
