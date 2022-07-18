@@ -1,4 +1,4 @@
-# Crosseyed
+# ![logo](src\icons\icon-38px.png) Crosseyed
 
 <p align="center">
   <img src="docs/before-and-after.gif" width="800" alt="Spam feature">
