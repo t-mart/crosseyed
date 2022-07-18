@@ -101,6 +101,18 @@ properly use all the height available.
   padding-right: 1rem;
 }
 
+.xwd__clue-bar-desktop--bar {
+  min-height: unset;
+  align-items: baseline;
+}
+
+.xwd__clue-bar-desktop--bar > * {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  line-height: unset;
+  font-size: 1.5vmax;
+}
+
 /*
 some dev rules that were really helpful for figuring out the height issues
 keeping for later, in case we need to revisit.
