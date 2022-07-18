@@ -31,3 +31,26 @@ specific case.
 ## Known Issues
 
 - Content below the puzzle may be overflowed onto at small screen heights
+
+## Development
+
+To get started: `pnpm install`
+
+Then, choose what you need:
+
+- `pnpm dev`: start a file-watching dev server that rebundles the extension and hot reloads it. To
+  use the extension in this form:
+  1. Go to Firefox "Settings"
+  2. "Extensions & Themes"
+  3. gear icon
+  4. "Debug Add-ons"
+  5. "Load a Temporary Add-on..."
+  6. And finally, navigate to the `dist` directory and select the `manifest.json`.
+- `pnpm build`: do the above, but without file watching
+- `pnpm build-zip`: create an add-on zip file in `web-ext-artifacts`. This zip can only be loaded as
+  a temporary add-on like above.
+- `pnpm sign`: do the above, but also get the add-on signed by mozilla, so you can install it like a
+  normal add-on. The generated `.xpi` file will also be in `web-ext-artifacts`.
+
+There's also an automated release process with Github Actions. See
+[.github/worflows/release.yml](https://github.com/t-mart/crosseyed/blob/master/.github/workflows/release.yml).
