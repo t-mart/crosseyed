@@ -30,7 +30,6 @@ through all letters on the selected cell in mere seconds. One of them will event
 You may call it cheaty... I don't. This just saves me time for how I work a crossword in this
 specific case.
 
-
 ## Development
 
 To get started: `pnpm install`
@@ -55,8 +54,25 @@ Then, choose what you need:
 - `pnpm sign-deferred-review`: do the above, but search the output for text that indicates
   submission was successful, the addon will be reviewed later, and we've done everything we can.
 
-There's also an automated release process with Github Actions. See
+### Releasing
+
+There's an automated release process with Github Actions. See
 [.github/worflows/release.yml](https://github.com/t-mart/crosseyed/blob/master/.github/workflows/release.yml).
+
+Run it at <https://github.com/t-mart/crosseyed/actions/workflows/release.yml>
+
+As of time of writing, when you run it, this action:
+
+- bumps the version
+- commits the newly bumped repo and tags it and pushes it
+- bundles the addon with the new version
+- checks ("lints") the addon to make sure its ok
+- zips up the addon
+- creates a new github release under the new git tag and adds the zip as an asset
+- and finally, submits the zip to mozilla for review.
+
+The status of the review can be found at:
+<https://addons.mozilla.org/en-US/developers/addon/crosseyed/versions>
 
 ## Known Issues
 
@@ -64,4 +80,4 @@ There's also an automated release process with Github Actions. See
 
 ## TODO
 
-- *nothing right now*
+- _nothing right now_
