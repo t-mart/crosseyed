@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "after:bump": "pnpm run sign | tee | grep \"It passed validation but could not be automatically signed because this is a listed add-on.\""
+    "after:bump": "pnpm run sign-ok-review"
   },
   "github": {
     "release": true,
