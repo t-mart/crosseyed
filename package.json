@@ -6,7 +6,7 @@
     "clean": "rimraf ./dist ./.parcel-cache",
     "dev": "pnpm clean && parcel watch --host localhost",
     "build": "pnpm clean && parcel build",
-    "sign": "pnpm build && web-ext sign --source-dir ./dist --api-key $WEB_EXT_API_KEY --api-secret $WEB_EXT_API_SECRET",
+    "sign": "pnpm build && web-ext sign --source-dir ./dist --api-key $WEB_EXT_API_KEY --api-secret $WEB_EXT_API_SECRET --channel=listed",
     "release": "release-it"
   },
   "keywords": [],
