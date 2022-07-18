@@ -1,5 +1,15 @@
 :root {
-  --golden-ratio: calc(1 / 1.618);
+  --text-size: 1rem;
+}
+@media (min-width: 1000px) {
+  :root {
+    --text-size: 1.25rem;
+  }
+}
+@media (min-width: 1400px) {
+  :root {
+    --text-size: 1.5rem;
+  }
 }
 
 /* un-sticky this header from the top of the page and just make it normal */
@@ -80,7 +90,7 @@ properly use all the height available.
 
 /* proportional clue font size and other minor fixes */
 .xwd__clue--li {
-  font-size: 1.5vmax;
+  font-size: var(--text-size);
   gap: 1vmax;
   align-items: baseline;
 }
@@ -104,13 +114,17 @@ properly use all the height available.
 .xwd__clue-bar-desktop--bar {
   min-height: unset;
   align-items: baseline;
+  font-size: var(--text-size);
 }
 
 .xwd__clue-bar-desktop--bar > * {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   line-height: unset;
-  font-size: 1.5vmax;
+}
+
+.xwd__tool--button {
+  font-size: var(--text-size);
 }
 
 /*
