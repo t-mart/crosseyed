@@ -78,16 +78,6 @@ properly use all the height available.
   height: unset;
 }
 
-/* style this like an NYT link, more or less */
-#scroll-to-puzzle:hover {
-  text-decoration: underline;
-}
-
-/* ditto */
-#scroll-to-puzzle {
-  color: #2860d8;
-}
-
 /* proportional clue font size and other minor fixes */
 .xwd__clue--li {
   font-size: 1.5vmax;
