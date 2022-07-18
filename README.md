@@ -1,4 +1,4 @@
-# ![logo](src\icons\icon-38px.png) Crosseyed
+<h1><img src="src/icons/icon.svg" width="32" /> Crosseyed</h1>
 
 <p align="center">
   <img src="docs/before-and-after.gif" width="800" alt="Spam feature">
