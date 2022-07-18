@@ -54,3 +54,9 @@ Then, choose what you need:
 
 There's also an automated release process with Github Actions. See
 [.github/worflows/release.yml](https://github.com/t-mart/crosseyed/blob/master/.github/workflows/release.yml).
+
+## TODO
+
+- is automated publishing on addons.mozilla.org possible with `--channel=listed` in release command
+  if `package.json`? Currently in review. Test GH action if review passes and keep or remove that
+  channel option depending on if our script can handle it.
