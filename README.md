@@ -30,9 +30,6 @@ through all letters on the selected cell in mere seconds. One of them will event
 You may call it cheaty... I don't. This just saves me time for how I work a crossword in this
 specific case.
 
-## Known Issues
-
-- _None right now, just a placeholder._
 
 ## Development
 
@@ -61,7 +58,10 @@ Then, choose what you need:
 There's also an automated release process with Github Actions. See
 [.github/worflows/release.yml](https://github.com/t-mart/crosseyed/blob/master/.github/workflows/release.yml).
 
+## Known Issues
+
+- _None right now, just a placeholder._
+
 ## TODO
 
-- offer the zip in releases
-- figure out where the output went of release it
+- *nothing right now*
