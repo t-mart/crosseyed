@@ -3,7 +3,7 @@
   "manifest_version": 2,
   "name": "Crosseyed",
   "description": "Offers various (subjective!) improvements for the NYT Crossword website",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "content_scripts": [
     {
       "matches": [
