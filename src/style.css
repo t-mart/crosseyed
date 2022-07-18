@@ -111,28 +111,39 @@ properly use all the height available.
   padding-right: 1rem;
 }
 
+/* change some layout of the blue shaded current clue bar */
 .xwd__clue-bar-desktop--bar {
   min-height: unset;
   align-items: baseline;
   font-size: var(--text-size);
 }
 
+/* ditto */
 .xwd__clue-bar-desktop--bar > * {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   line-height: unset;
 }
 
+/* Set font sizes of tool buttons */
 .xwd__tool--button {
   font-size: var(--text-size);
+}
+
+/* temporary fix for overlapping content below at small screen heights.
+(really, there's some element to the puzzle that needs additional css rules, but i can't figure it
+out atm)
+*/
+#portal-editorial-content {
+  margin-top: 3rem;
 }
 
 /*
 some dev rules that were really helpful for figuring out the height issues
 keeping for later, in case we need to revisit.
 */
-/*
-#js-hook-pz-moment__game {
+
+/* #js-hook-pz-moment__game {
   background-color: red;
 }
 #js-hook-pz-moment__game > * {

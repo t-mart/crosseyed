@@ -30,7 +30,7 @@ specific case.
 
 ## Known Issues
 
-- Content below the puzzle may be overflowed onto at small screen heights
+- *None right now, just a placeholder.*
 
 ## Development
 
