@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "rimraf ./dist ./.parcel-cache",
     "dev": "pnpm clean && parcel watch --host localhost",
+    "firefox": "web-ext run --no-reload --source-dir ./dist --firefox-profile crosseyed-test --keep-profile-changes --verbose",
     "build": "pnpm clean && parcel build && web-ext lint --source-dir ./dist",
     "build-zip": "pnpm build && web-ext build --source-dir ./dist",
     "sign": "pnpm build && web-ext sign --source-dir ./dist --api-key $WEB_EXT_API_KEY --api-secret $WEB_EXT_API_SECRET",
