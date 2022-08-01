@@ -148,6 +148,11 @@ out atm)
   margin-top: 3rem;
 }
 
+/* add scrollbar space to the clue lists (on my touchscreen device, the scrollbar covers some text) */
+.xwd__clue-list--list {
+  scrollbar-gutter: stable;
+}
+
 /*
 some dev rules that were really helpful for figuring out the height issues
 keeping for later, in case we need to revisit.
