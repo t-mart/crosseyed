@@ -48,7 +48,7 @@ Then, choose what you need:
   default profile, and use this other profile only for testing during development.)
 
   You **must** create the profile first if it does not exist: run Firefox from the command line with
-  `firefox -P` and follow the prompts to create a new profile named `emp-test`.
+  `firefox -P` and follow the prompts to create a new profile named `crosseyed-test`.
 
   Finally, we do not use
   [web-ext's automatic extension reload mechanism](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/)
