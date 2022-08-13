@@ -11,8 +11,8 @@
     "sign": "pnpm build && web-ext sign --source-dir ./dist --api-key $WEB_EXT_API_KEY --api-secret $WEB_EXT_API_SECRET",
     "sign-deferred-review": "pnpm build && tsx scripts/sign-deferred-review.ts",
     "release": "release-it",
-    "format": "prettier --write \"./packages/*/src/**/*.{css,ts,json}\"",
-    "lint": "eslint . && prettier \"./packages/*/src/**/*.{css,ts,json}\" --list-different"
+    "format": "prettier --write \"./src/**/*.{css,ts,json}\"",
+    "lint": "eslint . && prettier \"./src/**/*.{css,ts,json}\" --list-different"
   },
   "keywords": [],
   "author": "",
