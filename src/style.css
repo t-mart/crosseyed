@@ -1,193 +1,175 @@
-:root {
-  --text-size: 1rem;
-}
-@media (min-width: 1000px) {
-  :root {
-    --text-size: 1.25rem;
-  }
-}
-@media (min-width: 1400px) {
-  :root {
-    --text-size: 1.5rem;
-  }
+/*
+ * Crosseyed: make the NYT Crossword fill the window.
+ *
+ * Scoped to body.crosseyed-ready, which main.ts sets once the game toolbar has
+ * rendered. After scrolling to #pz-game-root, the game area (timer bar, board,
+ * clues) fills the viewport. The site header is taken out of sticky positioning
+ * so it sits in normal flow and scrolls away above the game.
+ */
+
+/* Header flows normally instead of sticking to the top. */
+body.crosseyed-ready .pz-header {
+  position: static;
 }
 
-/* un-sticky this header from the top of the page and just make it normal */
-#js-global-nav {
-  position: unset;
+/* The site sets html { scroll-padding-top: 56px } to clear its sticky header.
+ * With the header now in normal flow we scroll the game to the very top, so
+ * that padding is just an unwanted gap. */
+html:has(body.crosseyed-ready) {
+  scroll-padding-top: 0;
 }
 
-/* have only the logo be clickable, don't stretch the <a> */
-#js-logo-nav {
-  max-width: min-content;
+/* The buttons we inject into the timer bar. They borrow the toolbar's texty
+ * button styling; we only relax the fixed width so longer labels fit. */
+.crosseyed-tool {
+  width: auto;
 }
 
-/* use the full width of your viewport */
-.pz-row,
-.xwd__header--wrapper {
-  max-width: 100vw;
+.crosseyed-tool button {
+  padding: 0 12px;
+  white-space: nowrap;
 }
 
-/* let flex manage these placements ("The Crossword" heading and print button) */
-.xwd__header--row > * {
-  width: unset !important;
-  margin: unset !important;
-}
-
-/* fix that print button that looks weird after removing widths */
-.xwd__printtools--button {
-  gap: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-/* this is the content we care about. make it as tall as our viewports */
-#js-hook-pz-moment__game {
+/* The game area becomes a full-height column: the timer bar keeps its natural
+ * height and the puzzle layout fills the rest of the viewport. */
+body.crosseyed-ready #pz-game-root main {
+  display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
-/* use our entire viewport width */
-#puzzle {
-  max-width: unset;
+body.crosseyed-ready .xwd__layout_container {
+  flex: 1;
+  min-height: 0;
 }
 
-/* let the toolbar spread out*/
-.xwd__toolbar--tools {
-  max-width: unset;
+/* The unnamed wrapper between the layout container and the puzzle article. */
+body.crosseyed-ready .xwd__layout_container > * {
+  height: 100%;
+  min-height: 0;
 }
+
+/* The two-pane cage. Drop the width/height caps and fill the layout area. */
+body.crosseyed-ready .xwd__layout_puzzle--desktop {
+  max-width: none;
+  max-height: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* Left pane (board + clue bar) gets the lion's share; right pane (clues) takes
+ * the rest. The board is square and scales to the smaller of its pane's
+ * width/height, so a tall left pane yields a big board. */
+body.crosseyed-ready .xwd__layout_puzzle--desktop > * {
+  height: 100%;
+  width: auto;
+}
+
+body.crosseyed-ready .xwd__layout_clueBarAndBoard {
+  flex: 1 1 60%;
+  min-width: 0;
+}
+
+/* Clue lists: fill the pane height and scroll internally instead of being
+ * capped at 625px. */
+body.crosseyed-ready .xwd__layout--cluelists {
+  flex: 1 1 40%;
+  max-height: none;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Widen the toolbar that sits above the board. */
+body.crosseyed-ready .xwd__toolbar--wrapper {
+  max-width: none;
+}
+
+/* Give each clue list half the pane, drop the left inset, and enlarge the text. */
+body.crosseyed-ready .xwd__clue-list--wrapper {
+  width: 50%;
+  padding-left: 0;
+  font-size: 1.25em;
+}
+
+/* Frame each scrollable clue list so its bottom edge is obvious. */
+body.crosseyed-ready .xwd__clue-list--list {
+  outline: 1px solid #a8a8a8;
+  outline-offset: -1px;
+}
+
 
 /*
-START HEIGHT ADJUSTMENTS
-The nested structure of the puzzle HTML is complex and required numerous adjustments to
-properly use all the height available.
-*/
-.xwd__franklin {
-  height: 100%;
+ * Cell-state colors, re-themed so the four states are easy to tell apart.
+ *
+ * The states, in isolation:
+ *   shaded      - emphasized for a thematic reason       (was gray  #dcdcdc)
+ *   highlighted - on the selected cell's row/column      (was blue  #a7d8ff)
+ *   selected    - the one active cell                    (was yellow #ffda00)
+ *   related     - tied to the current clue, but elsewhere (was muted yellow #ffeca0)
+ *
+ * New language: each state is a light, distinct hue (a "primitive"). Combined
+ * states are color-mixed from the primitives, weighted toward the more
+ * important axis so the dominant state still reads. Priority, high to low:
+ *   selected > related > highlighted > shaded
+ * Tune the four primitives below; the combos follow from them. (Text shadows
+ * are left as the site sets them.)
+ */
+body.crosseyed-ready {
+  --cell-shaded: oklch(82.7% 0.119 306.383);
+  --cell-highlighted: oklch(80.9% 0.105 251.813);
+  --cell-selected: oklch(87.9% 0.169 91.605);
+  --cell-related: oklch(89.7% 0.196 126.665);
 }
 
-.xwd__layout_container {
-  height: 100%;
+/* shaded: thematic cell, not part of the current clue. */
+body.crosseyed-ready .xwd__cell--shaded {
+  fill: var(--cell-shaded);
 }
 
-.xwd__layout_container > div {
-  height: 100%;
+/* highlighted: a cell of the current clue. */
+body.crosseyed-ready .xwd__cell--highlighted {
+  fill: var(--cell-highlighted);
 }
 
-#puzzle {
-  height: 100%;
-  min-height: 100%;
+/* highlighted + shaded: current-clue cell that is also thematic (blue + fuchsia). */
+body.crosseyed-ready .xwd__cell--highlighted.xwd__cell--shaded {
+  fill: color-mix(in oklab, var(--cell-highlighted) 45%, var(--cell-shaded));
 }
 
-.xwd__layout--cluelists {
-  min-height: 100%;
-}
-/* END HEIGHT ADJUSTMENTS */
-
-/* make the modals (at puzzle start, finish, etc) use only as much height as they need */
-.xwd__modal--body {
-  height: unset;
+/* selected: the active cell. Listed after highlighted so it wins (the selected
+ * cell also carries the highlighted class). */
+body.crosseyed-ready .xwd__cell--selected {
+  fill: var(--cell-selected);
 }
 
-/* proportional clue font size and other minor fixes */
-.xwd__clue--li {
-  font-size: var(--text-size);
-  gap: 1vmax;
-  align-items: baseline;
+/* selected + shaded: active cell that is also thematic (mostly yellow). */
+body.crosseyed-ready .xwd__cell--selected.xwd__cell--shaded {
+  fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-shaded));
 }
 
-/* the gap above is better for this */
-.xwd__clue--li span {
-  margin-right: unset;
+/* related: tied to the current clue but sitting elsewhere in the grid. */
+body.crosseyed-ready .xwd__cell--related {
+  fill: var(--cell-related);
 }
 
-/* don't wrap the menu buttons' text */
-.xwd__tool--texty {
-  width: fit-content;
+/* related + highlighted: related cell that is also in the current clue's line
+ * (lime + blue). */
+body.crosseyed-ready .xwd__cell--related.xwd__cell--highlighted {
+  fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-highlighted));
 }
 
-/* give some padding to those buttons now that width is dynamic */
-.xwd__tool--texty button {
-  padding-left: 1rem;
-  padding-right: 1rem;
+/* related + shaded: related cell that is also thematic (lime + fuchsia). */
+body.crosseyed-ready .xwd__cell--related.xwd__cell--shaded {
+  fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-shaded));
 }
 
-/* change some layout of the blue shaded current clue bar */
-.xwd__clue-bar-desktop--bar {
-  min-height: unset;
-  align-items: baseline;
-  font-size: var(--text-size);
-  padding: 1rem;
-  column-gap: 1rem;
+/* related + highlighted + selected: the active cell when it is also related.
+ * Selected dominates so it still reads as the focus. */
+body.crosseyed-ready
+  .xwd__cell--related.xwd__cell--highlighted.xwd__cell--selected {
+  fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-related));
 }
-
-/* ditto */
-.xwd__clue-bar-desktop--bar > * {
-  line-height: unset;
-  min-width: unset;
-  width: unset;
-}
-
-/* keep the highlighted clue on one line (otherwise, height may fluctuate, changes puzzle size) */
-.xwd__clue-bar-desktop--text {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  padding-right: unset;
-}
-
-/* Set font sizes of tool buttons */
-.xwd__tool--button {
-  font-size: var(--text-size);
-}
-
-/* temporary fix for overlapping content below at small screen heights.
-(really, there's some element to the puzzle that needs additional css rules, but i can't figure it
-out atm)
-*/
-#portal-editorial-content {
-  margin-top: 3rem;
-}
-
-/* add scrollbar space to the clue lists (on my touchscreen device, the scrollbar covers some text) */
-.xwd__clue-list--list {
-  scrollbar-gutter: stable;
-}
-
-/*
-some dev rules that were really helpful for figuring out the height issues
-keeping for later, in case we need to revisit.
-*/
-
-/* #js-hook-pz-moment__game {
-  background-color: red;
-}
-#js-hook-pz-moment__game > * {
-  background-color: orangered;
-}
-#js-hook-pz-moment__game > * > * {
-  background-color: orange;
-}
-#js-hook-pz-moment__game > * > * > * {
-  background-color: yellow;
-}
-#js-hook-pz-moment__game > * > * > * > * {
-  background-color: yellowgreen;
-}
-#js-hook-pz-moment__game > * > * > * > * > * {
-  background-color: green;
-}
-#js-hook-pz-moment__game > * > * > * > * > * > * {
-  background-color: blue;
-}
-#js-hook-pz-moment__game > * > * > * > * > * > * > * {
-  background-color: indigo;
-}
-#js-hook-pz-moment__game > * > * > * > * > * > * > * > * {
-  background-color: purple;
-}
-#js-hook-pz-moment__game > * > * > * > * > * > * > * > * > * {
-  background-color: lightgray;
-}
-#js-hook-pz-moment__game > * > * > * > * > * > * > * > * > * > * {
-  background-color: gray;
-} */

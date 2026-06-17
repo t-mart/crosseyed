@@ -1,31 +1,13 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "ESNext",
-    "module": "CommonJS",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "strict": true,
-    "useDefineForClassFields": true,
-    "noUncheckedIndexedAccess": true,
-    "alwaysStrict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "importsNotUsedAsValues": "error",
-    "allowJs": true,
-    "checkJs": true,
-    "noEmitOnError": false,
-    "outDir": "dist"
+    "noEmit": true,
+    "types": []
   },
-  "exclude": ["**/node_modules/**", "./scripts/**"]
+  "include": ["src", "scripts", "eslint.config.mjs"],
+  "exclude": ["node_modules", "dist", "host"]
 }
