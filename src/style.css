@@ -90,15 +90,15 @@ body.crosseyed-ready .xwd__toolbar--wrapper {
 
 /* Give each clue list half the pane, drop the left inset, and enlarge the text. */
 body.crosseyed-ready .xwd__clue-list--wrapper {
-  width: 50%;
-  padding-left: 0;
+  width: calc(50% - 1px);
+  padding-left: 1px;
   font-size: 1.25em;
 }
 
 /* Frame each scrollable clue list so its bottom edge is obvious. */
 body.crosseyed-ready .xwd__clue-list--list {
   outline: 1px solid #a8a8a8;
-  outline-offset: -1px;
+  /* outline-offset: -1px; */
 }
 
 

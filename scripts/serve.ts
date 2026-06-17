@@ -31,11 +31,11 @@ Deno.addSignalListener("SIGTERM", shutdown);
 
 // Whether the client's cached copy still matches the current file. Pure: the
 // validators are derived from the file's size and mtime.
-function isFresh(req: Request, etag: string, mtimeMs: number): boolean {
-  const ifNoneMatch = req.headers.get("if-none-match");
+function isFresh(request: Request, etag: string, mtimeMs: number): boolean {
+  const ifNoneMatch = request.headers.get("if-none-match");
   if (ifNoneMatch) return ifNoneMatch === etag;
 
-  const ifModifiedSince = req.headers.get("if-modified-since");
+  const ifModifiedSince = request.headers.get("if-modified-since");
   if (ifModifiedSince) {
     const since = Date.parse(ifModifiedSince);
     // HTTP dates are second-precision; floor the mtime before comparing.
@@ -45,7 +45,7 @@ function isFresh(req: Request, etag: string, mtimeMs: number): boolean {
   return false;
 }
 
-async function serveScript(req: Request): Promise<Response> {
+async function serveScript(request: Request): Promise<Response> {
   let stat: Deno.FileInfo;
   let code: string;
   try {
@@ -69,13 +69,15 @@ async function serveScript(req: Request): Promise<Response> {
   const headers = {
     "content-type": "text/javascript; charset=utf-8",
     "cache-control": "no-cache",
-    "etag": etag,
+    etag: etag,
     "last-modified": new Date(mtimeMs).toUTCString(),
   };
 
-  if (isFresh(req, etag, mtimeMs)) {
+  if (isFresh(request, etag, mtimeMs)) {
+    console.log("Not modified");
     return new Response(null, { status: 304, headers });
   }
+  console.log("Serving updated script");
   return new Response(code, { headers });
 }
 
@@ -89,9 +91,9 @@ const landing = `<!doctype html>
      the file rebuilds automatically; revisit the link to reinstall.</p>
 </body>`;
 
-Deno.serve({ port: PORT }, (req) => {
-  const { pathname } = new URL(req.url);
-  if (pathname === "/crosseyed.user.js") return serveScript(req);
+Deno.serve({ port: PORT }, (request) => {
+  const { pathname } = new URL(request.url);
+  if (pathname === "/crosseyed.user.js") return serveScript(request);
   if (pathname === "/") {
     return new Response(landing, {
       headers: { "content-type": "text/html; charset=utf-8" },

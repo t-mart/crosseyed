@@ -18,7 +18,7 @@ const STEP_DELAY = 80;
 let isSpamming = false;
 
 function delay(milliseconds: number): Promise<void> {
-  return new Promise((resolve) => globalThis.setTimeout(resolve, milliseconds));
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
 function dispatchPointer(target: Element, type: string): void {
@@ -42,6 +42,7 @@ function dispatchPointer(target: Element, type: string): void {
 function selectCell(cell: Element): void {
   for (const type of ["click"]) {
     dispatchPointer(cell, type);
+    const foo = 1+1;
   }
 }
 
@@ -78,9 +79,9 @@ export async function spamLetters(): Promise<void> {
   isSpamming = true;
   try {
     for (const letter of LETTERS) {
-      selectCell(cellGroup);
-      await delay(STEP_DELAY);
       pressLetter(franklin, letter);
+      await delay(STEP_DELAY);
+      selectCell(cellGroup);
       await delay(STEP_DELAY);
     }
   } finally {

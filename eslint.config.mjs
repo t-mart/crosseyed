@@ -7,70 +7,74 @@ import perfectionist from "eslint-plugin-perfectionist";
 import globals from "globals";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
-export default defineConfig({
-  files: ["**/*.{ts,tsx}"],
-
-  extends: [
-    js.configs.recommended,
-    tseslint.configs.recommendedTypeChecked,
-    eslintPluginUnicorn.configs.recommended,
-  ],
-
-  plugins: {
-    perfectionist,
-    unicorn: eslintPluginUnicorn,
-  },
-
-  languageOptions: {
-    parser: tseslint.parser,
-    parserOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      projectService: true,
-      tsconfigRootDir: import.meta.dirname,
-      ecmaFeatures: {
-        jsx: true,
-      },
+export default defineConfig(
+  {
+    files: ["vite.config.ts", "eslint.config.mjs", "scripts/**/*.ts"],
+    languageOptions: {
+      globals: { ...globals.builtin, ...globals.node, ...globals.bunBuiltin },
     },
-    globals: globals.builtin,
-    // globals: {
-    //   // ...globals.browser,
-    // },
   },
+  {
+    files: ["**/*.{ts,tsx,mjs}"],
 
-  rules: {
-    "unicorn/no-useless-undefined": [
-      "error",
-      {
-        checkArrowFunctionBody: false,
-      },
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommendedTypeChecked,
+      eslintPluginUnicorn.configs.recommended,
     ],
-    "unicorn/prevent-abbreviations": [
-      "error",
-      {
-        ignore: [
-          /args/i,
-          /ctx/i,
-          /db/i,
-          /deps/i,
-          /dev/i,
-          /env/i,
-          /docs/i,
-          /param/i,
-          /prev/i,
-          /props/i,
-          /ref/i,
-        ],
-      },
-    ],
-    "unicorn/filename-case": [
-      "error",
-      {
-        cases: {
-          kebabCase: true,
+
+    plugins: {
+      perfectionist,
+      unicorn: eslintPluginUnicorn,
+    },
+
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        projectService: {
+          allowDefaultProject: ["*.ts", "*.mjs"],
         },
+        tsconfigRootDir: import.meta.dirname,
       },
-    ],
+      globals: { ...globals.builtin, ...globals.browser },
+    },
+
+    rules: {
+      "unicorn/no-useless-undefined": [
+        "error",
+        {
+          checkArrowFunctionBody: false,
+        },
+      ],
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          ignore: [
+            /args/i,
+            /ctx/i,
+            /db/i,
+            /deps/i,
+            /dev/i,
+            /env/i,
+            /docs/i,
+            /param/i,
+            /prev/i,
+            /props/i,
+            /ref/i,
+          ],
+        },
+      ],
+      "unicorn/filename-case": [
+        "error",
+        {
+          cases: {
+            kebabCase: true,
+          },
+        },
+      ],
+    },
+    ignores: ["dist/**", "node_modules/**"],
   },
-  ignores: ["dist/**", "node_modules/**"],
-});
+);

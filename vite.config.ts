@@ -1,9 +1,9 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import { dirname, resolve } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const root = dirname(fileURLToPath(import.meta.url));
+const root = path.dirname(fileURLToPath(import.meta.url));
 
 const userscriptHeader = `// ==UserScript==
 // @name         Crosseyed
@@ -17,11 +17,11 @@ const userscriptHeader = `// ==UserScript==
 // ==/UserScript==
 `;
 
-function userscriptHeaderPlugin() {
+function userscriptHeaderPlugin(): Plugin {
   return {
     name: "crosseyed-userscript-header",
     enforce: "post" as const,
-    generateBundle(_options: unknown, bundle: Record<string, any>) {
+    generateBundle(_options, bundle) {
       for (const file of Object.values(bundle)) {
         if (file.type === "chunk" && file.fileName.endsWith(".user.js")) {
           file.code = `${userscriptHeader}\n${file.code}`;
@@ -37,11 +37,10 @@ export default defineConfig({
     outDir: "dist",
     emptyOutDir: true,
     lib: {
-      entry: resolve(root, "src/main.ts"),
+      entry: path.resolve(root, "src/main.ts"),
       formats: ["iife"],
       name: "Crosseyed",
-      fileName: () => "crosseyed.user.js",
-      cssFileName: "crosseyed",
+      fileName: () => "crosseyed.user.js"
     },
   },
 });
