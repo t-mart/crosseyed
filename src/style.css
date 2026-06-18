@@ -85,6 +85,10 @@ body.crosseyed-ready {
     min-height: 0;
   }
 
+  & .xwd__clue--label {
+    padding-right: 0.5em;
+  }
+
   & .xwd__clue-bar-desktop--bar {
     font-size: 2em;
   }
