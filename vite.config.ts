@@ -7,22 +7,32 @@ import packageJson from "./package.json" with { type: "json" };
 const root = path.dirname(fileURLToPath(import.meta.url));
 
 function buildHeader(): string {
-  const { name, version, description, author, userscript } = packageJson;
+  const { name, version, description, author, homepage, bugs, license, userscript } =
+    packageJson;
   const { namespace, match, "run-at": runAt, grant } = userscript;
   const displayName = name.at(0)!.toUpperCase() + name.slice(1);
-  return [
-    "// ==UserScript==",
-    `// @name         ${displayName}`,
-    `// @namespace    ${namespace}`,
-    `// @version      ${version}`,
-    `// @description  ${description}`,
-    `// @author       ${author}`,
-    `// @match        ${match}`,
-    `// @run-at       ${runAt}`,
-    `// @grant        ${grant}`,
-    "// ==/UserScript==",
-    "",
-  ].join("\n");
+
+  // [directive, value] pairs; values are aligned to the widest directive so
+  // adding a field never desyncs the spacing.
+  const fields: [directive: string, value: string][] = [
+    ["name", displayName],
+    ["namespace", namespace],
+    ["version", version],
+    ["description", description],
+    ["author", author],
+    ["homepageURL", homepage],
+    ["supportURL", bugs.url],
+    ["license", license],
+    ["match", match],
+    ["run-at", runAt],
+    ["grant", grant],
+  ];
+  const width = Math.max(...fields.map(([directive]) => directive.length));
+  const lines = fields.map(
+    ([directive, value]) => `// @${directive.padEnd(width)}  ${value}`,
+  );
+
+  return ["// ==UserScript==", ...lines, "// ==/UserScript==", ""].join("\n");
 }
 
 const userscriptHeader = buildHeader();

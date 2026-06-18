@@ -3,6 +3,16 @@
   "version": "0.1.0",
   "description": "NYT Crossword enhancements",
   "author": "Tim Martin",
+  "license": "MIT",
+  "private": true,
+  "homepage": "https://github.com/t-mart/crosseyed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/t-mart/crosseyed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/t-mart/crosseyed/issues"
+  },
   "userscript": {
     "namespace": "crosseyed",
     "match": "https://www.nytimes.com/crosswords/game/*",
