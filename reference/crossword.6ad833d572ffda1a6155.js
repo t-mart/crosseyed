@@ -1,29 +1,27 @@
 !(function () {
   try {
-    var e =
-        "undefined" != typeof window
-          ? window
-          : "undefined" != typeof global
-            ? global
-            : "undefined" != typeof self
-              ? self
-              : {},
+    var e = "undefined" != typeof window
+        ? window
+        : "undefined" != typeof global
+        ? global
+        : "undefined" != typeof self
+        ? self
+        : {},
       t = new Error().stack;
     t &&
       ((e._sentryDebugIds = e._sentryDebugIds || {}),
-      (e._sentryDebugIds[t] = "2c28b6da-5e16-49da-ad50-19464acafa69"),
-      (e._sentryDebugIdIdentifier =
-        "sentry-dbid-2c28b6da-5e16-49da-ad50-19464acafa69"));
+        (e._sentryDebugIds[t] = "2c28b6da-5e16-49da-ad50-19464acafa69"),
+        (e._sentryDebugIdIdentifier =
+          "sentry-dbid-2c28b6da-5e16-49da-ad50-19464acafa69"));
   } catch (e) {}
 })();
-var _global =
-  "undefined" != typeof window
-    ? window
-    : "undefined" != typeof global
-      ? global
-      : "undefined" != typeof self
-        ? self
-        : {};
+var _global = "undefined" != typeof window
+  ? window
+  : "undefined" != typeof global
+  ? global
+  : "undefined" != typeof self
+  ? self
+  : {};
 ((_global.SENTRY_RELEASE = { id: "b62d79f8c1db608307dddf754f78f621505375f8" }),
   (function () {
     var e,
@@ -163,10 +161,11 @@ var _global =
                 n = ((e, t) =>
                   t.replace(_e, (t, r, n) => {
                     const o = Ee[n];
-                    if (!o)
+                    if (!o) {
                       throw new Error(
                         'Unrecognized NYT time: "'.concat(n, '"'),
                       );
+                    }
                     return "[".concat(o(e), "]");
                   }))(r, t);
               return r.format(n);
@@ -207,8 +206,9 @@ var _global =
               (e) => (null == e ? void 0 : e.dimensions) || null,
             ),
             Ae = (0, se.createSelector)(De, (e) => (null == e ? void 0 : e.id)),
-            Me = (0, se.createSelector)(De, (e) =>
-              null == e ? void 0 : e.title,
+            Me = (0, se.createSelector)(
+              De,
+              (e) => null == e ? void 0 : e.title,
             ),
             Re = (0, se.createSelector)(
               De,
@@ -217,46 +217,50 @@ var _global =
             Be = (0, se.createSelector)(Re, (e) => "mini" === e),
             Ue = (0, se.createSelector)(Re, (e) => "midi" === e),
             Ge = (0, se.createSelector)(Re, (e) => "daily" === e),
-            We = (0, se.createSelector)(De, (e) =>
-              null == e ? void 0 : e.publicationDate,
+            We = (0, se.createSelector)(
+              De,
+              (e) => null == e ? void 0 : e.publicationDate,
             ),
             Ye = (0, se.createSelector)([Re, We, Me, Te], (e, t, r, n) => {
-              if (n)
+              if (n) {
                 return 403 === n.status
                   ? "Subscription Required"
                   : 404 === n.status
-                    ? "Page Not Found"
-                    : "Oops! Something went wrong.";
+                  ? "Page Not Found"
+                  : "Oops! Something went wrong.";
+              }
               const o = !e;
               let a = "MMMM D, YYYY";
               a = "bonus" === e ? "MMMM YYYY" : "dddd, MMMM D, YYYY";
               let i = "The Crossword puzzle";
               return (
                 "mini" === e && (i = "The Mini puzzle"),
-                "midi" === e && (i = "The Midi puzzle"),
-                (o || "bonus" === e) &&
+                  "midi" === e && (i = "The Midi puzzle"),
+                  (o || "bonus" === e) &&
                   (i = "The Crossword Bonus puzzle — ".concat(r)),
-                o && (i = "The Special Crossword puzzle"),
-                !o && t && (i = "".concat(Oe(t, a), " ").concat(i)),
-                "".concat(i, " — The New York Times")
+                  o && (i = "The Special Crossword puzzle"),
+                  !o && t && (i = "".concat(Oe(t, a), " ").concat(i)),
+                  "".concat(i, " — The New York Times")
               );
             }),
             He = (0, se.createSelector)(We, (e) => (e ? Oe(e, "dddd") : "")),
             Fe = (0, se.createSelector)(He, (e) => Se.indexOf(e.toLowerCase())),
             qe = (e) => e.selection,
             Ze = (0, se.createSelector)(qe, (e) => e.cell),
-            $e = (0, se.createSelector)([ke, Ze], (e, t) =>
-              "number" == typeof t ? e[t] : null,
+            $e = (0, se.createSelector)(
+              [ke, Ze],
+              (e, t) => "number" == typeof t ? e[t] : null,
             ),
-            Ve = (0, se.createSelector)([xe, qe], (e, t) =>
-              "number" == typeof t.clue ? e[t.clue] : null,
+            Ve = (0, se.createSelector)(
+              [xe, qe],
+              (e, t) => "number" == typeof t.clue ? e[t.clue] : null,
             ),
-            Xe =
-              ((0, se.createSelector)([Le, qe], (e, t) =>
-                "number" == typeof t.clueList ? e[t.clueList] : null,
-              ),
-              (0, se.createSelector)(qe, (e) => e.clueCells)),
-            Ke = (0, se.createSelector)(qe, (e) => e.relatedCells);
+            Xe = ((0, se.createSelector)([Le, qe], (e, t) =>
+              "number" == typeof t.clueList ? e[t.clueList] : null),
+              (0, se.createSelector)(qe, (e) =>
+                e.clueCells)),
+            Ke = (0, se.createSelector)(qe, (e) =>
+              e.relatedCells);
           function Je(e, t) {
             var r = Object.keys(e);
             if (Object.getOwnPropertySymbols) {
@@ -274,51 +278,52 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Je(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Je(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Je(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
           const et = (e, t, r) => {
-              const n = e.find((e) => r(t[e]));
+              const n = e.find((e) =>
+                r(t[e])
+              );
               if (void 0 !== n) return t[n];
             },
             tt = () => 0,
@@ -339,8 +344,8 @@ var _global =
             },
             lt = function (e) {
               var t;
-              let r =
-                arguments.length > 1 && void 0 !== arguments[1] && arguments[1];
+              let r = arguments.length > 1 && void 0 !== arguments[1] &&
+                arguments[1];
               const n = de(e),
                 { cells: o, clues: a, selection: i } = e,
                 l = W(n),
@@ -381,46 +386,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? st(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : st(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : st(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -434,8 +438,9 @@ var _global =
                   var n, o;
                   const { cells: a, clues: i, puzzle: l, selection: s } = e,
                     c = ((e, t, r, n, o) => {
-                      if ("number" != typeof n || n < 1)
+                      if ("number" != typeof n || n < 1) {
                         throw new Error("gridwidth must be a positive number");
+                      }
                       let a, i;
                       switch (t) {
                         case "Up":
@@ -450,9 +455,11 @@ var _global =
                         case "Left":
                           ((a = -1), (i = ge(e, n)));
                       }
-                      if (a && i)
-                        for (let t = e + a; t >= i[0] && t <= i[1]; t += a)
+                      if (a && i) {
+                        for (let t = e + a; t >= i[0] && t <= i[1]; t += a) {
                           if (o(r[t])) return r[t];
+                        }
+                      }
                     })(
                       s.cell || 0,
                       t,
@@ -464,22 +471,18 @@ var _global =
                     );
                   if (!c) return null;
                   const d = ((e, t, r) => {
-                    if (0 === e.clues.length)
+                    if (0 === e.clues.length) {
                       return { index: null, cells: [], list: r };
+                    }
                     if (1 === e.clues.length) return t[e.clues[0]];
                     const n = e.clues,
                       o = n.map((e) => t[e].list),
-                      a =
-                        ((i = r),
+                      a = ((i = r),
                         o.reduce((e, t) =>
-                          t === i
-                            ? t
-                            : e === i
-                              ? e
-                              : "number" == typeof i &&
-                                  ((t < i && e < i) || (t > i && e > i))
-                                ? Math.min(t, e)
-                                : Math.max(t, e),
+                          t === i ? t : e === i ? e : "number" == typeof i &&
+                              ((t < i && e < i) || (t > i && e > i))
+                            ? Math.min(t, e)
+                            : Math.max(t, e)
                         ));
                     var i;
                     const l = o.findIndex((e) => e === a);
@@ -493,8 +496,9 @@ var _global =
                       cellClues: c.clues,
                       clue: d.index,
                       clueCells: d.cells,
-                      clueList:
-                        null !== (o = d.list) && void 0 !== o ? o : null,
+                      clueList: null !== (o = d.list) && void 0 !== o
+                        ? o
+                        : null,
                     },
                   );
                 })(e, t, r);
@@ -519,15 +523,15 @@ var _global =
                         if (s && !d) return it(e, ot);
                         const p = t.jumpBack
                             ? c.concat(
-                                ((e, t) => e.slice(0, e.indexOf(t)))(a, o),
-                              )
+                              ((e, t) => e.slice(0, e.indexOf(t)))(a, o),
+                            )
                             : c,
                           f = et(p, r, i);
                         return f
                           ? at(r, n, a.indexOf(f.index))
                           : t.autoAdvance
-                            ? lt(e)
-                            : null;
+                          ? lt(e)
+                          : null;
                       })(e);
                     case "Backspace":
                       return ((e) => {
@@ -539,8 +543,8 @@ var _global =
                         if (!r.backspaceAcrossWords) return null;
                         const c =
                           ((d = o),
-                          (u = o[l]),
-                          d[d.indexOf(u) - 1] || d[d.length - 1]);
+                            (u = o[l]),
+                            d[d.indexOf(u) - 1] || d[d.length - 1]);
                         var d, u;
                         const m = c.cells,
                           p = n[m[m.length - 1]];
@@ -552,8 +556,9 @@ var _global =
                             cellClues: p.clues,
                             clue: c.index,
                             clueCells: m,
-                            clueList:
-                              null !== (t = c.list) && void 0 !== t ? t : null,
+                            clueList: null !== (t = c.list) && void 0 !== t
+                              ? t
+                              : null,
                           },
                         );
                       })(e);
@@ -584,46 +589,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? ut(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : ut(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : ut(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -672,10 +676,9 @@ var _global =
             },
             ht = function (e) {
               var t;
-              let r =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : null;
+              let r = arguments.length > 1 && void 0 !== arguments[1]
+                ? arguments[1]
+                : null;
               const { clues: n } = e,
                 o = r || e.selection,
                 { clue: a, cellClues: i } = o;
@@ -724,46 +727,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? _t(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : _t(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : _t(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -795,24 +797,25 @@ var _global =
                       d = c ? o[c] : o[s[0]];
                     return d
                       ? {
-                          cell: t,
-                          cellClues: s,
-                          clue: d.index,
-                          clueCells: d.cells,
-                          clueList:
-                            null !== (r = d.list) && void 0 !== r ? r : null,
-                          relatedCells: [],
-                          relatedClues: [],
-                        }
+                        cell: t,
+                        cellClues: s,
+                        clue: d.index,
+                        clueCells: d.cells,
+                        clueList: null !== (r = d.list) && void 0 !== r
+                          ? r
+                          : null,
+                        relatedCells: [],
+                        relatedClues: [],
+                      }
                       : {
-                          cell: t,
-                          cellClues: [],
-                          clue: null,
-                          clueCells: [],
-                          clueList: l,
-                          relatedCells: [],
-                          relatedClues: [],
-                        };
+                        cell: t,
+                        cellClues: [],
+                        clue: null,
+                        clueCells: [],
+                        clueList: l,
+                        relatedCells: [],
+                        relatedClues: [],
+                      };
                   })(e, t.payload.index);
                   break;
                 case F:
@@ -823,56 +826,54 @@ var _global =
                   break;
                 case Y: {
                   const { direction: n } = t.payload;
-                  r =
-                    null != n && n.startsWith("Arrow")
-                      ? ((e, t) => {
-                          const r = ce(e),
-                            {
-                              settings: { onSwitch: n },
-                            } = r,
-                            {
-                              puzzle: { data: o },
-                              selection: { cellClues: a, clueList: i },
-                            } = e;
-                          if (!o) return null;
-                          if (yt(e, t)) {
-                            const r = 0 === a.length,
-                              l =
-                                "move" === n || r || !gt(i, o.clueLists)
-                                  ? dt(e, t.substring(5))
-                                  : null;
-                            return ht(e, l);
-                          }
-                          return dt(e, t.substring(5));
-                        })(e, n)
-                      : null != n && n.startsWith("Shift")
-                        ? ((e, t) => {
-                            const {
-                                puzzle: { data: r },
-                                cells: n,
-                                selection: { clueList: o },
-                              } = e,
-                              a = t.replace("ShiftArrow", "");
-                            if (!r) return null;
-                            if (null == o || !gt(o, r.clueLists)) {
-                              const t = pt.test(a)
-                                ? r.clueLists.findIndex(
-                                    (e) => "Down" === e.name,
-                                  ) || 0
-                                : r.clueLists.findIndex(
-                                    (e) => "Across" === e.name,
-                                  ) || 0;
-                              return dt(e, a, t);
-                            }
-                            if (yt(e, t)) {
-                              const t = dt(e, a);
-                              if (!t) return null;
-                              const r = (e) => !L(n[e]);
-                              return t.clueCells.every(r) ? t : bt(e, t.clue);
-                            }
-                            return dt(e, wt[t] || "");
-                          })(e, n)
-                        : dt(e, n);
+                  r = null != n && n.startsWith("Arrow")
+                    ? ((e, t) => {
+                      const r = ce(e),
+                        {
+                          settings: { onSwitch: n },
+                        } = r,
+                        {
+                          puzzle: { data: o },
+                          selection: { cellClues: a, clueList: i },
+                        } = e;
+                      if (!o) return null;
+                      if (yt(e, t)) {
+                        const r = 0 === a.length,
+                          l = "move" === n || r || !gt(i, o.clueLists)
+                            ? dt(e, t.substring(5))
+                            : null;
+                        return ht(e, l);
+                      }
+                      return dt(e, t.substring(5));
+                    })(e, n)
+                    : null != n && n.startsWith("Shift")
+                    ? ((e, t) => {
+                      const {
+                          puzzle: { data: r },
+                          cells: n,
+                          selection: { clueList: o },
+                        } = e,
+                        a = t.replace("ShiftArrow", "");
+                      if (!r) return null;
+                      if (null == o || !gt(o, r.clueLists)) {
+                        const t = pt.test(a)
+                          ? r.clueLists.findIndex(
+                            (e) => "Down" === e.name,
+                          ) || 0
+                          : r.clueLists.findIndex(
+                            (e) => "Across" === e.name,
+                          ) || 0;
+                        return dt(e, a, t);
+                      }
+                      if (yt(e, t)) {
+                        const t = dt(e, a);
+                        if (!t) return null;
+                        const r = (e) => !L(n[e]);
+                        return t.clueCells.every(r) ? t : bt(e, t.clue);
+                      }
+                      return dt(e, wt[t] || "");
+                    })(e, n)
+                    : dt(e, n);
                   break;
                 }
                 case T:
@@ -883,19 +884,19 @@ var _global =
               }
               return r
                 ? ((r = ((e, t) => {
-                    let { clues: r } = e;
-                    const n = r[t.clue];
-                    let o = [],
-                      a = [];
-                    return (
-                      n &&
-                        ((a = n.relatives || []),
-                        (o = a
-                          .map((e) => r[e])
-                          .reduce((e, t) => e.concat(t.cells), []))),
+                  let { clues: r } = e;
+                  const n = r[t.clue];
+                  let o = [],
+                    a = [];
+                  return (
+                    n &&
+                    ((a = n.relatives || []),
+                      (o = a
+                        .map((e) => r[e])
+                        .reduce((e, t) => e.concat(t.cells), []))),
                       mt(mt({}, t), {}, { relatedCells: o, relatedClues: a })
-                    );
-                  })(e, r)),
+                  );
+                })(e, r)),
                   r)
                 : null;
             })(e.getState(), r);
@@ -922,46 +923,45 @@ var _global =
                   var r = null != arguments[t] ? arguments[t] : {};
                   t % 2
                     ? St(Object(r), !0).forEach(function (t) {
-                        var n, o, a, i;
-                        ((n = e),
-                          (o = t),
-                          (a = r[t]),
-                          (o =
-                            "symbol" ==
-                            typeof (i = (function (e, t) {
-                              if ("object" != typeof e || !e) return e;
-                              var r = e[Symbol.toPrimitive];
-                              if (void 0 !== r) {
-                                var n = r.call(e, "string");
-                                if ("object" != typeof n) return n;
-                                throw new TypeError(
-                                  "@@toPrimitive must return a primitive value.",
-                                );
-                              }
-                              return String(e);
-                            })(o))
-                              ? i
-                              : i + "") in n
-                            ? Object.defineProperty(n, o, {
-                                value: a,
-                                enumerable: !0,
-                                configurable: !0,
-                                writable: !0,
-                              })
-                            : (n[o] = a));
-                      })
+                      var n, o, a, i;
+                      ((n = e),
+                        (o = t),
+                        (a = r[t]),
+                        (o = "symbol" ==
+                              typeof (i = (function (e, t) {
+                                if ("object" != typeof e || !e) return e;
+                                var r = e[Symbol.toPrimitive];
+                                if (void 0 !== r) {
+                                  var n = r.call(e, "string");
+                                  if ("object" != typeof n) return n;
+                                  throw new TypeError(
+                                    "@@toPrimitive must return a primitive value.",
+                                  );
+                                }
+                                return String(e);
+                              })(o))
+                            ? i
+                            : i + "") in n
+                          ? Object.defineProperty(n, o, {
+                            value: a,
+                            enumerable: !0,
+                            configurable: !0,
+                            writable: !0,
+                          })
+                          : (n[o] = a));
+                    })
                     : Object.getOwnPropertyDescriptors
-                      ? Object.defineProperties(
-                          e,
-                          Object.getOwnPropertyDescriptors(r),
-                        )
-                      : St(Object(r)).forEach(function (t) {
-                          Object.defineProperty(
-                            e,
-                            t,
-                            Object.getOwnPropertyDescriptor(r, t),
-                          );
-                        });
+                    ? Object.defineProperties(
+                      e,
+                      Object.getOwnPropertyDescriptors(r),
+                    )
+                    : St(Object(r)).forEach(function (t) {
+                      Object.defineProperty(
+                        e,
+                        t,
+                        Object.getOwnPropertyDescriptor(r, t),
+                      );
+                    });
                 }
                 return e;
               })(
@@ -977,9 +977,9 @@ var _global =
               e === Dt || e === Lt
                 ? { type: e, payload: { now: he()().unix() } }
                 : {
-                    type: e,
-                    payload: { now: he()().unix(), isLeavingGame: t },
-                  },
+                  type: e,
+                  payload: { now: he()().unix(), isLeavingGame: t },
+                },
             It = () => zt(Lt),
             At = () => zt(Dt),
             Mt = function () {
@@ -1001,12 +1001,12 @@ var _global =
           let $t = (function (e) {
             return (
               (e.Letter = "LETTER_SCOPE"),
-              (e.Unchecked = "UNCHECKED_SCOPE"),
-              (e.Word = "WORD_SCOPE"),
-              (e.Puzzle = "PUZZLE_SCOPE"),
-              (e.Fifty = "FIFTY_SCOPE"),
-              (e.SeventyFive = "SEVENTYFIVE_SCOPE"),
-              e
+                (e.Unchecked = "UNCHECKED_SCOPE"),
+                (e.Word = "WORD_SCOPE"),
+                (e.Puzzle = "PUZZLE_SCOPE"),
+                (e.Fifty = "FIFTY_SCOPE"),
+                (e.SeventyFive = "SEVENTYFIVE_SCOPE"),
+                e
             );
           })({});
           const Vt = (e, t, r, n, o) => {
@@ -1053,14 +1053,12 @@ var _global =
               case Pt:
                 ((e, t, r, n) => {
                   var o;
-                  const a =
-                      (null === (o = n.modal.config) || void 0 === o
-                        ? void 0
-                        : o.actionType) || "",
-                    i =
-                      (e.type !== xt &&
-                        "isCancelled" in e.payload &&
-                        e.payload.isCancelled) ||
+                  const a = (null === (o = n.modal.config) || void 0 === o
+                      ? void 0
+                      : o.actionType) || "",
+                    i = (e.type !== xt &&
+                      "isCancelled" in e.payload &&
+                      e.payload.isCancelled) ||
                       !1;
                   [C, K].includes(a) &&
                     i &&
@@ -1081,9 +1079,10 @@ var _global =
           const Kt = (e) => {
               var t, r;
               return null !==
-                (t =
-                  null === (r = e.meter) || void 0 === r ? void 0 : r.data) &&
-                void 0 !== t
+                    (t = null === (r = e.meter) || void 0 === r
+                      ? void 0
+                      : r.data) &&
+                  void 0 !== t
                 ? t
                 : null;
             },
@@ -1091,10 +1090,9 @@ var _global =
               var t, r;
               return (
                 null !==
-                  (t =
-                    null === (r = e.meter) || void 0 === r
-                      ? void 0
-                      : r.hasLoaded) &&
+                  (t = null === (r = e.meter) || void 0 === r
+                    ? void 0
+                    : r.hasLoaded) &&
                 void 0 !== t &&
                 t
               );
@@ -1116,46 +1114,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Qt(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Qt(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Qt(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -1168,24 +1165,24 @@ var _global =
             (0, se.createSelector)(Kt, (e) => {
               var t;
               return null !== (t = null == e ? void 0 : e.grantReason) &&
-                void 0 !== t
+                  void 0 !== t
                 ? t
                 : null;
             }));
           let tr = (function (e) {
               return (
                 (e.standard = "standard"),
-                (e.southpaw = "southpaw"),
-                (e.large_print = "large_print"),
-                e
+                  (e.southpaw = "southpaw"),
+                  (e.large_print = "large_print"),
+                  e
               );
             })({}),
             rr = (function (e) {
               return (
                 (e.PROGRESS = "progress"),
-                (e.DUAL_WRITE = "dual_write"),
-                (e.STATE = "state"),
-                e
+                  (e.DUAL_WRITE = "dual_write"),
+                  (e.STATE = "state"),
+                  e
               );
             })({}),
             nr = (function (e) {
@@ -1240,17 +1237,20 @@ var _global =
           var yr = (function (e) {
             return (
               (e.GRANT_S1 = "User has Xwd entitlement"),
-              (e.GRANT_S2 = "User has shortz mode enabled"),
-              (e.GRANT_S3 = "User is playing a free puzzle"),
-              (e.GRANT_S4 = "Meter granted"),
-              (e.DENY_S1 = "Meter did not grant"),
-              (e.DENY_S2 =
-                "No meter data available. Puzzle has not been detected as free"),
-              (e.DENY_S3 = "No puzzle data available. No meter data available"),
-              e
+                (e.GRANT_S2 = "User has shortz mode enabled"),
+                (e.GRANT_S3 = "User is playing a free puzzle"),
+                (e.GRANT_S4 = "Meter granted"),
+                (e.DENY_S1 = "Meter did not grant"),
+                (e.DENY_S2 =
+                  "No meter data available. Puzzle has not been detected as free"),
+                (e.DENY_S3 =
+                  "No puzzle data available. No meter data available"),
+                e
             );
           })(yr || {});
-          const wr = (e) => (t) => (r) => {
+          const wr = (e) =>
+          (t) =>
+          (r) => {
             const n = e.getState(),
               o = t(r),
               a = e.getState();
@@ -1266,16 +1266,14 @@ var _global =
                   return n.userType.hasXwd
                     ? yr.GRANT_S1
                     : n.userType.inShortzMode
-                      ? yr.GRANT_S2
-                      : null !== r
-                        ? r.freePuzzle
-                          ? yr.GRANT_S3
-                          : null !== t
-                            ? t.granted
-                              ? yr.GRANT_S4
-                              : yr.DENY_S1
-                            : yr.DENY_S2
-                        : yr.DENY_S3;
+                    ? yr.GRANT_S2
+                    : null !== r
+                    ? r.freePuzzle
+                      ? yr.GRANT_S3
+                      : null !== t
+                      ? t.granted ? yr.GRANT_S4 : yr.DENY_S1
+                      : yr.DENY_S2
+                    : yr.DENY_S3;
                 })({ meter: Kt(a), puzzle: De(a), access: me(a) })
               ) {
                 case yr.DENY_S1:
@@ -1327,8 +1325,9 @@ var _global =
                 var t = arguments.length, r = new Array(t), n = 0;
                 n < t;
                 n++
-              )
+              ) {
                 r[n] = arguments[n];
+              }
               const o = "function" == typeof r ? r() : r;
               console[e](...o);
             };
@@ -1351,46 +1350,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? jr(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : jr(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : jr(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -1399,8 +1397,9 @@ var _global =
               t.reduce((t, r) => Tr(Tr({}, t), {}, { [r]: e[r] }), {}),
             Lr = (e) => {
               let t = "";
-              for (let r = 0; r < e.length; r += 1)
-                t += "_" === e[r] ? e[(r += 1)].toUpperCase() : e[r];
+              for (let r = 0; r < e.length; r += 1) {
+                t += "_" === e[r] ? e[r += 1].toUpperCase() : e[r];
+              }
               return t;
             },
             zr = (e) => {
@@ -1424,8 +1423,8 @@ var _global =
               const { method: r, url: n, data: o = null, isSync: a } = e;
               return (
                 t.inShortzMode &&
-                  Cr.info("info: API CALL ".concat(JSON.stringify(e, null, 2))),
-                l.Be.request(r, n, { data: o, isSync: a })
+                Cr.info("info: API CALL ".concat(JSON.stringify(e, null, 2))),
+                  l.Be.request(r, n, { data: o, isSync: a })
               );
             },
             Rr = (0, se.createSelector)(
@@ -1434,12 +1433,12 @@ var _global =
             );
           let Br = (function (e) {
             return (
-              (e[(e.PENDING = -1)] = "PENDING"),
-              (e[(e.LEGACY_ONLY = 0)] = "LEGACY_ONLY"),
-              (e[(e.LEGACY_WITH_STATE = 1)] = "LEGACY_WITH_STATE"),
-              (e[(e.STATE_ONLY = 2)] = "STATE_ONLY"),
-              (e[(e.READ_STATE_DUAL_WRITE = 3)] = "READ_STATE_DUAL_WRITE"),
-              e
+              (e[e.PENDING = -1] = "PENDING"),
+                (e[e.LEGACY_ONLY = 0] = "LEGACY_ONLY"),
+                (e[e.LEGACY_WITH_STATE = 1] = "LEGACY_WITH_STATE"),
+                (e[e.STATE_ONLY = 2] = "STATE_ONLY"),
+                (e[e.READ_STATE_DUAL_WRITE = 3] = "READ_STATE_DUAL_WRITE"),
+                e
             );
           })({});
           var Ur = r(38918),
@@ -1467,46 +1466,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? $r(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : $r(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : $r(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -1525,8 +1523,7 @@ var _global =
                     u = a.has(r),
                     m = i.has(r),
                     p = l.has(r),
-                    f =
-                      !!s &&
+                    f = !!s &&
                       !!t.answer &&
                       s.toUpperCase() === t.answer.toUpperCase(),
                     g = d,
@@ -1673,46 +1670,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? cn(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : cn(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : cn(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -1791,7 +1787,7 @@ var _global =
                     l = e.status.isSolved,
                     s = !i && l;
                   if (t.type === p) return !1;
-                  if (a || (s && o) || t.type === K || t.type === Lt)
+                  if (a || (s && o) || t.type === K || t.type === Lt) {
                     return (
                       console.log(
                         "[XWD on State] Will save state due to action",
@@ -1799,120 +1795,119 @@ var _global =
                         "payload" in t ? t.payload : null,
                         r,
                         e,
-                      ),
-                      !0
+                      ), !0
                     );
+                  }
                 }
                 return !1;
               },
               selectPersistedState: (e) => {
                 const t = wn(e),
-                  r =
-                    !!Sn(e).firsts.timerReset ||
+                  r = !!Sn(e).firsts.timerReset ||
                     (yn(e) && !(null == t || !t.isTimerReset)),
                   n = Pn(e),
                   o = ((e) => {
                     var t;
-                    const r =
-                      null === (t = Ae(e)) || void 0 === t
-                        ? void 0
-                        : t.toString();
+                    const r = null === (t = Ae(e)) || void 0 === t
+                      ? void 0
+                      : t.toString();
                     if (r) {
                       const t = mn(e, r);
                       if (
                         void 0 !== (null == t ? void 0 : t.firstSolve) &&
                         t.firstSolve > 0
-                      )
+                      ) {
                         return t.firstSolve;
+                      }
                     }
                     const n = wn(e);
                     return null != n && n.firstSolve && n.firstSolve > 0
                       ? n.firstSolve
                       : Pn(e)
-                        ? Sn(e).firsts.timerReset
-                          ? void 0
-                          : Yr(e)
-                        : void 0;
+                      ? Sn(e).firsts.timerReset ? void 0 : Yr(e)
+                      : void 0;
                   })(e),
                   a = ((e) => {
                     var t;
-                    const r =
-                      null === (t = Ae(e)) || void 0 === t
-                        ? void 0
-                        : t.toString();
+                    const r = null === (t = Ae(e)) || void 0 === t
+                      ? void 0
+                      : t.toString();
                     if (r) {
                       const t = mn(e, r);
-                      if (void 0 !== (null == t ? void 0 : t.firstSolveDate))
+                      if (void 0 !== (null == t ? void 0 : t.firstSolveDate)) {
                         return t.firstSolveDate;
+                      }
                     }
                     const n = wn(e);
                     if (null != n && n.firstSolveDate) return n.firstSolveDate;
                     const o = Sn(e).firsts.solved;
                     return o && 0 !== o && !Sn(e).firsts.timerReset
                       ? ((e) => {
-                          const t = function (e) {
-                              let t =
-                                arguments.length > 1 && void 0 !== arguments[1]
-                                  ? arguments[1]
-                                  : 2;
-                              return e.toString().padStart(t, "0");
-                            },
-                            r = -e.getTimezoneOffset(),
-                            n = r >= 0 ? "+" : "-",
-                            o = Math.abs(r);
-                          return (
-                            ""
-                              .concat(e.getFullYear(), "-")
-                              .concat(t(e.getMonth() + 1), "-")
-                              .concat(t(e.getDate()), "T") +
-                            ""
-                              .concat(t(e.getHours()), ":")
-                              .concat(t(e.getMinutes()), ":")
-                              .concat(t(e.getSeconds()), ".") +
-                            ""
-                              .concat(t(e.getMilliseconds(), 3))
-                              .concat(n)
-                              .concat(t(Math.floor(o / 60)), ":")
-                              .concat(t(o % 60))
-                          );
-                        })(new Date(1e3 * o))
+                        const t = function (e) {
+                            let t =
+                              arguments.length > 1 && void 0 !== arguments[1]
+                                ? arguments[1]
+                                : 2;
+                            return e.toString().padStart(t, "0");
+                          },
+                          r = -e.getTimezoneOffset(),
+                          n = r >= 0 ? "+" : "-",
+                          o = Math.abs(r);
+                        return (
+                          ""
+                            .concat(e.getFullYear(), "-")
+                            .concat(t(e.getMonth() + 1), "-")
+                            .concat(t(e.getDate()), "T") +
+                          ""
+                            .concat(t(e.getHours()), ":")
+                            .concat(t(e.getMinutes()), ":")
+                            .concat(t(e.getSeconds()), ".") +
+                          ""
+                            .concat(t(e.getMilliseconds(), 3))
+                            .concat(n)
+                            .concat(t(Math.floor(o / 60)), ":")
+                            .concat(t(o % 60))
+                        );
+                      })(new Date(1e3 * o))
                       : void 0;
                   })(e),
                   i = ((e) => {
                     var t;
-                    const r =
-                      null === (t = Ae(e)) || void 0 === t
-                        ? void 0
-                        : t.toString();
+                    const r = null === (t = Ae(e)) || void 0 === t
+                      ? void 0
+                      : t.toString();
                     if (r) {
                       const t = mn(e, r);
                       var n;
-                      if (null != t && t.firstSolveDate)
+                      if (null != t && t.firstSolveDate) {
                         return (
                           null !==
                             (n = null == t ? void 0 : t.firstSolveUsedAid) &&
                           void 0 !== n &&
                           n
                         );
-                      if (!0 === (null == t ? void 0 : t.firstSolveUsedAid))
+                      }
+                      if (!0 === (null == t ? void 0 : t.firstSolveUsedAid)) {
                         return !0;
+                      }
                     }
                     const o = wn(e);
                     var a;
-                    if (null != o && o.firstSolveDate)
+                    if (null != o && o.firstSolveDate) {
                       return (
                         null !==
                           (a = null == o ? void 0 : o.firstSolveUsedAid) &&
                         void 0 !== a &&
                         a
                       );
-                    if (!0 === (null == o ? void 0 : o.firstSolveUsedAid))
+                    }
+                    if (!0 === (null == o ? void 0 : o.firstSolveUsedAid)) {
                       return !0;
+                    }
                     const { firsts: i } = Sn(e),
                       l = yn(e);
                     if (!l && i.timerReset) return;
-                    const s =
-                      (l && !!i.timerReset) ||
+                    const s = (l && !!i.timerReset) ||
                       !!i.checked ||
                       !!i.revealed ||
                       ((e) =>
@@ -1927,43 +1922,46 @@ var _global =
                   })(e),
                   l = ((e) => {
                     var t;
-                    const r =
-                      null === (t = Ae(e)) || void 0 === t
-                        ? void 0
-                        : t.toString();
+                    const r = null === (t = Ae(e)) || void 0 === t
+                      ? void 0
+                      : t.toString();
                     if (r) {
                       const t = mn(e, r);
                       var n;
-                      if (null != t && t.firstSolveDate)
+                      if (null != t && t.firstSolveDate) {
                         return (
                           null !==
-                            (n =
-                              null == t
-                                ? void 0
-                                : t.firstSolveRevealedOrReset) &&
+                            (n = null == t
+                              ? void 0
+                              : t.firstSolveRevealedOrReset) &&
                           void 0 !== n &&
                           n
                         );
+                      }
                       if (
                         !0 ===
-                        (null == t ? void 0 : t.firstSolveRevealedOrReset)
-                      )
+                          (null == t ? void 0 : t.firstSolveRevealedOrReset)
+                      ) {
                         return !0;
+                      }
                     }
                     const o = wn(e);
                     var a;
-                    if (null != o && o.firstSolveDate)
+                    if (null != o && o.firstSolveDate) {
                       return (
                         null !==
-                          (a =
-                            null == o ? void 0 : o.firstSolveRevealedOrReset) &&
+                          (a = null == o
+                            ? void 0
+                            : o.firstSolveRevealedOrReset) &&
                         void 0 !== a &&
                         a
                       );
+                    }
                     if (
                       !0 === (null == o ? void 0 : o.firstSolveRevealedOrReset)
-                    )
+                    ) {
                       return !0;
+                    }
                     const { firsts: i } = Sn(e),
                       l = yn(e),
                       s = ((e) => ke(e).some((e) => e.revealed))(e);
@@ -1971,8 +1969,7 @@ var _global =
                     return (
                       (c =
                         (l && !0 === (null == o ? void 0 : o.isTimerReset)) ||
-                        !!i.timerReset),
-                      !(!s && !c) || (!Pn(e) && void 0)
+                        !!i.timerReset), !(!s && !c) || (!Pn(e) && void 0)
                     );
                   })(e),
                   s = {
@@ -2016,10 +2013,8 @@ var _global =
                   const t = hn(),
                     r = ln(e);
                   n &&
-                  ("crossword_daily" === t || ("crossword_midi" === t && r))
-                    ? Dn(e)
-                      ? (s.star = bn.Gold)
-                      : (s.star = bn.Blue)
+                    ("crossword_daily" === t || ("crossword_midi" === t && r))
+                    ? Dn(e) ? (s.star = bn.Gold) : (s.star = bn.Blue)
                     : (s.star = bn.NoStar);
                 }
                 ((e) => {
@@ -2027,22 +2022,19 @@ var _global =
                     var t, r;
                     const n = Yr(e),
                       o = Re(e),
-                      a =
-                        "daily" === o
-                          ? 18e3
-                          : ["mini", "midi"].includes(o)
-                            ? 7200
-                            : void 0;
+                      a = "daily" === o
+                        ? 18e3
+                        : ["mini", "midi"].includes(o)
+                        ? 7200
+                        : void 0;
                     if (!a || n <= a) return;
-                    const i =
-                        null === (t = Ae(e)) || void 0 === t
-                          ? void 0
-                          : t.toString(),
+                    const i = null === (t = Ae(e)) || void 0 === t
+                        ? void 0
+                        : t.toString(),
                       l = me(e),
-                      s =
-                        null == l || null === (r = l.userType) || void 0 === r
-                          ? void 0
-                          : r.regiId;
+                      s = null == l || null === (r = l.userType) || void 0 === r
+                        ? void 0
+                        : r.regiId;
                     (0, Zr.D)("crossword_solve_time_exceeds_threshold", {
                       puzzle_id: i,
                       regi_id: s,
@@ -2063,13 +2055,13 @@ var _global =
                 } = s;
                 return (
                   d && d > 0 && !u && m > d && (s.playTimeSeconds = d),
-                  console.log(
-                    "[XWD on State] Determined state to save",
-                    s,
-                    Yr(e),
-                    Math.floor(Date.now() / 1e3),
-                  ),
-                  s
+                    console.log(
+                      "[XWD on State] Determined state to save",
+                      s,
+                      Yr(e),
+                      Math.floor(Date.now() / 1e3),
+                    ),
+                    s
                 );
               },
               insertProgress: (e) => (t, r) => {
@@ -2079,10 +2071,10 @@ var _global =
                     (console.groupCollapsed(
                       "[XWD on State Phase: LEGACY_WITH_STATE] insertProgress invoked - NOT APPLYING (monitoring only)",
                     ),
-                    console.table(e),
-                    console.groupEnd(),
-                    e)
-                  )
+                      console.table(e),
+                      console.groupEnd(),
+                      e)
+                  ) {
                     try {
                       const n = r(),
                         o = Xr(e, n);
@@ -2093,15 +2085,16 @@ var _global =
                         e,
                       );
                     }
+                  }
                 } else if (n === Br.READ_STATE_DUAL_WRITE) {
                   if (
                     (console.groupCollapsed(
                       "[XWD on State Phase: READ_STATE_DUAL_WRITE] insertProgress invoked - APPLYING STATE FROM STATE SERVICE",
                     ),
-                    console.table(e),
-                    console.groupEnd(),
-                    e)
-                  )
+                      console.table(e),
+                      console.groupEnd(),
+                      e)
+                  ) {
                     try {
                       const n = r(),
                         o = Xr(e, n);
@@ -2112,15 +2105,16 @@ var _global =
                         e,
                       );
                     }
+                  }
                 } else if (
                   n === Br.STATE_ONLY &&
                   (console.groupCollapsed(
                     "[XWD on State Phase: STATE_ONLY] insertProgress invoked - APPLYING STATE FROM STATE SERVICE",
                   ),
-                  console.table(e),
-                  console.groupEnd(),
-                  e)
-                )
+                    console.table(e),
+                    console.groupEnd(),
+                    e)
+                ) {
                   try {
                     const n = r(),
                       o = Xr(e, n);
@@ -2131,6 +2125,7 @@ var _global =
                       e,
                     );
                   }
+                }
               },
               shouldPreventSaveAfterLoad: (e, t, r) => {
                 switch (Rr(r)) {
@@ -2144,32 +2139,30 @@ var _global =
               onSave: (e) => (t, r) => {
                 var n;
                 const o = r(),
-                  a =
-                    null === (n = Ae(o)) || void 0 === n
-                      ? void 0
-                      : n.toString();
+                  a = null === (n = Ae(o)) || void 0 === n
+                    ? void 0
+                    : n.toString();
                 if (a && e) {
                   const r = {};
                   (void 0 !== e.firstSolve &&
                     e.firstSolve > 0 &&
                     (r.firstSolve = e.firstSolve),
                     void 0 !== e.firstSolveDate &&
-                      (r.firstSolveDate = e.firstSolveDate),
+                    (r.firstSolveDate = e.firstSolveDate),
                     void 0 !== e.firstSolveUsedAid &&
-                      (r.firstSolveUsedAid = e.firstSolveUsedAid),
+                    (r.firstSolveUsedAid = e.firstSolveUsedAid),
                     void 0 !== e.firstSolveRevealedOrReset &&
-                      (r.firstSolveRevealedOrReset =
-                        e.firstSolveRevealedOrReset),
+                    (r.firstSolveRevealedOrReset = e.firstSolveRevealedOrReset),
                     void 0 !== e.star &&
-                      e.star !== bn.NoStar &&
-                      (r.star = e.star),
+                    e.star !== bn.NoStar &&
+                    (r.star = e.star),
                     Object.keys(r).length > 0 &&
-                      t(
-                        ((e, t) => ({
-                          type: sn,
-                          payload: { puzzleId: e, data: t },
-                        }))(a, r),
-                      ));
+                    t(
+                      ((e, t) => ({
+                        type: sn,
+                        payload: { puzzleId: e, data: t },
+                      }))(a, r),
+                    ));
                 }
               },
               disableLocalStorageEjection: (e) =>
@@ -2188,11 +2181,12 @@ var _global =
               return (n - ((null == r ? void 0 : r.blankCells) || 0)) / n;
             },
             Tn = (0, se.createSelector)([ke, Sn], (e, t) =>
-              jn({ cells: e, status: t }),
-            ),
+              jn({ cells: e, status: t })),
             Dn = (0, se.createSelector)([Sn, De, de, ln], (e, t, r, n) => {
               let { firsts: o } = e;
-              if (!t) return !1;
+              if (!t) {
+                return !1;
+              }
               switch (!0) {
                 case "daily" !== t.publishStream &&
                   !(n && "midi" === t.publishStream):
@@ -2209,7 +2203,9 @@ var _global =
               }
             }),
             Nn = (0, se.createSelector)([ze, Pn], (e, t) => {
-              if (!e) return "";
+              if (!e) {
+                return "";
+              }
               const { beforeStart: r, afterSolve: n } = e;
               return (t && n) || r;
             }),
@@ -2221,14 +2217,18 @@ var _global =
                 a = r === Br.READ_STATE_DUAL_WRITE || r === Br.STATE_ONLY;
               if ((n || o) && a) {
                 const { serverStar: t } = e.status;
-                if (t) return t;
+                if (t) {
+                  return t;
+                }
               }
               return Pn(e) ? (Dn(e) ? bn.Gold : bn.Blue) : bn.NoStar;
             },
             zn = [C, j, T, J, K],
             In = { reached: !1, seen: !1, text: "3/4 Done!", threshold: 0.75 },
             An = { reached: !1, seen: !1, text: "Halfway!", threshold: 0.5 };
-          var Mn = (e) => (t) => (r) => {
+          var Mn = (e) =>
+            (t) =>
+            (r) => {
               const n = e.getState(),
                 o = t(r),
                 a = e.getState();
@@ -2240,14 +2240,12 @@ var _global =
                   const t = Rr(a);
                   if (t === Br.READ_STATE_DUAL_WRITE || t === Br.STATE_ONLY) {
                     var i, l, s;
-                    const t =
-                        null === (i = r.payload) || void 0 === i
-                          ? void 0
-                          : i.player,
-                      n =
-                        null == t || null === (l = t.stats) || void 0 === l
-                          ? void 0
-                          : l.crossword_daily;
+                    const t = null === (i = r.payload) || void 0 === i
+                        ? void 0
+                        : i.player,
+                      n = null == t || null === (l = t.stats) || void 0 === l
+                        ? void 0
+                        : l.crossword_daily;
                     n && e.dispatch({ type: kr, payload: Kr(n) });
                     const o =
                       null == t || null === (s = t.stats) || void 0 === s
@@ -2256,14 +2254,12 @@ var _global =
                     o &&
                       e.dispatch({
                         type: kr,
-                        payload:
-                          ((c = o),
-                          {
-                            midiStreaks: {
-                              currentStreak: Math.max(0, c.streaks.current),
-                              longestStreak: c.streaks.longest,
-                            },
-                          }),
+                        payload: ((c = o), {
+                          midiStreaks: {
+                            currentStreak: Math.max(0, c.streaks.current),
+                            longestStreak: c.streaks.longest,
+                          },
+                        }),
                       });
                   }
                 }
@@ -2274,8 +2270,7 @@ var _global =
                 var d;
                 const t = Rr(a),
                   n = t === Br.READ_STATE_DUAL_WRITE || t === Br.STATE_ONLY,
-                  o =
-                    "daily" ===
+                  o = "daily" ===
                     (null === (d = De(a)) || void 0 === d
                       ? void 0
                       : d.publishStream);
@@ -2283,36 +2278,36 @@ var _global =
                   ((e) => (t) =>
                     e.isLoggedIn
                       ? ((e) => {
-                          const t = ""
-                            .concat(Ar, "/v3/")
-                            .concat(
-                              e.regiId,
-                              "/stats-and-streaks.json?date_start=2014-01-01&start_on_monday=true",
-                            );
-                          return Mr({ method: "GET", url: t }, e)
-                            .then((e) =>
-                              zr({
-                                dailyStats: e.results.stats,
-                                streaks: e.results.streaks,
-                              }),
-                            )
-                            .catch((e) => {
-                              Cr.error("failed to fetch stats and streaks", e);
-                            });
-                        })(e)
-                          .then((e) => t({ type: Sr, payload: e }))
+                        const t = ""
+                          .concat(Ar, "/v3/")
+                          .concat(
+                            e.regiId,
+                            "/stats-and-streaks.json?date_start=2014-01-01&start_on_monday=true",
+                          );
+                        return Mr({ method: "GET", url: t }, e)
+                          .then((e) =>
+                            zr({
+                              dailyStats: e.results.stats,
+                              streaks: e.results.streaks,
+                            })
+                          )
                           .catch((e) => {
-                            Cr.error(
-                              "fetch stats and streaks failed: ".concat(
-                                e.stack,
-                              ),
-                            );
-                          })
+                            Cr.error("failed to fetch stats and streaks", e);
+                          });
+                      })(e)
+                        .then((e) => t({ type: Sr, payload: e }))
+                        .catch((e) => {
+                          Cr.error(
+                            "fetch stats and streaks failed: ".concat(
+                              e.stack,
+                            ),
+                          );
+                        })
                       : Promise.resolve({}))(r.payload.user)(
-                    e.dispatch,
-                    e.getState,
-                    null,
-                  );
+                      e.dispatch,
+                      e.getState,
+                      null,
+                    );
                 }
               }
               if (!de(a).showMilestones) return o;
@@ -2329,18 +2324,18 @@ var _global =
                       Object.assign(r, { reached: o, seen: !1 });
                   });
                 })(u, m),
-                ((e, t) => {
-                  const r = ((e, t) => {
-                      const r = Ve(e),
-                        n = r && xe(t)[r.index];
-                      return (
-                        (null == r ? void 0 : r.unfilledCount) &&
-                        !(null != n && n.unfilledCount)
-                      );
-                    })(e, t),
-                    n = Sn(t).incorrectCells <= 0;
-                  return r && !n;
-                })(n, a))
+                  ((e, t) => {
+                    const r = ((e, t) => {
+                        const r = Ve(e),
+                          n = r && xe(t)[r.index];
+                        return (
+                          (null == r ? void 0 : r.unfilledCount) &&
+                          !(null != n && n.unfilledCount)
+                        );
+                      })(e, t),
+                      n = Sn(t).incorrectCells <= 0;
+                    return r && !n;
+                  })(n, a))
               ) {
                 const e = ((e) => {
                   const { index: t } = $e(e);
@@ -2348,12 +2343,11 @@ var _global =
                     const r = e.reached && !e.seen;
                     return (
                       r &&
-                        ((e, t) => {
-                          const { text: r } = e;
-                          (Er.emit("milestone", { text: r, idx: t }),
-                            (e.seen = !0));
-                        })(e, t),
-                      r
+                      ((e, t) => {
+                        const { text: r } = e;
+                        (Er.emit("milestone", { text: r, idx: t }),
+                          (e.seen = !0));
+                      })(e, t), r
                     );
                   };
                 })(n);
@@ -2381,10 +2375,9 @@ var _global =
             };
           let Yn;
           const Hn = function () {
-              let e =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : Un;
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                ? arguments[0]
+                : Un;
               return Bn().getItem("".concat(e, "#preferences"));
             },
             Fn = "crossword/puzzle/PUZZLE_LOADED",
@@ -2407,46 +2400,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? $n(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : $n(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : $n(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -2538,46 +2530,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? no(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : no(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : no(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -2597,11 +2588,11 @@ var _global =
                   e.map((e) =>
                     N(e)
                       ? oo(
-                          oo({}, Nr(e, ao)),
-                          {},
-                          { timestamp: e.timestamp ? e.timestamp - t : void 0 },
-                        )
-                      : { blank: !0 },
+                        oo({}, Nr(e, ao)),
+                        {},
+                        { timestamp: e.timestamp ? e.timestamp - t : void 0 },
+                      )
+                      : { blank: !0 }
                   ))(r, f),
                 v = Ir();
               return oo(
@@ -2633,11 +2624,11 @@ var _global =
               return e.map((e) =>
                 e.blank
                   ? oo(
-                      oo({}, r),
-                      {},
-                      { type: 0, clues: [], index: e.index, answer: e.answer },
-                    )
-                  : (e.timestamp && (e.timestamp += t), oo(oo({}, r), e)),
+                    oo({}, r),
+                    {},
+                    { type: 0, clues: [], index: e.index, answer: e.answer },
+                  )
+                  : (e.timestamp && (e.timestamp += t), oo(oo({}, r), e))
               );
             },
             so = (e) => {
@@ -2678,47 +2669,44 @@ var _global =
                 n && ((n = !1), e.dispatch(It()));
               },
               a = function () {
-                let e =
-                  arguments.length > 0 &&
+                let e = arguments.length > 0 &&
                   void 0 !== arguments[0] &&
                   arguments[0];
                 (clearInterval(t), (t = window.setInterval(o, e ? 5e3 : 3e5)));
               };
             return (
               "object" == typeof window &&
-                (a(),
-                window.addEventListener("online", () => e.dispatch(It()))),
-              (t) => (o) => {
-                var i;
-                const { type: l } = o;
-                if (l === v) return ((r = o.payload.user), t(o));
-                const s = e.getState(),
-                  c = Wr(s),
-                  d = de(s),
-                  u = t(o);
-                if (!r) return u;
-                const m = e.getState(),
-                  p = Wr(m),
-                  f = de(m),
-                  b = Ae(m),
-                  h = r.inShortzMode,
-                  y =
-                    "midi" ===
-                    (null === (i = window.gameData) || void 0 === i
-                      ? void 0
-                      : i.stream);
-                if (b) {
-                  if (
-                    (d.speedUpSyncInterval !== f.speedUpSyncInterval &&
-                      a(f.speedUpSyncInterval),
-                    co.includes(l))
-                  ) {
-                    const t = Nr(m, g);
-                    y
-                      ? Cr.log(
+              (a(), window.addEventListener("online", () => e.dispatch(It()))),
+                (t) => (o) => {
+                  var i;
+                  const { type: l } = o;
+                  if (l === v) return ((r = o.payload.user), t(o));
+                  const s = e.getState(),
+                    c = Wr(s),
+                    d = de(s),
+                    u = t(o);
+                  if (!r) return u;
+                  const m = e.getState(),
+                    p = Wr(m),
+                    f = de(m),
+                    b = Ae(m),
+                    h = r.inShortzMode,
+                    y = "midi" ===
+                      (null === (i = window.gameData) || void 0 === i
+                        ? void 0
+                        : i.stream);
+                  if (b) {
+                    if (
+                      (d.speedUpSyncInterval !== f.speedUpSyncInterval &&
+                        a(f.speedUpSyncInterval),
+                        co.includes(l))
+                    ) {
+                      const t = Nr(m, g);
+                      y
+                        ? Cr.log(
                           "Skipped persisting game for MIDI crossword to local storage",
                         )
-                      : (((e, t, r) => {
+                        : (((e, t, r) => {
                           const n = Gn(e, t);
                           (Bn()
                             .setItem(n, r)
@@ -2733,115 +2721,116 @@ var _global =
                               Bn().setItem("".concat(e, "#lastPlayed"), t);
                             })(n));
                         })(r.regiId, b, t),
-                        h &&
+                          h &&
                           Cr.log("info: PERSISTED LOCAL GAME due to", o.type));
-                    const a = mo.includes(l),
-                      i = p.isLeavingGame,
-                      d = !c.sessionStartTimestamp,
-                      u = !p.sessionStartTimestamp,
-                      f = s.status.isSolved,
-                      { isSolved: v } = m.status,
-                      w = a || (!d && u) || (!f && v && u);
-                    (uo.includes(l) && (n = !0),
-                      w &&
+                      const a = mo.includes(l),
+                        i = p.isLeavingGame,
+                        d = !c.sessionStartTimestamp,
+                        u = !p.sessionStartTimestamp,
+                        f = s.status.isSolved,
+                        { isSolved: v } = m.status,
+                        w = a || (!d && u) || (!f && v && u);
+                      (uo.includes(l) && (n = !0),
+                        w &&
                         r.isLoggedIn &&
                         r.regiId &&
                         (h && Cr.time("info: PERSISTED REMOTE GAME"),
-                        (Yn
-                          ? Promise.resolve(Yn)
-                          : Bn()
-                              .getItem("deviceID")
-                              .then(
-                                (e) => (
-                                  (Yn = e || "".concat(Ir(), "-web")),
+                          (Yn ? Promise.resolve(Yn) : Bn()
+                            .getItem("deviceID")
+                            .then(
+                              (e) => (
+                                (Yn = e || "".concat(Ir(), "-web")),
                                   e ||
-                                    Bn()
-                                      .setItem("deviceID", Yn)
-                                      .catch((e) => {
-                                        console.error(
-                                          "error setting device id",
-                                          e,
-                                        );
-                                      }),
+                                  Bn()
+                                    .setItem("deviceID", Yn)
+                                    .catch((e) => {
+                                      console.error(
+                                        "error setting device id",
+                                        e,
+                                      );
+                                    }),
                                   Yn
-                                ),
-                              )
-                        )
-                          .then((n) => {
-                            (function (e, t, r) {
-                              let n =
-                                arguments.length > 3 &&
-                                void 0 !== arguments[3] &&
-                                arguments[3];
-                              if (
-                                arguments.length > 4 &&
-                                void 0 !== arguments[4] &&
-                                arguments[4]
-                              )
-                                return (
-                                  console.log(
-                                    "Skipping persisting progress to progress endpoint for MIDI crossword",
-                                  ),
-                                  Promise.resolve(void 0)
-                                );
-                              const o = {
-                                now: he()().unix(),
-                                commits: [io(e, r)],
-                              };
-                              return (function (e, t) {
-                                let r =
-                                  arguments.length > 2 &&
-                                  void 0 !== arguments[2] &&
-                                  arguments[2];
-                                const n = "".concat(Ar, "/v6/game"),
-                                  o = "".concat(n, ".json");
-                                return Mr(
-                                  { method: "PUT", url: o, data: t, isSync: r },
-                                  e,
-                                ).catch((e) => {
-                                  Cr.error(
-                                    "Failed to fetch puzzle progress: ",
-                                    e,
-                                  );
-                                });
-                              })(t, o, n)
-                                .then(
-                                  (e) => (
-                                    console.groupCollapsed(
-                                      "[XWD on Progress] syncGameState",
-                                    ),
-                                    console.log(
-                                      "Persisting progress to progress endpoint - /svc/crosswords/v6/game.json",
-                                    ),
-                                    console.dir({ user: t, data: o }),
-                                    console.groupEnd(),
-                                    e
-                                  ),
-                                )
-                                .then(so)
-                                .catch(() => {
-                                  console.error("Failed to sync game state");
-                                });
-                            })(
-                              { deviceID: n, puzzleID: b, userID: r.regiId },
-                              r,
-                              t,
-                              !!i,
-                              y,
-                            ).then((t) => {
-                              (e.dispatch(
-                                k(null == t ? void 0 : t.lastCommitID),
                               ),
-                                h && Cr.timeEnd("info: PERSISTED REMOTE GAME"));
-                            });
-                          })
-                          .catch((e) => {
-                            console.error("Failed to generate device ID:", e);
-                          })));
+                            ))
+                            .then((n) => {
+                              (function (e, t, r) {
+                                let n = arguments.length > 3 &&
+                                  void 0 !== arguments[3] &&
+                                  arguments[3];
+                                if (
+                                  arguments.length > 4 &&
+                                  void 0 !== arguments[4] &&
+                                  arguments[4]
+                                ) {
+                                  return (
+                                    console.log(
+                                      "Skipping persisting progress to progress endpoint for MIDI crossword",
+                                    ), Promise.resolve(void 0)
+                                  );
+                                }
+                                const o = {
+                                  now: he()().unix(),
+                                  commits: [io(e, r)],
+                                };
+                                return (function (e, t) {
+                                  let r = arguments.length > 2 &&
+                                    void 0 !== arguments[2] &&
+                                    arguments[2];
+                                  const n = "".concat(Ar, "/v6/game"),
+                                    o = "".concat(n, ".json");
+                                  return Mr(
+                                    {
+                                      method: "PUT",
+                                      url: o,
+                                      data: t,
+                                      isSync: r,
+                                    },
+                                    e,
+                                  ).catch((e) => {
+                                    Cr.error(
+                                      "Failed to fetch puzzle progress: ",
+                                      e,
+                                    );
+                                  });
+                                })(t, o, n)
+                                  .then(
+                                    (e) => (
+                                      console.groupCollapsed(
+                                        "[XWD on Progress] syncGameState",
+                                      ),
+                                        console.log(
+                                          "Persisting progress to progress endpoint - /svc/crosswords/v6/game.json",
+                                        ),
+                                        console.dir({ user: t, data: o }),
+                                        console.groupEnd(),
+                                        e
+                                    ),
+                                  )
+                                  .then(so)
+                                  .catch(() => {
+                                    console.error("Failed to sync game state");
+                                  });
+                              })(
+                                { deviceID: n, puzzleID: b, userID: r.regiId },
+                                r,
+                                t,
+                                !!i,
+                                y,
+                              ).then((t) => {
+                                (e.dispatch(
+                                  k(null == t ? void 0 : t.lastCommitID),
+                                ),
+                                  h &&
+                                  Cr.timeEnd("info: PERSISTED REMOTE GAME"));
+                              });
+                            })
+                            .catch((e) => {
+                              console.error("Failed to generate device ID:", e);
+                            })));
+                    }
+                    return u;
                   }
-                  return u;
                 }
-              }
             );
           };
           const fo = [sr, dr, mr, pr];
@@ -2853,19 +2842,18 @@ var _global =
                 const a = r(n);
                 return (
                   t &&
-                    fo.includes(o) &&
-                    ((e, t) => {
-                      const { printPrefs: r, settings: n } = e;
-                      Bn()
-                        .setItem("".concat(t.regiId || Un, "#preferences"), {
-                          printPrefs: r,
-                          settings: n,
-                        })
-                        .catch((e) => {
-                          console.error("error storing user prefs", e);
-                        });
-                    })(ce(e.getState()), t),
-                  a
+                  fo.includes(o) &&
+                  ((e, t) => {
+                    const { printPrefs: r, settings: n } = e;
+                    Bn()
+                      .setItem("".concat(t.regiId || Un, "#preferences"), {
+                        printPrefs: r,
+                        settings: n,
+                      })
+                      .catch((e) => {
+                        console.error("error storing user prefs", e);
+                      });
+                  })(ce(e.getState()), t), a
                 );
               };
             },
@@ -2888,46 +2876,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? ho(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : ho(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : ho(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -2971,56 +2958,54 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Oo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Oo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Oo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
           const ko = (e, t, r) => (e[t] ? e : So(So({}, e), {}, { [t]: r }));
           var Po = (0, vo.UY)({
             firsts: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : {},
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : {},
                 t = arguments.length > 1 ? arguments[1] : void 0;
               switch (t.type) {
                 case p:
@@ -3043,8 +3028,7 @@ var _global =
               }
             },
             isSolved: function () {
-              let e =
-                  arguments.length > 0 &&
+              let e = arguments.length > 0 &&
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0;
@@ -3060,8 +3044,8 @@ var _global =
               }
             },
             isFilled: function () {
-              let e =
-                arguments.length > 0 && void 0 !== arguments[0] && arguments[0];
+              let e = arguments.length > 0 && void 0 !== arguments[0] &&
+                arguments[0];
               switch ((arguments.length > 1 ? arguments[1] : void 0).type) {
                 case ne:
                   return !0;
@@ -3072,8 +3056,7 @@ var _global =
               }
             },
             autocheckEnabled: function () {
-              let e =
-                  arguments.length > 0 &&
+              let e = arguments.length > 0 &&
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0;
@@ -3089,10 +3072,9 @@ var _global =
               }
             },
             blankCells: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : 0,
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : 0,
                 t = arguments.length > 1 ? arguments[1] : void 0;
               switch (t.type) {
                 case T:
@@ -3113,10 +3095,9 @@ var _global =
               }
             },
             incorrectCells: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : 0,
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : 0,
                 t = arguments.length > 1 ? arguments[1] : void 0;
               switch (t.type) {
                 case T:
@@ -3137,18 +3118,16 @@ var _global =
               }
             },
             lastCommitID: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : null,
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : null,
                 t = arguments.length > 1 ? arguments[1] : void 0;
               return (t.type === b && t.payload.commitID) || e;
             },
             currentProgress: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : 0,
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : 0,
                 t = arguments.length > 1 ? arguments[1] : void 0;
               switch (t.type) {
                 case re:
@@ -3162,10 +3141,9 @@ var _global =
               }
             },
             serverStar: function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : null,
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : null,
                 t = arguments.length > 1 ? arguments[1] : void 0;
               switch (t.type) {
                 case p: {
@@ -3181,8 +3159,7 @@ var _global =
               }
             },
             loadingServerStar: function () {
-              let e =
-                  arguments.length > 0 &&
+              let e = arguments.length > 0 &&
                   void 0 !== arguments[0] &&
                   arguments[0],
                 t = arguments.length > 1 ? arguments[1] : void 0;
@@ -3213,46 +3190,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? xo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : xo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : xo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3279,46 +3255,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? To(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : To(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : To(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3346,46 +3321,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Lo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Lo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Lo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3415,46 +3389,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ao(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ao(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ao(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3484,46 +3457,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Bo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Bo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Bo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3545,46 +3517,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Wo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Wo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Wo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3606,46 +3577,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Fo(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Fo(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Fo(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3670,46 +3640,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ko(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ko(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ko(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -3747,17 +3716,16 @@ var _global =
           var fa = ma.reducer;
           const ga = (0, vo.UY)({
               cells: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : [],
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : [],
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case Fn:
                     return t.payload.cells;
                   case p:
                     return e.map((e) =>
-                      N(e) ? Vn(Vn({}, e), t.payload.cells[e.index]) : e,
+                      N(e) ? Vn(Vn({}, e), t.payload.cells[e.index]) : e
                     );
                   case K:
                     return ro(e, eo, t.payload.affectedCells, t.payload.now);
@@ -3765,22 +3733,19 @@ var _global =
                     return ro(
                       e,
                       (e) =>
-                        t.payload.index <= e.index
-                          ? eo(e)
-                          : ((e) =>
-                              Vn(
-                                Vn({}, e),
-                                {},
-                                { guess: e.answer, checked: !1 },
-                              ))(e),
+                        t.payload.index <= e.index ? eo(e) : ((e) =>
+                          Vn(
+                            Vn({}, e),
+                            {},
+                            { guess: e.answer, checked: !1 },
+                          ))(e),
                       t.payload.affectedCells,
                       t.payload.now,
                     );
                   case T: {
-                    const r =
-                      "number" == typeof t.payload.index
-                        ? [t.payload.index]
-                        : [];
+                    const r = "number" == typeof t.payload.index
+                      ? [t.payload.index]
+                      : [];
                     return ro(
                       e,
                       (e) => Jn(e, t.payload.value, t.payload),
@@ -3800,10 +3765,9 @@ var _global =
                 }
               },
               clues: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : [],
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : [],
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case Fn:
@@ -3822,20 +3786,20 @@ var _global =
                     const { cells: r, index: n, blankDelta: o = 0 } = t.payload;
                     return e.map((e) =>
                       "number" == typeof n &&
-                      e.cells.includes(n) &&
-                      o &&
-                      !wo(r[n])
+                        e.cells.includes(n) &&
+                        o &&
+                        !wo(r[n])
                         ? yo(
-                            yo({}, e),
-                            {},
-                            { unfilledCount: e.unfilledCount + o },
-                          )
-                        : e,
+                          yo({}, e),
+                          {},
+                          { unfilledCount: e.unfilledCount + o },
+                        )
+                        : e
                     );
                   }
                   case K:
                     return e.map((e) =>
-                      yo(yo({}, e), {}, { unfilledCount: e.cells.length }),
+                      yo(yo({}, e), {}, { unfilledCount: e.cells.length })
                     );
                   case C:
                   case j:
@@ -3864,10 +3828,9 @@ var _global =
                 }
               },
               firstSolve: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : un,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : un,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 if (t.type === sn) {
                   const { puzzleId: r, data: n } = t.payload;
@@ -3876,10 +3839,9 @@ var _global =
                 return e;
               },
               meter: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Qo,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Qo,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case $o:
@@ -3905,10 +3867,9 @@ var _global =
               midiNpe: ua,
               midiMetagame: fa,
               modal: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : _o,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : _o,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case kt:
@@ -3926,18 +3887,16 @@ var _global =
                 }
               },
               printOptions: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Ho,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Ho,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 return t.type === Go ? Yo(Yo({}, e), t.payload) : e;
               },
               puzzle: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Zo,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Zo,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case Fn:
@@ -3957,18 +3916,16 @@ var _global =
                 }
               },
               selection: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Eo,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Eo,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 return ("selection" in t && t.selection) || e;
               },
               stats: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : {},
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : {},
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case Sr:
@@ -3980,10 +3937,9 @@ var _global =
               },
               status: Po,
               timer: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : jo,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : jo,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case p:
@@ -4047,10 +4003,9 @@ var _global =
                 }
               },
               toolbar: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : No,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : No,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case Bt:
@@ -4088,10 +4043,9 @@ var _global =
                 }
               },
               transient: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Io,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Io,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case v:
@@ -4121,10 +4075,9 @@ var _global =
                 }
               },
               user: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : Ro,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : Ro,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case sr:
@@ -4189,18 +4142,16 @@ var _global =
               },
               moogle: bo,
               rollout: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : ra,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : ra,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 return t.type === ea ? { phase: t.payload.phase } : e;
               },
               toast: function () {
-                let e =
-                    arguments.length > 0 && void 0 !== arguments[0]
-                      ? arguments[0]
-                      : sa,
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                    ? arguments[0]
+                    : sa,
                   t = arguments.length > 1 ? arguments[1] : void 0;
                 switch (t.type) {
                   case na:
@@ -4233,46 +4184,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? ba(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : ba(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : ba(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4301,46 +4251,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? _a(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : _a(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : _a(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4416,46 +4365,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ta(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ta(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ta(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4464,8 +4412,7 @@ var _global =
               Da({}, e),
               {},
               {
-                attributes:
-                  ((r = e.attributes || []),
+                attributes: ((r = e.attributes || []),
                   r.reduce((e, t) => {
                     let { name: r, value: n } = t;
                     if ("fill" === r) return e;
@@ -4474,7 +4421,7 @@ var _global =
                       : r.replace(/-([a-z])/, (e, t) => t.toUpperCase());
                     return (
                       "class" === r && (o = "className"),
-                      Da(Da({}, e), {}, { [o]: n || null })
+                        Da(Da({}, e), {}, { [o]: n || null })
                     );
                   }, {})),
                 children: e.children ? e.children.map(Na) : [],
@@ -4493,14 +4440,12 @@ var _global =
               };
             },
             za = function () {
-              let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : [],
-                t =
-                  arguments.length > 1 && void 0 !== arguments[1]
-                    ? arguments[1]
-                    : {};
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : [],
+                t = arguments.length > 1 && void 0 !== arguments[1]
+                  ? arguments[1]
+                  : {};
               const { beforeStart: r, afterSolve: n } = t,
                 o = (t) => (null == t ? "" : (e[t - 1] || {}).uri || "");
               return { beforeStart: o(r), afterSolve: o(n) };
@@ -4522,46 +4467,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ia(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ia(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ia(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4575,14 +4519,48 @@ var _global =
                 break;
               case "Nov022004":
                 r = [
-                  225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 237,
-                  238, 239,
+                  225,
+                  226,
+                  227,
+                  228,
+                  229,
+                  230,
+                  231,
+                  232,
+                  233,
+                  234,
+                  235,
+                  237,
+                  238,
+                  239,
                 ];
                 break;
               case "Oct302014":
                 r = [
-                  0, 1, 2, 13, 14, 15, 16, 17, 30, 31, 32, 47, 208, 223, 224,
-                  225, 238, 239, 240, 241, 242, 253, 254, 255,
+                  0,
+                  1,
+                  2,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  30,
+                  31,
+                  32,
+                  47,
+                  208,
+                  223,
+                  224,
+                  225,
+                  238,
+                  239,
+                  240,
+                  241,
+                  242,
+                  253,
+                  254,
+                  255,
                 ];
                 break;
               case "Jan062015":
@@ -4590,19 +4568,84 @@ var _global =
                 break;
               case "Feb142018":
                 r = [
-                  0, 1, 6, 7, 8, 9, 10, 15, 16, 17, 24, 25, 26, 33, 42, 170,
-                  186, 187, 188, 202, 203, 204, 205, 206, 218, 219, 220, 221,
-                  222, 223, 224, 234, 235, 236, 237, 238, 239, 240, 241, 242,
-                  250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 266,
-                  267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278,
-                  282, 283, 284, 285, 286, 287, 288,
+                  0,
+                  1,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  15,
+                  16,
+                  17,
+                  24,
+                  25,
+                  26,
+                  33,
+                  42,
+                  170,
+                  186,
+                  187,
+                  188,
+                  202,
+                  203,
+                  204,
+                  205,
+                  206,
+                  218,
+                  219,
+                  220,
+                  221,
+                  222,
+                  223,
+                  224,
+                  234,
+                  235,
+                  236,
+                  237,
+                  238,
+                  239,
+                  240,
+                  241,
+                  242,
+                  250,
+                  251,
+                  252,
+                  253,
+                  254,
+                  255,
+                  256,
+                  257,
+                  258,
+                  259,
+                  260,
+                  266,
+                  267,
+                  268,
+                  269,
+                  270,
+                  271,
+                  272,
+                  273,
+                  274,
+                  275,
+                  276,
+                  277,
+                  278,
+                  282,
+                  283,
+                  284,
+                  285,
+                  286,
+                  287,
+                  288,
                 ];
                 break;
               default:
                 return e;
             }
             return e.map((e, t) =>
-              Aa(Aa({}, e), {}, { type: r.includes(t) ? 4 : e.type }),
+              Aa(Aa({}, e), {}, { type: r.includes(t) ? 4 : e.type })
             );
           };
           const Ra = ["assets", "body"],
@@ -4624,46 +4667,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ua(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ua(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ua(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4677,17 +4719,19 @@ var _global =
                   n,
                   o = {},
                   a = Object.keys(e);
-                for (n = 0; n < a.length; n++)
+                for (n = 0; n < a.length; n++) {
                   ((r = a[n]), t.indexOf(r) >= 0 || (o[r] = e[r]));
+                }
                 return o;
               })(e, t);
             if (Object.getOwnPropertySymbols) {
               var a = Object.getOwnPropertySymbols(e);
-              for (n = 0; n < a.length; n++)
+              for (n = 0; n < a.length; n++) {
                 ((r = a[n]),
                   t.indexOf(r) >= 0 ||
-                    (Object.prototype.propertyIsEnumerable.call(e, r) &&
-                      (o[r] = e[r])));
+                  (Object.prototype.propertyIsEnumerable.call(e, r) &&
+                    (o[r] = e[r])));
+              }
             }
             return o;
           }
@@ -4704,13 +4748,12 @@ var _global =
                   ha({ category: 0 }, e),
                   {},
                   {
-                    goldStarCutoff:
-                      ((r = e.publicationDate),
+                    goldStarCutoff: ((r = e.publicationDate),
                       ((e) => "string" == typeof e && ya.exec(e))(r)
                         ? he()
-                            .tz(r, "America/Los_Angeles")
-                            .endOf("day")
-                            .format()
+                          .tz(r, "America/Los_Angeles")
+                          .endOf("day")
+                          .format()
                         : he()({ year: 3e3 }).format()),
                     notes: e.notes ? e.notes.reduce(wa, []) : e.notes,
                     publishStream: t,
@@ -4724,7 +4767,9 @@ var _global =
                   n = e.clueLists
                     .map((t) =>
                       ((e, t) => {
-                        const r = e.clues.map((e) => t[e]);
+                        const r = e.clues.map((e) =>
+                          t[e]
+                        );
                         return Ea(
                           Ea({}, e),
                           {},
@@ -4735,7 +4780,7 @@ var _global =
                             ),
                           },
                         );
-                      })(t, e.clues),
+                      })(t, e.clues)
                     )
                     .map(xa)
                     .map(Pa);
@@ -4776,21 +4821,23 @@ var _global =
                                 n,
                                 o = {},
                                 a = Object.keys(e);
-                              for (n = 0; n < a.length; n++)
+                              for (n = 0; n < a.length; n++) {
                                 ((r = a[n]),
                                   t.indexOf(r) >= 0 || (o[r] = e[r]));
+                              }
                               return o;
                             })(e, t);
                           if (Object.getOwnPropertySymbols) {
                             var a = Object.getOwnPropertySymbols(e);
-                            for (n = 0; n < a.length; n++)
+                            for (n = 0; n < a.length; n++) {
                               ((r = a[n]),
                                 t.indexOf(r) >= 0 ||
-                                  (Object.prototype.propertyIsEnumerable.call(
-                                    e,
-                                    r,
-                                  ) &&
-                                    (o[r] = e[r])));
+                                (Object.prototype.propertyIsEnumerable.call(
+                                  e,
+                                  r,
+                                ) &&
+                                  (o[r] = e[r])));
+                            }
                           }
                           return o;
                         })(n, Ha);
@@ -4827,46 +4874,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Xa(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Xa(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Xa(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -4879,18 +4925,18 @@ var _global =
             let o = {};
             return (
               void 0 !== t &&
-                (o = Ka(
-                  Ka({}, o),
-                  {},
-                  { headers: { "NYT-M-Level": window.btoa(t.toString()) } },
-                )),
-              Va.fF.isMeterInDebugMode ||
-              !window.abra ||
-              window.isHybridWebView ||
-              window.gamesAppPlatform ||
-              window.newsreaderAppPlatform
-                ? (0, Va.WO)(r, t)
-                : l.Be.get(n, o)
+              (o = Ka(
+                Ka({}, o),
+                {},
+                { headers: { "NYT-M-Level": window.btoa(t.toString()) } },
+              )),
+                Va.fF.isMeterInDebugMode ||
+                  !window.abra ||
+                  window.isHybridWebView ||
+                  window.gamesAppPlatform ||
+                  window.newsreaderAppPlatform
+                  ? (0, Va.WO)(r, t)
+                  : l.Be.get(n, o)
                     .then((e) => {
                       (0, Za.kg)(
                         "Meter service request succeeded",
@@ -4907,28 +4953,27 @@ var _global =
                           [n, r, t],
                           e,
                         ),
-                        (() => {
-                          const e = (0, s.lJ)(),
-                            t = Ka(Ka({}, e), {}, { isOffline: !0 });
-                          var r;
-                          return (
-                            !(r = t).granted ||
-                            (r.grantReason !== $a.Q.IP &&
-                              r.grantReason !== $a.Q.SUBSCRIBER &&
-                              r.grantReason !== $a.Q.OPEN &&
-                              r.grantReason !== $a.Q.REFERRER &&
-                              r.grantReason !== $a.Q.FREETIME)
-                              ? (0, Za.kg)(
+                          (() => {
+                            const e = (0, s.lJ)(),
+                              t = Ka(Ka({}, e), {}, { isOffline: !0 });
+                            var r;
+                            return (
+                              !(r = t).granted ||
+                                (r.grantReason !== $a.Q.IP &&
+                                  r.grantReason !== $a.Q.SUBSCRIBER &&
+                                  r.grantReason !== $a.Q.OPEN &&
+                                  r.grantReason !== $a.Q.REFERRER &&
+                                  r.grantReason !== $a.Q.FREETIME)
+                                ? (0, Za.kg)(
                                   "Game is instructed not fail open due to previous grantReason",
                                   [e.grantReason],
                                 )
-                              : (0, Za.kg)(
+                                : (0, Za.kg)(
                                   "Game is instructed to fail open based on previous grantReason",
                                   [e.grantReason],
-                                ),
-                            t
-                          );
-                        })()
+                                ), t
+                            );
+                          })()
                       ),
                     )
             );
@@ -4965,14 +5010,13 @@ var _global =
                   !t &&
                   0 ===
                     (null !==
-                      (r =
-                        null == e ||
-                        null === (n = e.stats) ||
-                        void 0 === n ||
-                        null === (n = n.crossword_midi) ||
-                        void 0 === n
-                          ? void 0
-                          : n.puzzlesSolved) && void 0 !== r
+                          (r = null == e ||
+                              null === (n = e.stats) ||
+                              void 0 === n ||
+                              null === (n = n.crossword_midi) ||
+                              void 0 === n
+                            ? void 0
+                            : n.puzzlesSolved) && void 0 !== r
                       ? r
                       : 0)
                 );
@@ -4981,16 +5025,15 @@ var _global =
             gi = (0, se.createSelector)(pi, (e) => {
               var t, r;
               return null !==
-                (t =
-                  null == e ||
-                  null === (r = e.stats) ||
-                  void 0 === r ||
-                  null === (r = r.crossword_midi) ||
-                  void 0 === r ||
-                  null === (r = r.streaks) ||
-                  void 0 === r
-                    ? void 0
-                    : r.current) && void 0 !== t
+                    (t = null == e ||
+                        null === (r = e.stats) ||
+                        void 0 === r ||
+                        null === (r = r.crossword_midi) ||
+                        void 0 === r ||
+                        null === (r = r.streaks) ||
+                        void 0 === r
+                      ? void 0
+                      : r.current) && void 0 !== t
                 ? t
                 : 0;
             }),
@@ -5033,12 +5076,9 @@ var _global =
               let { cells: t, clues: r, selection: n } = e;
               return (n ? n.clueCells.map((e) => t && t[e]) : []).filter(
                 (e) => {
-                  const t =
-                    null == e
-                      ? void 0
-                      : e.clues.filter(
-                          (e) => e !== (null == n ? void 0 : n.clue),
-                        );
+                  const t = null == e ? void 0 : e.clues.filter(
+                    (e) => e !== (null == n ? void 0 : n.clue),
+                  );
                   return null == t
                     ? void 0
                     : t.some((e) => r && r[e].unfilledCount > 0);
@@ -5074,12 +5114,11 @@ var _global =
                 i = Yr(n);
               if (a) {
                 if (0 === i) {
-                  const e =
-                    "midi" === o
-                      ? "midi-page"
-                      : "mini" === o
-                        ? "mini-page"
-                        : "game-page";
+                  const e = "midi" === o
+                    ? "midi-page"
+                    : "mini" === o
+                    ? "mini-page"
+                    : "game-page";
                   (0, Zt.$)("click", a, e, "start-game");
                 }
                 t({ type: v, payload: { now: he()().unix(), user: e } });
@@ -5088,14 +5127,14 @@ var _global =
           let Pi = (function (e) {
             return (
               (e.Pause = "Pause"),
-              (e.Info = "Info"),
-              (e.Settings = "Settings"),
-              (e.Rats = "Rats"),
-              (e.Print = "Print"),
-              (e.Confirmation = "Confirmation"),
-              (e.Share = "Share"),
-              (e.EditorWelcomeNote = "EditorWelcomeNote"),
-              e
+                (e.Info = "Info"),
+                (e.Settings = "Settings"),
+                (e.Rats = "Rats"),
+                (e.Print = "Print"),
+                (e.Confirmation = "Confirmation"),
+                (e.Share = "Share"),
+                (e.EditorWelcomeNote = "EditorWelcomeNote"),
+                e
             );
           })({});
           const xi = [
@@ -5141,7 +5180,7 @@ var _global =
                 ((0, Zt.$)("click", t, l, "rebus"),
                   e(
                     ((i = (null == n ? void 0 : n.guess) || ""),
-                    { type: Bt, payload: { initialValue: i } }),
+                      { type: Bt, payload: { initialValue: i } }),
                   ));
               }
               var i;
@@ -5209,7 +5248,7 @@ var _global =
                   d = Math.floor(c / 0.2),
                   u = ye(a, i);
                 if (d > o) {
-                  for (let e = o; e < d && e < Ii.length; e += 1)
+                  for (let e = o; e < d && e < Ii.length; e += 1) {
                     (0, Zt.$)(
                       "click",
                       n,
@@ -5217,6 +5256,7 @@ var _global =
                       "".concat(Ii[e], "%-complete"),
                       "".concat(u),
                     );
+                  }
                   e({ type: re, payload: { currentProgress: d } });
                 }
               }),
@@ -5276,10 +5316,9 @@ var _global =
                 r(Ai()));
             },
             Bi = function (e) {
-              let t =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : null;
+              let t = arguments.length > 1 && void 0 !== arguments[1]
+                ? arguments[1]
+                : null;
               return (r, n) => {
                 const o = n(),
                   a = Dn(o),
@@ -5291,10 +5330,10 @@ var _global =
                 return r(
                   c || s
                     ? Ct(Pi.Confirmation, {
-                        needToWarn: c,
-                        actionType: e,
-                        scope: t,
-                      })
+                      needToWarn: c,
+                      actionType: e,
+                      scope: t,
+                    })
                     : Ri(e, t),
                 );
               };
@@ -5320,10 +5359,10 @@ var _global =
                 i = ((e, t, r) => {
                   const n = e.isLoggedIn
                     ? ((e, t) => {
-                        const r = "".concat(Ar, "/v6/game/").concat(t),
-                          n = "".concat(r, ".json");
-                        return Mr({ method: "GET", url: n }, e);
-                      })(e, t).then((e) => r(e))
+                      const r = "".concat(Ar, "/v6/game/").concat(t),
+                        n = "".concat(r, ".json");
+                      return Mr({ method: "GET", url: n }, e);
+                    })(e, t).then((e) => r(e))
                     : Promise.resolve(null);
                   return n;
                 })(e, o, so).catch(
@@ -5338,8 +5377,8 @@ var _global =
                       !t ||
                       !t.lastCommitID ||
                       (null == e || null === (r = e.status) || void 0 === r
-                        ? void 0
-                        : r.lastCommitID) === t.lastCommitID
+                          ? void 0
+                          : r.lastCommitID) === t.lastCommitID
                     );
                   })(o, a),
                   l = i ? o : a,
@@ -5348,8 +5387,8 @@ var _global =
                       ? void 0
                       : n.lastCommitID
                     : null == a
-                      ? void 0
-                      : a.lastCommitID;
+                    ? void 0
+                    : a.lastCommitID;
                 (l && (t(fn(l)), t(Qr(l))),
                   t(
                     ((e, t) => (r, n) => {
@@ -5385,46 +5424,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Yi(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Yi(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Yi(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -5435,11 +5473,11 @@ var _global =
           function Vi(e, t) {
             return (
               t || (t = e.slice(0)),
-              Object.freeze(
-                Object.defineProperties(e, {
-                  raw: { value: Object.freeze(t) },
-                }),
-              )
+                Object.freeze(
+                  Object.defineProperties(e, {
+                    raw: { value: Object.freeze(t) },
+                  }),
+                )
             );
           }
           const Xi = (0, $i.Ps)(
@@ -5465,26 +5503,23 @@ var _global =
                 error: i,
               } = (0, Zi.a)(Xi, { skip: !n || t }),
               l = e.toUpperCase(),
-              s =
-                null == o ||
-                null === (r = o.user) ||
-                void 0 === r ||
-                null === (r = r.newsletterSubscriptions) ||
-                void 0 === r
-                  ? void 0
-                  : r.newsletters;
+              s = null == o ||
+                  null === (r = o.user) ||
+                  void 0 === r ||
+                  null === (r = r.newsletterSubscriptions) ||
+                  void 0 === r
+                ? void 0
+                : r.newsletters;
             return {
               isSubscribed: Boolean(
-                null == s
-                  ? void 0
-                  : s.some((e) => {
-                      var t;
-                      return (
-                        (null === (t = e.productCode) || void 0 === t
-                          ? void 0
-                          : t.toUpperCase()) === l
-                      );
-                    }),
+                null == s ? void 0 : s.some((e) => {
+                  var t;
+                  return (
+                    (null === (t = e.productCode) || void 0 === t
+                      ? void 0
+                      : t.toUpperCase()) === l
+                  );
+                }),
               ),
               isLoadingQuery: a,
               queryError: i,
@@ -5508,8 +5543,8 @@ var _global =
                   () =>
                     t
                       ? e
-                          .getDynamicConfig("games_xwd_write_config")
-                          .get("write_location") || "progress"
+                        .getDynamicConfig("games_xwd_write_config")
+                        .get("write_location") || "progress"
                       : null,
                   [t, e],
                 ),
@@ -5517,8 +5552,8 @@ var _global =
                   () =>
                     t
                       ? e
-                          .getDynamicConfig("games_xwd_read_config")
-                          .get("read_location") || "progress"
+                        .getDynamicConfig("games_xwd_read_config")
+                        .get("read_location") || "progress"
                       : null,
                   [t, e],
                 );
@@ -5526,9 +5561,9 @@ var _global =
                 (0, n.useEffect)(() => {
                   var e;
                   "midi" ===
-                  (null === (e = window.gameData) || void 0 === e
-                    ? void 0
-                    : e.stream)
+                      (null === (e = window.gameData) || void 0 === e
+                        ? void 0
+                        : e.stream)
                     ? o(ta(Br.STATE_ONLY))
                     : r === Br.PENDING &&
                       t &&
@@ -5539,52 +5574,49 @@ var _global =
                           "state" === i
                             ? Br.STATE_ONLY
                             : "state" === l && "both" === i
-                              ? Br.READ_STATE_DUAL_WRITE
-                              : "both" === i
-                                ? Br.LEGACY_WITH_STATE
-                                : Br.LEGACY_ONLY,
+                            ? Br.READ_STATE_DUAL_WRITE
+                            : "both" === i
+                            ? Br.LEGACY_WITH_STATE
+                            : Br.LEGACY_ONLY,
                         ),
                       );
                 }, [t, r, o, i, l]),
-                (0, n.useEffect)(() => {
-                  r === Br.LEGACY_ONLY && (0, Zr.D)("xwd_on_state_legacy_only");
-                }, [r]),
-                {
-                  phase: r,
-                  writeEnabled:
-                    r === Br.LEGACY_WITH_STATE ||
-                    r === Br.STATE_ONLY ||
-                    r === Br.READ_STATE_DUAL_WRITE,
-                  statsigConfig: { writeLocation: i, readLocation: l },
-                }
+                  (0, n.useEffect)(() => {
+                    r === Br.LEGACY_ONLY &&
+                      (0, Zr.D)("xwd_on_state_legacy_only");
+                  }, [r]),
+                  {
+                    phase: r,
+                    writeEnabled: r === Br.LEGACY_WITH_STATE ||
+                      r === Br.STATE_ONLY ||
+                      r === Br.READ_STATE_DUAL_WRITE,
+                    statsigConfig: { writeLocation: i, readLocation: l },
+                  }
               );
             },
             cl = r(52200),
             dl = r(67374);
           const ul = () => {
               var e, t;
-              const r =
-                  "mini" ===
+              const r = "mini" ===
                   (null === (e = window.gameData) || void 0 === e
                     ? void 0
                     : e.stream),
-                n =
-                  "midi" ===
+                n = "midi" ===
                   (null === (t = window.gameData) || void 0 === t
                     ? void 0
                     : t.stream);
               return r ? "mini" : n ? "midi" : "daily";
             },
             ml = function () {
-              let e =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : "";
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                ? arguments[0]
+                : "";
               return "midi" === e
                 ? "midi-page"
                 : "mini" === e
-                  ? "mini-page"
-                  : "game-page";
+                ? "mini-page"
+                : "game-page";
             };
           var pl = r(99903),
             fl = r.n(pl),
@@ -5597,11 +5629,9 @@ var _global =
             wl = (e) => "cell-id-".concat(e),
             _l = (e) =>
               e && 0 !== e.length
-                ? 1 === e.length
-                  ? e[0].toString()
-                  : [e.slice(0, -1).join(", ")]
-                      .concat(e.slice(-1).map((e) => e.toString()))
-                      .join(" and ")
+                ? 1 === e.length ? e[0].toString() : [e.slice(0, -1).join(", ")]
+                  .concat(e.slice(-1).map((e) => e.toString()))
+                  .join(" and ")
                 : "",
             El = (e) => (void 0 === e ? "By" : hl.test(e) ? "Grid by" : "By"),
             Ol = (e) => {
@@ -5656,15 +5686,14 @@ var _global =
             Pl = () => (0, n.useContext)(Sl),
             xl = () => {
               var e;
-              const t =
-                null === (e = window.location) || void 0 === e
-                  ? void 0
-                  : e.pathname;
+              const t = null === (e = window.location) || void 0 === e
+                ? void 0
+                : e.pathname;
               return /tips-and-tricks/.test(t)
                 ? "Tips & Tricks"
                 : /special/.test(t)
-                  ? "Special Puzzle"
-                  : void 0;
+                ? "Special Puzzle"
+                : void 0;
             },
             Cl = (e) => {
               const t = e
@@ -5673,29 +5702,28 @@ var _global =
               return "“".concat(t, "”");
             },
             jl = function () {
-              let e =
-                arguments.length > 0 && void 0 !== arguments[0]
-                  ? arguments[0]
-                  : "";
+              let e = arguments.length > 0 && void 0 !== arguments[0]
+                ? arguments[0]
+                : "";
               return ["mini", "midi"].includes(e)
                 ? "The ".concat(yl(e))
                 : "The Crossword";
             },
             Tl = function (e) {
-              let t =
-                arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "";
+              let t = arguments.length > 1 && void 0 !== arguments[1]
+                ? arguments[1]
+                : "";
               return e ? Cl(e) : jl(t);
             },
             Dl = function (e) {
               if (
                 "bonus" ===
-                (arguments.length > 1 && void 0 !== arguments[1]
-                  ? arguments[1]
-                  : "")
-              )
+                  (arguments.length > 1 && void 0 !== arguments[1]
+                    ? arguments[1]
+                    : "")
+              ) {
                 return Oe(e, "MMMM YYYY");
+              }
               const t = Oe(e, "dddd"),
                 r = Oe(e, "MMMM D, YYYY");
               return "".concat(t, ", ").concat(r);
@@ -5713,8 +5741,7 @@ var _global =
               d = jl(c),
               u = _l(t),
               m = xl(),
-              p =
-                s &&
+              p = s &&
                 n.createElement(
                   n.Fragment,
                   null,
@@ -5722,9 +5749,10 @@ var _global =
                     "a",
                     {
                       className: "xwd__details--link",
-                      href: "https://admin.games.prd.nyt.net/console/xwd/edit/".concat(
-                        l,
-                      ),
+                      href: "https://admin.games.prd.nyt.net/console/xwd/edit/"
+                        .concat(
+                          l,
+                        ),
                       target: "_blank",
                       rel: "noopener noreferrer",
                     },
@@ -5748,19 +5776,19 @@ var _global =
               m
                 ? n.createElement("div", { className: "xwd__details--date" }, m)
                 : n.createElement(
-                    n.Fragment,
-                    null,
-                    n.createElement(
-                      "div",
-                      { className: "xwd__details--title" },
-                      d,
-                    ),
-                    n.createElement(
-                      "div",
-                      { className: "xwd__details--date" },
-                      Dl(o, c),
-                    ),
+                  n.Fragment,
+                  null,
+                  n.createElement(
+                    "div",
+                    { className: "xwd__details--title" },
+                    d,
                   ),
+                  n.createElement(
+                    "div",
+                    { className: "xwd__details--date" },
+                    Dl(o, c),
+                  ),
+                ),
               p,
               n.createElement(
                 "div",
@@ -5832,16 +5860,17 @@ var _global =
             Rl = r(77242),
             Bl = r(33064),
             Ul = r(86128);
-          const Gl =
-            (Wl = {
-              prod: "https://www.nytimes.com/subscription/games-offer?campaignId=8YUQL",
-              stg: "https://www.stg.nytimes.com/subscription/games-offer?campaignId=8YUQL",
-              dev: "https://www.stg.nytimes.com/subscription/games-offer?campaignId=8YUQL",
-            })[
-              (null === (Al = window.env) || void 0 === Al
-                ? void 0
-                : Al.name) || "dev"
-            ] || Wl.dev;
+          const Gl = (Wl = {
+            prod:
+              "https://www.nytimes.com/subscription/games-offer?campaignId=8YUQL",
+            stg:
+              "https://www.stg.nytimes.com/subscription/games-offer?campaignId=8YUQL",
+            dev:
+              "https://www.stg.nytimes.com/subscription/games-offer?campaignId=8YUQL",
+          })[
+            (null === (Al = window.env) || void 0 === Al ? void 0 : Al.name) ||
+            "dev"
+          ] || Wl.dev;
           var Wl;
           const Yl = window.location.origin + window.location.pathname,
             Hl = "".concat(Gl, "&EXIT_URI=").concat(Yl),
@@ -5873,33 +5902,31 @@ var _global =
                   }),
                   s(a));
               }, [a, r]),
-              n.createElement(
-                "div",
-                {
-                  ref: i,
-                  className: zl()(o, {
-                    "SequenceAnimation-module_in__QL6mR": l,
-                    "SequenceAnimation-module_out__txXNu": !l,
-                  }),
-                },
-                t,
-              )
+                n.createElement(
+                  "div",
+                  {
+                    ref: i,
+                    className: zl()(o, {
+                      "SequenceAnimation-module_in__QL6mR": l,
+                      "SequenceAnimation-module_out__txXNu": !l,
+                    }),
+                  },
+                  t,
+                )
             );
           };
           function Vl() {
             return (
-              (Vl = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Vl.apply(this, arguments)
+              (Vl = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Vl.apply(this, arguments)
             );
           }
           var Xl = (e) => {
@@ -5942,27 +5969,27 @@ var _global =
                       n.createElement(dl.h_, { text: t.meta }),
                     null !== (r = t.buttonGroups) && void 0 !== r && r.length
                       ? t.buttonGroups.map((e, t) => {
-                          let {
-                            buttons: r,
-                            header: o,
-                            desktopButtonOrder: a,
-                          } = e;
-                          return n.createElement(dl.hE, {
-                            key: t,
-                            buttons: r,
-                            header: o,
-                            order: a,
-                          });
-                        })
+                        let {
+                          buttons: r,
+                          header: o,
+                          desktopButtonOrder: a,
+                        } = e;
+                        return n.createElement(dl.hE, {
+                          key: t,
+                          buttons: r,
+                          header: o,
+                          order: a,
+                        });
+                      })
                       : null !== (o = t.customButtons) &&
                           void 0 !== o &&
                           o.length
-                        ? n.createElement(dl.hE, {
-                            key: "welcome-buttons",
-                            buttons: t.customButtons,
-                            order: "vertical",
-                          })
-                        : null,
+                      ? n.createElement(dl.hE, {
+                        key: "welcome-buttons",
+                        buttons: t.customButtons,
+                        order: "vertical",
+                      })
+                      : null,
                     n.createElement(
                       "p",
                       { className: "pz-moment__info" },
@@ -5988,18 +6015,16 @@ var _global =
             ts = r(80378);
           function rs() {
             return (
-              (rs = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              rs.apply(this, arguments)
+              (rs = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), rs.apply(this, arguments)
             );
           }
           const ns = (e) => e.modal,
@@ -6031,38 +6056,38 @@ var _global =
               );
             return t && t.length
               ? n.createElement(
-                  "aside",
-                  { className: "xwd__notes--wrapper" },
-                  n.createElement(
-                    "h3",
-                    { className: "xwd__notes--title" },
-                    "Note",
-                  ),
-                  n.createElement(
-                    "div",
-                    {
-                      className: zl()({
-                        "xwd__notes--content-container": !si.tq,
-                      }),
-                    },
-                    t.map((e) => {
-                      const t = zl()("xwd__notes--content", {
-                          "xwd__notes--spoiler": e.spoiler,
-                          "xwd__notes--spoiled": e.spoiler && r,
-                        }),
-                        o = n.createElement(
-                          "div",
-                          { key: e.text, className: t },
-                          e.spoiler && n.createElement("div", null, "ANSWER"),
-                          n.createElement("p", {
-                            id: "note-text",
-                            dangerouslySetInnerHTML: { __html: e.text },
-                          }),
-                        );
-                      return e.spoiler && !r ? a : o;
+                "aside",
+                { className: "xwd__notes--wrapper" },
+                n.createElement(
+                  "h3",
+                  { className: "xwd__notes--title" },
+                  "Note",
+                ),
+                n.createElement(
+                  "div",
+                  {
+                    className: zl()({
+                      "xwd__notes--content-container": !si.tq,
                     }),
-                  ),
-                )
+                  },
+                  t.map((e) => {
+                    const t = zl()("xwd__notes--content", {
+                        "xwd__notes--spoiler": e.spoiler,
+                        "xwd__notes--spoiled": e.spoiler && r,
+                      }),
+                      o = n.createElement(
+                        "div",
+                        { key: e.text, className: t },
+                        e.spoiler && n.createElement("div", null, "ANSWER"),
+                        n.createElement("p", {
+                          id: "note-text",
+                          dangerouslySetInnerHTML: { __html: e.text },
+                        }),
+                      );
+                    return e.spoiler && !r ? a : o;
+                  }),
+                ),
+              )
               : null;
           }
           const ds = [
@@ -6085,18 +6110,16 @@ var _global =
             ];
           function ms() {
             return (
-              (ms = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              ms.apply(this, arguments)
+              (ms = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), ms.apply(this, arguments)
             );
           }
           const ps = (e) => {
@@ -6140,18 +6163,16 @@ var _global =
           };
           function fs() {
             return (
-              (fs = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              fs.apply(this, arguments)
+              (fs = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), fs.apply(this, arguments)
             );
           }
           const gs = (e) => n.createElement(ps, fs({}, e, { type: "radio" }));
@@ -6218,18 +6239,16 @@ var _global =
           }
           function hs() {
             return (
-              (hs = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              hs.apply(this, arguments)
+              (hs = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), hs.apply(this, arguments)
             );
           }
           const ys = (e) =>
@@ -6256,31 +6275,31 @@ var _global =
               n.useEffect(() => {
                 r || t("skipPenciled", !1);
               }, [r]),
-              n.createElement(
-                vs,
-                { heading: "Within a word" },
                 n.createElement(
-                  "div",
-                  { className: "xwd__settings-modal--inset" },
-                  n.createElement(ys, {
-                    name: "skipFilled",
-                    label: "Skip over filled squares",
-                    checked: r,
-                    id: "skipFilled",
-                  }),
+                  vs,
+                  { heading: "Within a word" },
                   n.createElement(
                     "div",
-                    { className: "xwd__settings-modal--indented" },
+                    { className: "xwd__settings-modal--inset" },
                     n.createElement(ys, {
-                      name: "skipPenciled",
-                      label: "Even penciled-in squares",
-                      disabled: !r,
-                      checked: o,
-                      id: "skipPenciled",
+                      name: "skipFilled",
+                      label: "Skip over filled squares",
+                      checked: r,
+                      id: "skipFilled",
                     }),
+                    n.createElement(
+                      "div",
+                      { className: "xwd__settings-modal--indented" },
+                      n.createElement(ys, {
+                        name: "skipPenciled",
+                        label: "Even penciled-in squares",
+                        disabled: !r,
+                        checked: o,
+                        id: "skipPenciled",
+                      }),
+                    ),
                   ),
-                ),
-              )
+                )
             );
           }
           function Es(e) {
@@ -6348,8 +6367,7 @@ var _global =
               speedUpSyncInterval: o,
               suppressAutocheckNotice: a,
             } = e;
-            const i =
-                "midi" ===
+            const i = "midi" ===
                 (null === (t = window.gameData) || void 0 === t
                   ? void 0
                   : t.stream),
@@ -6357,15 +6375,15 @@ var _global =
               s = i
                 ? "State"
                 : "state" === (d = l.writeLocation)
-                  ? "State"
-                  : "both" === d
-                    ? "State and Progress"
-                    : "Progress",
+                ? "State"
+                : "both" === d
+                ? "State and Progress"
+                : "Progress",
               c = i
                 ? "State"
                 : "state" === l.readLocation
-                  ? "State"
-                  : "Progress";
+                ? "State"
+                : "Progress";
             var d;
             return n.createElement(
               vs,
@@ -6445,17 +6463,16 @@ var _global =
             } = Pl();
             return t
               ? n.createElement(
-                  "span",
-                  {
-                    role: "button",
-                    className: "xwd__shortz-toggle",
-                    title:
-                      ((o = e),
-                      o ? "Exit Shortz Mode :(" : "Enter Shortz Mode!"),
-                    onClick: () => r(!e),
-                  },
-                  n.createElement("img", { src: ks(e), alt: "Shortz Mode" }),
-                )
+                "span",
+                {
+                  role: "button",
+                  className: "xwd__shortz-toggle",
+                  title:
+                    ((o = e), o ? "Exit Shortz Mode :(" : "Enter Shortz Mode!"),
+                  onClick: () => r(!e),
+                },
+                n.createElement("img", { src: ks(e), alt: "Shortz Mode" }),
+              )
               : null;
             var o;
           }
@@ -6463,9 +6480,8 @@ var _global =
             "You can reveal or check a part of this puzzle, but this will exclude this puzzle from a streak.";
           const Cs = (e) => e.printOptions,
             js = (0, se.createSelector)(De, (e) => e && !e.category),
-            Ts =
-              ((0, se.createSelector)(Cs, (e) => e.version),
-              (e) => e.printOptions.version),
+            Ts = ((0, se.createSelector)(Cs, (e) => e.version), (e) =>
+              e.printOptions.version),
             Ds = (0, se.createSelector)(De, (e) => {
               if (!e) return !1;
               const { category: t, publicationDate: r } = e,
@@ -6512,30 +6528,28 @@ var _global =
               if (!e) return "";
               const r = e.publishStream,
                 n = he()(e.publicationDate).format("MMMDDYY");
-              return "daily" !== r
-                ? ""
-                : "".concat(
-                    "/svc/crosswords/v2/puzzle/print/" +
-                      n +
-                      ("solution" === t ? ".ans.pdf" : ".pdf"),
-                  );
+              return "daily" !== r ? "" : "".concat(
+                "/svc/crosswords/v2/puzzle/print/" +
+                  n +
+                  ("solution" === t ? ".ans.pdf" : ".pdf"),
+              );
             }),
             Rs = (0, se.createSelector)(ue, zs, (e, t) => {
               const { opacity: r, layout: n } = e,
                 o = {};
               return (
                 !t && r < 100 && (o.block_opacity = r),
-                "southpaw" === n
-                  ? (o.southpaw = !0)
-                  : "large_print" === n && (o.large_print = !0),
-                Object.keys(o).length > 0
-                  ? "?".concat(
+                  "southpaw" === n
+                    ? (o.southpaw = !0)
+                    : "large_print" === n && (o.large_print = !0),
+                  Object.keys(o).length > 0
+                    ? "?".concat(
                       ((a = o),
-                      Object.entries(a)
-                        .map((e) => e.join("="))
-                        .join("&")),
+                        Object.entries(a)
+                          .map((e) => e.join("="))
+                          .join("&")),
                     )
-                  : ""
+                    : ""
               );
               var a;
             }),
@@ -6568,18 +6582,17 @@ var _global =
               );
             },
             Hs = function (e, t) {
-              const r =
-                  Ws[
-                    arguments.length > 2 &&
+              const r = Ws[
+                  arguments.length > 2 &&
                     void 0 !== arguments[2] &&
                     arguments[2]
-                      ? "midi"
-                      : arguments.length > 3 &&
-                          void 0 !== arguments[3] &&
-                          arguments[3]
-                        ? "mini_new"
-                        : "mini"
-                  ].baseUrl,
+                    ? "midi"
+                    : arguments.length > 3 &&
+                        void 0 !== arguments[3] &&
+                        arguments[3]
+                    ? "mini_new"
+                    : "mini"
+                ].baseUrl,
                 n = "d=".concat(e, "&t=").concat(t),
                 o = Gs()(n),
                 a = "".concat(n, "&c=").concat(o);
@@ -6684,8 +6697,9 @@ var _global =
                 pencil: o ? dc : cc,
                 prev: lc,
                 next: sc,
-                switch:
-                  "Across" === (null == s ? void 0 : s.direction) ? uc : mc,
+                switch: "Across" === (null == s ? void 0 : s.direction)
+                  ? uc
+                  : mc,
               };
             return n.createElement(Vs(), {
               baseClass: "xwd__keyboard",
@@ -6705,44 +6719,42 @@ var _global =
                 "primary" === e
                   ? t("primary")
                   : "secondary" === e
-                    ? t("secondary")
-                    : "tertiary" === e
-                      ? t("tertiary")
-                      : "backspace" === e
-                        ? c(r && i ? qt(i.slice(0, -1)) : Ks())
-                        : "rebus" === e
-                          ? c(zi())
-                          : "pencil" === e
-                            ? c(Ht())
-                            : "prev" === e
-                              ? d("PreviousClue")
-                              : "next" === e
-                                ? d("NextClue")
-                                : "switch" === e
-                                  ? c(Z())
-                                  : "right" === e
-                                    ? d("Right")
-                                    : "left" === e
-                                      ? d("Left")
-                                      : void c(r ? qt(i + e) : Mi(e)),
+                  ? t("secondary")
+                  : "tertiary" === e
+                  ? t("tertiary")
+                  : "backspace" === e
+                  ? c(r && i ? qt(i.slice(0, -1)) : Ks())
+                  : "rebus" === e
+                  ? c(zi())
+                  : "pencil" === e
+                  ? c(Ht())
+                  : "prev" === e
+                  ? d("PreviousClue")
+                  : "next" === e
+                  ? d("NextClue")
+                  : "switch" === e
+                  ? c(Z())
+                  : "right" === e
+                  ? d("Right")
+                  : "left" === e
+                  ? d("Left")
+                  : void c(r ? qt(i + e) : Mi(e)),
               disableButtonHold: !0,
               autoUseTouchEvents: !0,
             });
           }
           function gc() {
             return (
-              (gc = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              gc.apply(this, arguments)
+              (gc = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), gc.apply(this, arguments)
             );
           }
           function vc(e, t) {
@@ -6762,50 +6774,48 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? vc(Object(r), !0).forEach(function (t) {
-                    hc(e, t, r[t]);
-                  })
+                  hc(e, t, r[t]);
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : vc(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : vc(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
           function hc(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           const yc = (e) => (null == e ? void 0 : e.text);
@@ -6832,18 +6842,17 @@ var _global =
               const { message: t } = this.state;
               t ||
                 (this.setState({ message: e }),
-                this.animate && this.animate(),
-                (this.timer = setTimeout(() => {
-                  ((this.timer = null), this.setState({ message: null }));
-                }, 1470)));
+                  this.animate && this.animate(),
+                  (this.timer = setTimeout(() => {
+                    ((this.timer = null), this.setState({ message: null }));
+                  }, 1470)));
             }
             setupCanvas() {
               this.animate = ((e, t) => {
                 const r = null == e ? void 0 : e.getContext("2d");
-                if (r)
+                if (r) {
                   return (
-                    r.scale(2, 2),
-                    () => {
+                    r.scale(2, 2), () => {
                       let e = 0,
                         t = 15;
                       ((r.lineWidth = 4),
@@ -6855,40 +6864,40 @@ var _global =
                         o = () => {
                           if (
                             (r.clearRect(0, 0, 70, 70),
-                            r.save(),
-                            r.translate(35, 35),
-                            (t -= 1),
-                            (e += 1.75),
-                            t >= -4)
+                              r.save(),
+                              r.translate(35, 35),
+                              (t -= 1),
+                              (e += 1.75),
+                              t >= -4)
                           ) {
                             r.beginPath();
-                            for (let o = 0; o < 8; o += 1)
+                            for (let o = 0; o < 8; o += 1) {
                               (n(e, t), r.rotate(Math.PI / 4));
+                            }
                             (r.stroke(), r.restore(), requestAnimationFrame(o));
                           } else r.restore();
                         };
                       o();
                     }
                   );
+                }
               })(this.canvas.current);
             }
             render() {
               const { boardId: e } = this.props,
                 { message: t } = this.state,
-                r =
-                  t &&
+                r = t &&
                   ((e, t) => {
                     var r, n;
                     const o =
                         null === (r = document.getElementById(wl(e.idx))) ||
-                        void 0 === r
+                          void 0 === r
                           ? void 0
                           : r.getBoundingClientRect(),
-                      a =
-                        null === (n = document.getElementById(t)) ||
-                        void 0 === n
-                          ? void 0
-                          : n.getBoundingClientRect();
+                      a = null === (n = document.getElementById(t)) ||
+                          void 0 === n
+                        ? void 0
+                        : n.getBoundingClientRect();
                     if (o && a) {
                       const e = o.left - a.left,
                         t = o.top - a.top;
@@ -6919,8 +6928,10 @@ var _global =
             }
           }
           var _c = (e) =>
-              n.createElement(Or.Consumer, null, (t) =>
-                n.createElement(wc, gc({ emitter: t }, e)),
+              n.createElement(
+                Or.Consumer,
+                null,
+                (t) => n.createElement(wc, gc({ emitter: t }, e)),
               ),
             Ec = r(50840),
             Oc = r.n(Ec);
@@ -6941,50 +6952,48 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Sc(Object(r), !0).forEach(function (t) {
-                    Pc(e, t, r[t]);
-                  })
+                  Pc(e, t, r[t]);
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Sc(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Sc(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
           function Pc(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           const xc = (e, t, r) => Math.min(r, Math.max(t, e));
@@ -7092,18 +7101,16 @@ var _global =
           }
           function jc() {
             return (
-              (jc = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              jc.apply(this, arguments)
+              (jc = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), jc.apply(this, arguments)
             );
           }
           function Tc(e, t) {
@@ -7123,50 +7130,48 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Tc(Object(r), !0).forEach(function (t) {
-                    Nc(e, t, r[t]);
-                  })
+                  Nc(e, t, r[t]);
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Tc(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Tc(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
           function Nc(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           class Lc extends n.PureComponent {
@@ -7178,8 +7183,8 @@ var _global =
                   const { type: t, clickHandler: r, openRebus: n } = this.props;
                   (null == e || e.persist(),
                     "BLOCK" !== t &&
-                      "EXTERNAL" !== t &&
-                      (r(), 1 === (null == e ? void 0 : e.button) && n()));
+                    "EXTERNAL" !== t &&
+                    (r(), 1 === (null == e ? void 0 : e.button) && n()));
                 }),
                 Nc(this, "renderChild", (e, t) => {
                   const { isSolved: r, answer: o, guess: a } = this.props,
@@ -7191,19 +7196,19 @@ var _global =
                   const m = Dc(Dc({}, i), {}, { fontSize: c });
                   return (
                     (this.value = u ? "".concat(d) : ""),
-                    n.createElement(
-                      s,
-                      jc({ key: t }, m, { "data-testid": "cell-".concat(s) }),
                       n.createElement(
-                        "text",
-                        {
-                          className: "xwd__cell--hidden",
-                          "aria-live": "polite",
-                        },
-                        this.value,
-                      ),
-                      l || d,
-                    )
+                        s,
+                        jc({ key: t }, m, { "data-testid": "cell-".concat(s) }),
+                        n.createElement(
+                          "text",
+                          {
+                            className: "xwd__cell--hidden",
+                            "aria-live": "polite",
+                          },
+                          this.value,
+                        ),
+                        l || d,
+                      )
                   );
                 }),
                 Nc(this, "renderAssistBadge", () => {
@@ -7293,18 +7298,16 @@ var _global =
           var zc = Lc;
           function Ic() {
             return (
-              (Ic = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Ic.apply(this, arguments)
+              (Ic = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Ic.apply(this, arguments)
             );
           }
           const Ac = (e) => {
@@ -7335,17 +7338,17 @@ var _global =
               f = (0, a.v9)(Ke),
               { notes: g } = (0, a.v9)(De) || {},
               v = (0, a.I0)(),
-              b =
-                (/iPad|iPhone/.test(navigator.userAgent),
+              b = (/iPad|iPhone/.test(navigator.userAgent),
                 n.useCallback(
                   (e) => {
-                    if (!u || !Object.keys(u).length)
+                    if (!u || !Object.keys(u).length) {
                       return g && g.length > 0
                         ? "No Clue, Notes: ".concat(
-                            g[0].text,
-                            ", Answer: 1 letter, Letter: 1",
-                          )
+                          g[0].text,
+                          ", Answer: 1 letter, Letter: 1",
+                        )
                         : "No Clue, Answer: 1 letter, Letter: 1";
+                    }
                     const {
                       label: t,
                       direction: r,
@@ -7401,9 +7404,9 @@ var _global =
                     v(
                       ((e, t) =>
                         t ? { type: q } : { type: H, payload: { index: e } })(
-                        r,
-                        h,
-                      ),
+                          r,
+                          h,
+                        ),
                     ),
                   openRebus: () => v(zi()),
                 });
@@ -7412,18 +7415,16 @@ var _global =
           }
           function Bc() {
             return (
-              (Bc = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Bc.apply(this, arguments)
+              (Bc = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Bc.apply(this, arguments)
             );
           }
           function Uc(e) {
@@ -7472,11 +7473,7 @@ var _global =
                       _ = f(i, d),
                       E = f(l, u);
                     return (
-                      g && p(v),
-                      E && p(h),
-                      w ? p(y) : o(y),
-                      _ ? p(b) : o(b),
-                      e
+                      g && p(v), E && p(h), w ? p(y) : o(y), _ ? p(b) : o(b), e
                     );
                   },
                   { frame: "", lines: "" },
@@ -7502,18 +7499,16 @@ var _global =
           const Gc = ["className"];
           function Wc() {
             return (
-              (Wc = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Wc.apply(this, arguments)
+              (Wc = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Wc.apply(this, arguments)
             );
           }
           function Yc(e) {
@@ -7549,20 +7544,22 @@ var _global =
                               n,
                               o = {},
                               a = Object.keys(e);
-                            for (n = 0; n < a.length; n++)
+                            for (n = 0; n < a.length; n++) {
                               ((r = a[n]), t.indexOf(r) >= 0 || (o[r] = e[r]));
+                            }
                             return o;
                           })(e, t);
                         if (Object.getOwnPropertySymbols) {
                           var a = Object.getOwnPropertySymbols(e);
-                          for (n = 0; n < a.length; n++)
+                          for (n = 0; n < a.length; n++) {
                             ((r = a[n]),
                               t.indexOf(r) >= 0 ||
-                                (Object.prototype.propertyIsEnumerable.call(
-                                  e,
-                                  r,
-                                ) &&
-                                  (o[r] = e[r])));
+                              (Object.prototype.propertyIsEnumerable.call(
+                                e,
+                                r,
+                              ) &&
+                                (o[r] = e[r])));
+                          }
                         }
                         return o;
                       })(e.attributes, Gc);
@@ -7579,18 +7576,16 @@ var _global =
           }
           function Hc() {
             return (
-              (Hc = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Hc.apply(this, arguments)
+              (Hc = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Hc.apply(this, arguments)
             );
           }
           const Fc = "xwd-board";
@@ -7676,46 +7671,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? $c(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : $c(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : $c(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -7741,8 +7735,8 @@ var _global =
             ).then(
               (e) => (
                 (e.featuredArticle = Kc(e.featuredArticle)),
-                (e.secondaryArticles = e.secondaryArticles.map((e) => Kc(e))),
-                e
+                  (e.secondaryArticles = e.secondaryArticles.map((e) => Kc(e))),
+                  e
               ),
             );
           function Qc(e) {
@@ -7852,38 +7846,38 @@ var _global =
             return i || si.tq || !l.current || null == e || !e.featuredArticle
               ? null
               : (0, Zc.createPortal)(
+                n.createElement(
+                  "div",
+                  null,
                   n.createElement(
-                    "div",
+                    Qc,
                     null,
-                    n.createElement(
-                      Qc,
-                      null,
-                      n.createElement(ed, {
-                        type: "featuredCard",
-                        kicker: e.featuredArticle.kicker,
-                        headline: e.featuredArticle.headline,
-                        byline: e.featuredArticle.byline,
-                        summary: e.featuredArticle.summary,
-                        thumbURL: e.featuredArticle.thumbURL,
-                        url: e.featuredArticle.url,
-                      }),
-                      e.secondaryArticles &&
-                        e.secondaryArticles.map((e) =>
-                          n.createElement(ed, {
-                            key: e.url,
-                            type: "secondaryCard",
-                            kicker: e.kicker,
-                            headline: e.headline,
-                            byline: e.byline,
-                            summary: e.summary,
-                            thumbURL: e.thumbURL,
-                            url: e.url,
-                          }),
-                        ),
-                    ),
+                    n.createElement(ed, {
+                      type: "featuredCard",
+                      kicker: e.featuredArticle.kicker,
+                      headline: e.featuredArticle.headline,
+                      byline: e.featuredArticle.byline,
+                      summary: e.featuredArticle.summary,
+                      thumbURL: e.featuredArticle.thumbURL,
+                      url: e.featuredArticle.url,
+                    }),
+                    e.secondaryArticles &&
+                      e.secondaryArticles.map((e) =>
+                        n.createElement(ed, {
+                          key: e.url,
+                          type: "secondaryCard",
+                          kicker: e.kicker,
+                          headline: e.headline,
+                          byline: e.byline,
+                          summary: e.summary,
+                          thumbURL: e.thumbURL,
+                          url: e.url,
+                        })
+                      ),
                   ),
-                  l.current,
-                );
+                ),
+                l.current,
+              );
           }
           function rd() {
             const e = (0, a.v9)(Ve),
@@ -7922,10 +7916,11 @@ var _global =
           }
           function nd() {
             const e = (0, a.v9)(Ve);
-            if ((0, a.v9)(as))
+            if ((0, a.v9)(as)) {
               return n.createElement("div", {
                 className: "xwd__clue-bar-desktop--bar obscured",
               });
+            }
             const { label: t = "", direction: r, text: o = "" } = e || {},
               i = zl()("xwd__clue-bar-desktop--text", "xwd__clue-format", {
                 long: o.length > 200,
@@ -7953,30 +7948,28 @@ var _global =
           function ad(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           class id extends n.Component {
@@ -8111,49 +8104,47 @@ var _global =
             let { lists: t } = e;
             return si.tq
               ? n.createElement(
-                  n.Fragment,
-                  null,
-                  t.map((e) => n.createElement(sd, { list: e, key: e.index })),
-                )
+                n.Fragment,
+                null,
+                t.map((e) => n.createElement(sd, { list: e, key: e.index })),
+              )
               : n.createElement(
-                  "section",
-                  { className: zl()("xwd__layout--cluelists") },
-                  t.map((e) => n.createElement(sd, { list: e, key: e.index })),
-                );
+                "section",
+                { className: zl()("xwd__layout--cluelists") },
+                t.map((e) => n.createElement(sd, { list: e, key: e.index })),
+              );
           }
           function dd(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           const ud = (e, t) => {
             var r, n;
             const o = (null === (r = document.getElementById(wl(e))) ||
-              void 0 === r
+                  void 0 === r
                 ? void 0
                 : r.getBoundingClientRect()) || {
                 top: 0,
@@ -8194,8 +8185,8 @@ var _global =
                   (t &&
                     ["Escape", "Enter", "NumpadEnter"].includes(t) &&
                     (this.setState({ visible: !1 }),
-                    e.preventDefault(),
-                    (r = 300)),
+                      e.preventDefault(),
+                      (r = 300)),
                     setTimeout(() => this.handleKeyDown(e), r));
                 }),
                 dd(this, "shiftField", (e) => {
@@ -8215,8 +8206,7 @@ var _global =
                   (r(t), this.shiftField(e));
                 }),
                 dd(this, "saveAndExit", function () {
-                  let e =
-                    !(arguments.length > 0 && void 0 !== arguments[0]) ||
+                  let e = !(arguments.length > 0 && void 0 !== arguments[0]) ||
                     arguments[0];
                   const { exit: r } = t.props;
                   r(e);
@@ -8278,7 +8268,8 @@ var _global =
                   inputMode: si.tq ? "none" : "text",
                   disabled: r,
                   ref: this.inputRef,
-                  onChange: (e) => this.updateRebus(e),
+                  onChange: (e) =>
+                    this.updateRebus(e),
                   onBlur: () => this.saveAndExit(!0),
                   onKeyDown: (e) => {
                     si.tq
@@ -8325,18 +8316,16 @@ var _global =
           ];
           function vd() {
             return (
-              (vd = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              vd.apply(this, arguments)
+              (vd = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), vd.apply(this, arguments)
             );
           }
           function bd(e) {
@@ -8358,17 +8347,19 @@ var _global =
                       n,
                       o = {},
                       a = Object.keys(e);
-                    for (n = 0; n < a.length; n++)
+                    for (n = 0; n < a.length; n++) {
                       ((r = a[n]), t.indexOf(r) >= 0 || (o[r] = e[r]));
+                    }
                     return o;
                   })(e, t);
                 if (Object.getOwnPropertySymbols) {
                   var a = Object.getOwnPropertySymbols(e);
-                  for (n = 0; n < a.length; n++)
+                  for (n = 0; n < a.length; n++) {
                     ((r = a[n]),
                       t.indexOf(r) >= 0 ||
-                        (Object.prototype.propertyIsEnumerable.call(e, r) &&
-                          (o[r] = e[r])));
+                      (Object.prototype.propertyIsEnumerable.call(e, r) &&
+                        (o[r] = e[r])));
+                  }
                 }
                 return o;
               })(e, gd);
@@ -8410,29 +8401,29 @@ var _global =
                 (0, n.useEffect)(() => {
                   i(!0);
                 }, []),
-                (0, _d.Z)(() => s(!0), o === 1 / 0 ? null : o),
-                n.createElement(
-                  "div",
-                  { className: "Toast-module_toastContainer__CgMC2" },
+                  (0, _d.Z)(() => s(!0), o === 1 / 0 ? null : o),
                   n.createElement(
                     "div",
-                    { className: "Toast-module_toaster__HJPhs" },
+                    { className: "Toast-module_toastContainer__CgMC2" },
                     n.createElement(
                       "div",
-                      {
-                        className: zl()("Toast-module_toast__q1i0d", {
-                          "Toast-module_fadeIn__R1bI9": a,
-                          "Toast-module_fadeOut__TEHmR": l,
-                        }),
-                        "aria-live": "polite",
-                        onTransitionEnd: () => {
-                          r && l && r();
+                      { className: "Toast-module_toaster__HJPhs" },
+                      n.createElement(
+                        "div",
+                        {
+                          className: zl()("Toast-module_toast__q1i0d", {
+                            "Toast-module_fadeIn__R1bI9": a,
+                            "Toast-module_fadeOut__TEHmR": l,
+                          }),
+                          "aria-live": "polite",
+                          onTransitionEnd: () => {
+                            r && l && r();
+                          },
                         },
-                      },
-                      n.createElement("h2", null, t),
+                        n.createElement("h2", null, t),
+                      ),
                     ),
-                  ),
-                )
+                  )
               );
             };
           const Od = {
@@ -8605,9 +8596,11 @@ var _global =
                   },
                   n.createElement(dl.Dx, { size: "large", text: a.current }),
                   n.createElement(dl.dk, {
-                    text: "The puzzle is filled, but at least one square’s amiss. ".concat(
-                      i.current,
-                    ),
+                    text:
+                      "The puzzle is filled, but at least one square’s amiss. "
+                        .concat(
+                          i.current,
+                        ),
                     variant: "small",
                   }),
                 );
@@ -8634,28 +8627,29 @@ var _global =
                       case K:
                         return t
                           ? {
-                              title:
-                                "Resetting the timer will exclude this puzzle from a streak.",
-                              text: "Streaks are formed by solving The Crossword within a day of its publish date and without help.",
-                              buttonLabel: "Reset timer",
-                            }
+                            title:
+                              "Resetting the timer will exclude this puzzle from a streak.",
+                            text:
+                              "Streaks are formed by solving The Crossword within a day of its publish date and without help.",
+                            buttonLabel: "Reset timer",
+                          }
                           : {
-                              title: "",
-                              text: "Are you sure you want to start over?",
-                              buttonLabel: "Start over",
-                            };
+                            title: "",
+                            text: "Are you sure you want to start over?",
+                            buttonLabel: "Start over",
+                          };
                       case j:
                         return t
                           ? {
-                              title: "Feeling stuck?",
-                              text: xs,
-                              buttonLabel: "Reveal anyway",
-                            }
+                            title: "Feeling stuck?",
+                            text: xs,
+                            buttonLabel: "Reveal anyway",
+                          }
                           : {
-                              title: "",
-                              text: "Are you sure you want to reveal the puzzle?",
-                              buttonLabel: "Reveal",
-                            };
+                            title: "",
+                            text: "Are you sure you want to reveal the puzzle?",
+                            buttonLabel: "Reveal",
+                          };
                       case C:
                         return {
                           title: "",
@@ -8704,14 +8698,14 @@ var _global =
                   ),
                   y = s
                     ? n.createElement(
-                        "div",
-                        { className: "xwd__modal-confirm--footer" },
-                        n.createElement(ys, {
-                          name: "suppressDisqualificationWarnings",
-                          label: "Don’t show again",
-                          onChange: (e) => p(e.target.checked),
-                        }),
-                      )
+                      "div",
+                      { className: "xwd__modal-confirm--footer" },
+                      n.createElement(ys, {
+                        name: "suppressDisqualificationWarnings",
+                        label: "Don’t show again",
+                        onChange: (e) => p(e.target.checked),
+                      }),
+                    )
                     : null;
                 return n.createElement(
                   ss.Z,
@@ -8873,12 +8867,12 @@ var _global =
                             onChange: (e) => {
                               return (
                                 (t = e.target.checked),
-                                void i(
-                                  ((e) => ({
-                                    type: mr,
-                                    payload: { opacity: e },
-                                  }))(t ? 30 : 100),
-                                )
+                                  void i(
+                                    ((e) => ({
+                                      type: mr,
+                                      payload: { opacity: e },
+                                    }))(t ? 30 : 100),
+                                  )
                               );
                               var t;
                             },
@@ -8930,31 +8924,31 @@ var _global =
                 const i = (0, a.v9)(De);
                 return i
                   ? n.createElement(
-                      ss.Z,
-                      {
-                        buttons: [
-                          n.createElement(dl.zx, {
-                            key: "continue",
-                            action: () => {
-                              t();
-                            },
-                            text: "Continue",
-                          }),
-                        ],
-                        ignoreBackgroundClick: !0,
-                        hideCloseX: !0,
-                        close: t,
-                        isClosing: r,
-                        onRemove: o,
-                        footer: n.createElement(Il, { meta: i }),
-                        containerClassName: "pause-modal",
-                      },
-                      n.createElement(dl.Dx, {
-                        size: "large",
-                        text: "Your game is paused.",
-                      }),
-                      n.createElement(dl.dk, { text: "Ready to play?" }),
-                    )
+                    ss.Z,
+                    {
+                      buttons: [
+                        n.createElement(dl.zx, {
+                          key: "continue",
+                          action: () => {
+                            t();
+                          },
+                          text: "Continue",
+                        }),
+                      ],
+                      ignoreBackgroundClick: !0,
+                      hideCloseX: !0,
+                      close: t,
+                      isClosing: r,
+                      onRemove: o,
+                      footer: n.createElement(Il, { meta: i }),
+                      containerClassName: "pause-modal",
+                    },
+                    n.createElement(dl.Dx, {
+                      size: "large",
+                      text: "Your game is paused.",
+                    }),
+                    n.createElement(dl.dk, { text: "Ready to play?" }),
+                  )
                   : null;
               },
               [Pi.Share]: (e) => {
@@ -8976,222 +8970,223 @@ var _global =
                     },
                     [],
                   ),
-                  n.createElement(
-                    ss.Z,
-                    {
-                      close: t,
-                      isClosing: r,
-                      onRemove: o,
-                      bodyClassName: "xwd__share-modal",
-                    },
-                    n.createElement(dl.Dx, {
-                      size: "large",
-                      text: "Share Your Victory",
-                    }),
                     n.createElement(
-                      "div",
-                      { className: "xwd__share-modal_toutImageWrapper" },
-                      n.createElement("img", {
-                        src: g,
-                        alt: "social media achievement",
-                        className: "xwd__share-modal_toutImage",
+                      ss.Z,
+                      {
+                        close: t,
+                        isClosing: r,
+                        onRemove: o,
+                        bodyClassName: "xwd__share-modal",
+                      },
+                      n.createElement(dl.Dx, {
+                        size: "large",
+                        text: "Share Your Victory",
                       }),
-                    ),
-                    n.createElement(
-                      "ul",
-                      { className: "xwd__share-modal_shareNetworks" },
                       n.createElement(
-                        "li",
-                        { className: "xwd__share-modal_shareItem" },
+                        "div",
+                        { className: "xwd__share-modal_toutImageWrapper" },
+                        n.createElement("img", {
+                          src: g,
+                          alt: "social media achievement",
+                          className: "xwd__share-modal_toutImage",
+                        }),
+                      ),
+                      n.createElement(
+                        "ul",
+                        { className: "xwd__share-modal_shareNetworks" },
                         n.createElement(
-                          "button",
-                          {
-                            ref: s,
-                            type: "button",
-                            "aria-label": "Copy Link",
-                            id: "copyUrlId",
-                            onClick: () => {
-                              if (s.current) {
-                                const e = ""
-                                    .concat(f, "&smid=")
-                                    .concat("url-share"),
-                                  t = document.createElement("input");
-                                ((t.type = "text"),
-                                  (t.value = e),
-                                  s.current.append(t),
-                                  t.select(),
-                                  document.execCommand("copy"),
-                                  t.remove(),
-                                  l(!0),
-                                  (0, Zt.$)(
-                                    "share-tools",
-                                    void 0,
-                                    "share-url",
-                                    "Permalink",
-                                  ),
-                                  clearTimeout(c.current),
-                                  (c.current = setTimeout(() => {
-                                    l(!1);
-                                  }, 5e3)));
-                              }
-                            },
-                            className: zl()(
-                              "xwd__share-modal_shareLinkButton",
-                              { "xwd__share-modal_copiedLink": i },
-                            ),
-                          },
-                          n.createElement("i", {
-                            className: zl()(
-                              "xwd__share-modal_shareIcon",
-                              "link",
-                            ),
-                          }),
+                          "li",
+                          { className: "xwd__share-modal_shareItem" },
                           n.createElement(
-                            "div",
-                            { className: "xwd__share-modal_shareLink" },
-                            i ? "Copied" : "Copy Link",
+                            "button",
+                            {
+                              ref: s,
+                              type: "button",
+                              "aria-label": "Copy Link",
+                              id: "copyUrlId",
+                              onClick: () => {
+                                if (s.current) {
+                                  const e = ""
+                                      .concat(f, "&smid=")
+                                      .concat("url-share"),
+                                    t = document.createElement("input");
+                                  ((t.type = "text"),
+                                    (t.value = e),
+                                    s.current.append(t),
+                                    t.select(),
+                                    document.execCommand("copy"),
+                                    t.remove(),
+                                    l(!0),
+                                    (0, Zt.$)(
+                                      "share-tools",
+                                      void 0,
+                                      "share-url",
+                                      "Permalink",
+                                    ),
+                                    clearTimeout(c.current),
+                                    (c.current = setTimeout(() => {
+                                      l(!1);
+                                    }, 5e3)));
+                                }
+                              },
+                              className: zl()(
+                                "xwd__share-modal_shareLinkButton",
+                                { "xwd__share-modal_copiedLink": i },
+                              ),
+                            },
+                            n.createElement("i", {
+                              className: zl()(
+                                "xwd__share-modal_shareIcon",
+                                "link",
+                              ),
+                            }),
+                            n.createElement(
+                              "div",
+                              { className: "xwd__share-modal_shareLink" },
+                              i ? "Copied" : "Copy Link",
+                            ),
+                          ),
+                        ),
+                        n.createElement(
+                          "li",
+                          { className: "xwd__share-modal_shareItem" },
+                          n.createElement(
+                            "a",
+                            {
+                              href:
+                                "https://www.facebook.com/dialog/feed?app_id=9869919170&link="
+                                  .concat(Ys(f, "fb-share"), "&name=")
+                                  .concat(b, "&redirect_uri=")
+                                  .concat(Fs),
+                              target: "_blank",
+                              "aria-label": "Share on Facebook",
+                              rel: "noopener noreferrer",
+                              onClick: () => {
+                                (0, Zt.$)(
+                                  "share-tools",
+                                  void 0,
+                                  "share-facebook",
+                                  "Facebook",
+                                );
+                              },
+                            },
+                            n.createElement("i", {
+                              className: zl()(
+                                "xwd__share-modal_shareIcon",
+                                "facebook",
+                              ),
+                            }),
+                            n.createElement(
+                              "div",
+                              { className: "xwd__share-modal_shareLink" },
+                              "Facebook",
+                            ),
+                          ),
+                        ),
+                        n.createElement(
+                          "li",
+                          { className: "xwd__share-modal_shareItem" },
+                          n.createElement(
+                            "a",
+                            {
+                              href: "https://twitter.com/intent/tweet?url="
+                                .concat(Ys(f, "tw-share"), "&text=")
+                                .concat(b),
+                              target: "_blank",
+                              "aria-label": "Share on Twitter",
+                              rel: "noopener noreferrer",
+                              onClick: () => {
+                                (0, Zt.$)(
+                                  "share-tools",
+                                  void 0,
+                                  "share-twitter",
+                                  "Twitter",
+                                );
+                              },
+                            },
+                            n.createElement("i", {
+                              className: zl()(
+                                "xwd__share-modal_shareIcon",
+                                "twitter",
+                              ),
+                            }),
+                            n.createElement(
+                              "div",
+                              { className: "xwd__share-modal_shareLink" },
+                              "Twitter",
+                            ),
+                          ),
+                        ),
+                        n.createElement(
+                          "li",
+                          { className: "xwd__share-modal_shareItem" },
+                          n.createElement(
+                            "a",
+                            {
+                              href: "https://t.me/share/url?url="
+                                .concat(Ys(f, "tel-share"), "&text=")
+                                .concat(b, " via @nytimes"),
+                              target: "_blank",
+                              "aria-label": "Share on Telegram",
+                              rel: "noopener noreferrer",
+                              onClick: () => {
+                                (0, Zt.$)(
+                                  "share-tools",
+                                  void 0,
+                                  "share-telegram",
+                                  "Telegram",
+                                );
+                              },
+                            },
+                            n.createElement("i", {
+                              className: zl()(
+                                "xwd__share-modal_shareIcon",
+                                "telegram",
+                              ),
+                            }),
+                            n.createElement(
+                              "div",
+                              { className: "xwd__share-modal_shareLink" },
+                              "Telegram",
+                            ),
+                          ),
+                        ),
+                        n.createElement(
+                          "li",
+                          { className: "xwd__share-modal_shareItem" },
+                          n.createElement(
+                            "a",
+                            {
+                              href: "https://api.whatsapp.com/send?text="
+                                .concat(b, "%20")
+                                .concat(Ys(f, "wa-share")),
+                              target: "_blank",
+                              "aria-label": "Share on WhatsApp",
+                              rel: "noopener noreferrer",
+                              onClick: () => {
+                                (0, Zt.$)(
+                                  "share-tools",
+                                  void 0,
+                                  "share-whatsapp",
+                                  "WhatsApp",
+                                );
+                              },
+                            },
+                            n.createElement("i", {
+                              className: zl()(
+                                "xwd__share-modal_shareIcon",
+                                "whatsapp",
+                              ),
+                            }),
+                            n.createElement(
+                              "div",
+                              { className: "xwd__share-modal_shareLink" },
+                              "Whatsapp",
+                            ),
                           ),
                         ),
                       ),
-                      n.createElement(
-                        "li",
-                        { className: "xwd__share-modal_shareItem" },
-                        n.createElement(
-                          "a",
-                          {
-                            href: "https://www.facebook.com/dialog/feed?app_id=9869919170&link="
-                              .concat(Ys(f, "fb-share"), "&name=")
-                              .concat(b, "&redirect_uri=")
-                              .concat(Fs),
-                            target: "_blank",
-                            "aria-label": "Share on Facebook",
-                            rel: "noopener noreferrer",
-                            onClick: () => {
-                              (0, Zt.$)(
-                                "share-tools",
-                                void 0,
-                                "share-facebook",
-                                "Facebook",
-                              );
-                            },
-                          },
-                          n.createElement("i", {
-                            className: zl()(
-                              "xwd__share-modal_shareIcon",
-                              "facebook",
-                            ),
-                          }),
-                          n.createElement(
-                            "div",
-                            { className: "xwd__share-modal_shareLink" },
-                            "Facebook",
-                          ),
-                        ),
-                      ),
-                      n.createElement(
-                        "li",
-                        { className: "xwd__share-modal_shareItem" },
-                        n.createElement(
-                          "a",
-                          {
-                            href: "https://twitter.com/intent/tweet?url="
-                              .concat(Ys(f, "tw-share"), "&text=")
-                              .concat(b),
-                            target: "_blank",
-                            "aria-label": "Share on Twitter",
-                            rel: "noopener noreferrer",
-                            onClick: () => {
-                              (0, Zt.$)(
-                                "share-tools",
-                                void 0,
-                                "share-twitter",
-                                "Twitter",
-                              );
-                            },
-                          },
-                          n.createElement("i", {
-                            className: zl()(
-                              "xwd__share-modal_shareIcon",
-                              "twitter",
-                            ),
-                          }),
-                          n.createElement(
-                            "div",
-                            { className: "xwd__share-modal_shareLink" },
-                            "Twitter",
-                          ),
-                        ),
-                      ),
-                      n.createElement(
-                        "li",
-                        { className: "xwd__share-modal_shareItem" },
-                        n.createElement(
-                          "a",
-                          {
-                            href: "https://t.me/share/url?url="
-                              .concat(Ys(f, "tel-share"), "&text=")
-                              .concat(b, " via @nytimes"),
-                            target: "_blank",
-                            "aria-label": "Share on Telegram",
-                            rel: "noopener noreferrer",
-                            onClick: () => {
-                              (0, Zt.$)(
-                                "share-tools",
-                                void 0,
-                                "share-telegram",
-                                "Telegram",
-                              );
-                            },
-                          },
-                          n.createElement("i", {
-                            className: zl()(
-                              "xwd__share-modal_shareIcon",
-                              "telegram",
-                            ),
-                          }),
-                          n.createElement(
-                            "div",
-                            { className: "xwd__share-modal_shareLink" },
-                            "Telegram",
-                          ),
-                        ),
-                      ),
-                      n.createElement(
-                        "li",
-                        { className: "xwd__share-modal_shareItem" },
-                        n.createElement(
-                          "a",
-                          {
-                            href: "https://api.whatsapp.com/send?text="
-                              .concat(b, "%20")
-                              .concat(Ys(f, "wa-share")),
-                            target: "_blank",
-                            "aria-label": "Share on WhatsApp",
-                            rel: "noopener noreferrer",
-                            onClick: () => {
-                              (0, Zt.$)(
-                                "share-tools",
-                                void 0,
-                                "share-whatsapp",
-                                "WhatsApp",
-                              );
-                            },
-                          },
-                          n.createElement("i", {
-                            className: zl()(
-                              "xwd__share-modal_shareIcon",
-                              "whatsapp",
-                            ),
-                          }),
-                          n.createElement(
-                            "div",
-                            { className: "xwd__share-modal_shareLink" },
-                            "Whatsapp",
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
+                    )
                 );
               },
               [Pi.EditorWelcomeNote]: function (e) {
@@ -9201,98 +9196,98 @@ var _global =
                   (0, n.useEffect)(() => {
                     (0, l.hX)("welcome-modal", "midi-page", "editors-note");
                   }, []),
-                  n.createElement(
-                    ss.Z,
-                    {
-                      ignoreBackgroundClick: !0,
-                      close: () => {
-                        ((0, qs.rl)(Zs, 1),
-                          (0, l.ob)({
-                            region: "editors-note",
-                            element: { name: "midi-page", label: "close" },
-                            context: i,
-                          }),
-                          t());
-                      },
-                      isClosing: r,
-                      onRemove: o,
-                      bodyClassName:
-                        "EditorWelcomeNoteModal-module_modalBody__iVgmT",
-                    },
                     n.createElement(
-                      "div",
+                      ss.Z,
                       {
-                        className:
-                          "EditorWelcomeNoteModal-module_contentWrapper__ViDqX",
+                        ignoreBackgroundClick: !0,
+                        close: () => {
+                          ((0, qs.rl)(Zs, 1),
+                            (0, l.ob)({
+                              region: "editors-note",
+                              element: { name: "midi-page", label: "close" },
+                              context: i,
+                            }),
+                            t());
+                        },
+                        isClosing: r,
+                        onRemove: o,
+                        bodyClassName:
+                          "EditorWelcomeNoteModal-module_modalBody__iVgmT",
                       },
-                      n.createElement("h2", null, "What you need to know:"),
                       n.createElement(
                         "div",
                         {
                           className:
-                            "EditorWelcomeNoteModal-module_body__kASxm",
+                            "EditorWelcomeNoteModal-module_contentWrapper__ViDqX",
                         },
-                        "Here’s what I think makes the Midi Crossword special:",
-                        n.createElement(
-                          "ul",
-                          null,
-                          n.createElement(
-                            "li",
-                            null,
-                            "It always has a theme and a puzzle title.",
-                          ),
-                          n.createElement(
-                            "li",
-                            null,
-                            "The clues and answers are often straightforward and accessible.",
-                          ),
-                          n.createElement(
-                            "li",
-                            null,
-                            "Flourishes like special colors, fun visuals and art will show up periodically. 💫👀🟣🎨🎉",
-                          ),
-                        ),
-                        "Happy Solving!",
+                        n.createElement("h2", null, "What you need to know:"),
                         n.createElement(
                           "div",
                           {
                             className:
-                              "EditorWelcomeNoteModal-module_editorInfo__W2pNT",
+                              "EditorWelcomeNoteModal-module_body__kASxm",
                           },
-                          n.createElement("img", {
-                            className:
-                              "EditorWelcomeNoteModal-module_headshot__GHO0P",
-                            src: "".concat(
-                              l.env.assets,
-                              "/assets/editor-welcome-note/editor-welcome-note-midi-ian.svg",
+                          "Here’s what I think makes the Midi Crossword special:",
+                          n.createElement(
+                            "ul",
+                            null,
+                            n.createElement(
+                              "li",
+                              null,
+                              "It always has a theme and a puzzle title.",
                             ),
-                            alt: "Midi Editor, Ian",
-                          }),
+                            n.createElement(
+                              "li",
+                              null,
+                              "The clues and answers are often straightforward and accessible.",
+                            ),
+                            n.createElement(
+                              "li",
+                              null,
+                              "Flourishes like special colors, fun visuals and art will show up periodically. 💫👀🟣🎨🎉",
+                            ),
+                          ),
+                          "Happy Solving!",
                           n.createElement(
                             "div",
                             {
                               className:
-                                "EditorWelcomeNoteModal-module_editorName__vjZbb",
+                                "EditorWelcomeNoteModal-module_editorInfo__W2pNT",
                             },
-                            n.createElement("span", null, "Ian Livengood,"),
-                            n.createElement("span", null, "Midi Editor"),
+                            n.createElement("img", {
+                              className:
+                                "EditorWelcomeNoteModal-module_headshot__GHO0P",
+                              src: "".concat(
+                                l.env.assets,
+                                "/assets/editor-welcome-note/editor-welcome-note-midi-ian.svg",
+                              ),
+                              alt: "Midi Editor, Ian",
+                            }),
+                            n.createElement(
+                              "div",
+                              {
+                                className:
+                                  "EditorWelcomeNoteModal-module_editorName__vjZbb",
+                              },
+                              n.createElement("span", null, "Ian Livengood,"),
+                              n.createElement("span", null, "Midi Editor"),
+                            ),
                           ),
                         ),
+                        n.createElement(bl.default, {
+                          text: "Let's play",
+                          action: () => {
+                            ((0, l.ob)({
+                              region: "editors-note",
+                              element: { name: "midi-page", label: "play" },
+                              context: i,
+                            }),
+                              t(),
+                              (0, qs.rl)(Zs, 1));
+                          },
+                        }),
                       ),
-                      n.createElement(bl.default, {
-                        text: "Let's play",
-                        action: () => {
-                          ((0, l.ob)({
-                            region: "editors-note",
-                            element: { name: "midi-page", label: "play" },
-                            context: i,
-                          }),
-                            t(),
-                            (0, qs.rl)(Zs, 1));
-                        },
-                      }),
-                    ),
-                  )
+                    )
                 );
               },
             };
@@ -9315,10 +9310,9 @@ var _global =
               [p, f] = (0, n.useState)(0);
             (0, n.useEffect)(() => {
               var e;
-              const t =
-                (null === (e = m.current) || void 0 === e
-                  ? void 0
-                  : e.getBoundingClientRect().top) || 0;
+              const t = (null === (e = m.current) || void 0 === e
+                ? void 0
+                : e.getBoundingClientRect().top) || 0;
               f(t);
             }, [r]);
             const g = (0, a.v9)(as),
@@ -9332,10 +9326,9 @@ var _global =
                     .then((e) => (200 === e.status && e.title ? e.title : null))
                     .catch(
                       (e) => (
-                        console.error("Error fetching midi title:", e),
-                        null
+                        console.error("Error fetching midi title:", e), null
                       ),
-                    ),
+                    )
                 ).then((e) => u({ type: S, payload: e }));
             }, [u, h]),
               (0, n.useEffect)(() => {
@@ -9353,100 +9346,99 @@ var _global =
               (0, n.useEffect)(() => {
                 u(pa(y));
               }, [y]),
-              (0, n.useEffect)(() => {
-                const e = document.getElementById("js-nav-burger"),
-                  t = () => {
-                    null == e ||
-                      !e.classList.contains("active") ||
-                      g ||
-                      b ||
-                      u(Ct(Pi.Pause));
-                  };
-                null == e || e.addEventListener("click", t);
-                const r = document.getElementById(
-                  "cache-safe-games-sale-banner-a",
-                );
-                return (
-                  r && !g && r.classList.add("hide-game-sale-banner"),
-                  () => {
-                    null == e || e.removeEventListener("click", t);
-                  }
-                );
-              }),
-              n.createElement(
-                "div",
-                { className: "xwd__layout_container", ref: m },
-                n.createElement(fd.Z, {
-                  getOpenModalName: os,
-                  getIsClosing: ls,
-                  modalMap: Sd,
-                  onClose: jt,
-                  onRemove: Tt,
-                  portalId: "portal-game-modals",
-                }),
-                n.createElement(bd, {
-                  portalId: "portal-toast-system",
-                  toastMap: Od,
-                  getOpenToastName: yd,
-                  getIsClosing: wd,
-                  isClosing: v,
-                  onClose: ia,
-                  onRemove: la,
+                (0, n.useEffect)(() => {
+                  const e = document.getElementById("js-nav-burger"),
+                    t = () => {
+                      null == e ||
+                        !e.classList.contains("active") ||
+                        g ||
+                        b ||
+                        u(Ct(Pi.Pause));
+                    };
+                  null == e || e.addEventListener("click", t);
+                  const r = document.getElementById(
+                    "cache-safe-games-sale-banner-a",
+                  );
+                  return (
+                    r && !g && r.classList.add("hide-game-sale-banner"), () => {
+                      null == e || e.removeEventListener("click", t);
+                    }
+                  );
                 }),
                 n.createElement(
                   "div",
-                  {
-                    className: zl()({
-                      "xwd__layout_container--mobile": l,
-                      "xwd__layout--rebusmode": r,
-                      "xwd__layout_container--mobile-newsreader": c,
-                      "xwd__news-android": d,
-                    }),
-                  },
+                  { className: "xwd__layout_container", ref: m },
+                  n.createElement(fd.Z, {
+                    getOpenModalName: os,
+                    getIsClosing: ls,
+                    modalMap: Sd,
+                    onClose: jt,
+                    onRemove: Tt,
+                    portalId: "portal-game-modals",
+                  }),
+                  n.createElement(bd, {
+                    portalId: "portal-toast-system",
+                    toastMap: Od,
+                    getOpenToastName: yd,
+                    getIsClosing: wd,
+                    isClosing: v,
+                    onClose: ia,
+                    onRemove: la,
+                  }),
                   n.createElement(
-                    "article",
+                    "div",
                     {
-                      id: "puzzle",
-                      "aria-label": "Main Puzzle Layout",
                       className: zl()({
-                        "xwd__layout_puzzle--mobile": l,
-                        "xwd__layout_puzzle--desktop": !l,
+                        "xwd__layout_container--mobile": l,
+                        "xwd__layout--rebusmode": r,
+                        "xwd__layout_container--mobile-newsreader": c,
+                        "xwd__news-android": d,
                       }),
                     },
                     n.createElement(
-                      "section",
+                      "article",
                       {
+                        id: "puzzle",
+                        "aria-label": "Main Puzzle Layout",
                         className: zl()({
-                          xwd__layout_clueBarAndBoard: !l,
-                          "xwd__mobile_layout--board_container": l,
+                          "xwd__layout_puzzle--mobile": l,
+                          "xwd__layout_puzzle--desktop": !l,
                         }),
-                        "aria-label": "Game Board with Clue Bar",
                       },
-                      !l && n.createElement(od, null),
-                      n.createElement(qc, { isMobile: l }),
-                      l &&
-                        n.createElement("span", {
-                          key: "breaker",
-                          className: "xwd__layout_breaker",
-                          "data-testid": "breaker",
-                        }),
+                      n.createElement(
+                        "section",
+                        {
+                          className: zl()({
+                            xwd__layout_clueBarAndBoard: !l,
+                            "xwd__mobile_layout--board_container": l,
+                          }),
+                          "aria-label": "Game Board with Clue Bar",
+                        },
+                        !l && n.createElement(od, null),
+                        n.createElement(qc, { isMobile: l }),
+                        l &&
+                          n.createElement("span", {
+                            key: "breaker",
+                            className: "xwd__layout_breaker",
+                            "data-testid": "breaker",
+                          }),
+                      ),
+                      t && n.createElement(cd, { lists: t }),
                     ),
-                    t && n.createElement(cd, { lists: t }),
+                    r && n.createElement(pd, { offset: p }),
+                    l &&
+                      n.createElement(
+                        "div",
+                        {
+                          className: "xwd__layout_controls--mobile",
+                          "data-testid": "mobile-controls",
+                        },
+                        n.createElement(od, null),
+                        n.createElement(fc, null),
+                      ),
                   ),
-                  r && n.createElement(pd, { offset: p }),
-                  l &&
-                    n.createElement(
-                      "div",
-                      {
-                        className: "xwd__layout_controls--mobile",
-                        "data-testid": "mobile-controls",
-                      },
-                      n.createElement(od, null),
-                      n.createElement(fc, null),
-                    ),
-                ),
-                n.createElement(td, null),
-              )
+                  n.createElement(td, null),
+                )
             );
           }
           const Pd = (e, t) => {
@@ -9456,8 +9448,9 @@ var _global =
                 var n = arguments.length, o = new Array(n), a = 0;
                 a < n;
                 a++
-              )
+              ) {
                 o[a] = arguments[a];
+              }
               const i = this;
               (clearTimeout(r), (r = setTimeout(() => e.apply(i, o), t)));
             };
@@ -9477,10 +9470,9 @@ var _global =
                 }, 50);
                 return (
                   window.addEventListener("resize", e),
-                  () => window.removeEventListener("resize", e)
+                    () => window.removeEventListener("resize", e)
                 );
-              }, []),
-              e
+              }, []), e
             );
           };
           const Cd = () => Ct(Pi.Pause),
@@ -9488,36 +9480,34 @@ var _global =
               t < 33 || (t > 126 && t < 161)
                 ? null
                 : e.length > 1
-                  ? String.fromCharCode(t).toUpperCase()
-                  : e.toUpperCase();
+                ? String.fromCharCode(t).toUpperCase()
+                : e.toUpperCase();
           var Td = r(32825);
           function Dd(e, t, r) {
             var n;
             return (
-              (t =
-                "symbol" ==
-                typeof (n = (function (e, t) {
-                  if ("object" != typeof e || !e) return e;
-                  var r = e[Symbol.toPrimitive];
-                  if (void 0 !== r) {
-                    var n = r.call(e, "string");
-                    if ("object" != typeof n) return n;
-                    throw new TypeError(
-                      "@@toPrimitive must return a primitive value.",
-                    );
-                  }
-                  return String(e);
-                })(t))
+              (t = "symbol" ==
+                    typeof (n = (function (e, t) {
+                      if ("object" != typeof e || !e) return e;
+                      var r = e[Symbol.toPrimitive];
+                      if (void 0 !== r) {
+                        var n = r.call(e, "string");
+                        if ("object" != typeof n) return n;
+                        throw new TypeError(
+                          "@@toPrimitive must return a primitive value.",
+                        );
+                      }
+                      return String(e);
+                    })(t))
                   ? n
                   : n + "") in e
                 ? Object.defineProperty(e, t, {
-                    value: r,
-                    enumerable: !0,
-                    configurable: !0,
-                    writable: !0,
-                  })
-                : (e[t] = r),
-              e
+                  value: r,
+                  enumerable: !0,
+                  configurable: !0,
+                  writable: !0,
+                })
+                : (e[t] = r), e
             );
           }
           class Nd extends n.PureComponent {
@@ -9561,19 +9551,19 @@ var _global =
                   this.isPaused() ||
                     (this.interval &&
                       (this.interval = window.clearInterval(this.interval)),
-                    e());
+                      e());
                 }),
                 Dd(this, "handleFocus", () => {
                   this.pauseTimeout &&
                     (window.clearTimeout(this.pauseTimeout),
-                    delete this.pauseTimeout);
+                      delete this.pauseTimeout);
                 }),
                 Dd(this, "handleBlur", () => {
                   const { clickHandler: e, timerIsVisible: t } = this.props;
                   t &&
                     !this.isPaused() &&
                     (si.tq && document.hidden && e(),
-                    this.pauseTimeout ||
+                      this.pauseTimeout ||
                       (this.pauseTimeout = window.setTimeout(e, 3e4)));
                 }));
             }
@@ -9727,21 +9717,21 @@ var _global =
                   c = "check" === i && t;
                 return (
                   (i = c ? "autocheck" : i),
-                  n.createElement(
-                    Id,
-                    {
-                      open: r === s,
-                      label: i,
-                      clickHandler: () => a("MENU", e.label.toUpperCase()),
-                      isAutocheckOn: c,
-                      key: i,
-                    },
-                    n.createElement(Ad, {
-                      items: l,
-                      itemHandler: o,
-                      isAutocheckOn: c,
-                    }),
-                  )
+                    n.createElement(
+                      Id,
+                      {
+                        open: r === s,
+                        label: i,
+                        clickHandler: () => a("MENU", e.label.toUpperCase()),
+                        isAutocheckOn: c,
+                        key: i,
+                      },
+                      n.createElement(Ad, {
+                        items: l,
+                        itemHandler: o,
+                        isAutocheckOn: c,
+                      }),
+                    )
                 );
               }),
             );
@@ -9792,14 +9782,11 @@ var _global =
                       r(n));
                   }
                   return (
-                    t(),
-                    window.addEventListener("resize", t),
-                    () => {
+                    t(), window.addEventListener("resize", t), () => {
                       window.removeEventListener("resize", t);
                     }
                   );
-                }, []),
-                t
+                }, []), t
               );
             },
             qd = {
@@ -9807,18 +9794,22 @@ var _global =
               dotStyles: "Icon-module_dotStyles__UH2RU",
             };
           const Zd = {
-            help: "M15 24H17.6667V21.3333H15V24ZM16.3333 2.66666C8.97333 2.66666 3 8.63999 3 16C3 23.36 8.97333 29.3333 16.3333 29.3333C23.6933 29.3333 29.6667 23.36 29.6667 16C29.6667 8.63999 23.6933 2.66666 16.3333 2.66666ZM16.3333 26.6667C10.4533 26.6667 5.66667 21.88 5.66667 16C5.66667 10.12 10.4533 5.33332 16.3333 5.33332C22.2133 5.33332 27 10.12 27 16C27 21.88 22.2133 26.6667 16.3333 26.6667ZM16.3333 7.99999C13.3867 7.99999 11 10.3867 11 13.3333H13.6667C13.6667 11.8667 14.8667 10.6667 16.3333 10.6667C17.8 10.6667 19 11.8667 19 13.3333C19 16 15 15.6667 15 20H17.6667C17.6667 17 21.6667 16.6667 21.6667 13.3333C21.6667 10.3867 19.28 7.99999 16.3333 7.99999Z",
+            help:
+              "M15 24H17.6667V21.3333H15V24ZM16.3333 2.66666C8.97333 2.66666 3 8.63999 3 16C3 23.36 8.97333 29.3333 16.3333 29.3333C23.6933 29.3333 29.6667 23.36 29.6667 16C29.6667 8.63999 23.6933 2.66666 16.3333 2.66666ZM16.3333 26.6667C10.4533 26.6667 5.66667 21.88 5.66667 16C5.66667 10.12 10.4533 5.33332 16.3333 5.33332C22.2133 5.33332 27 10.12 27 16C27 21.88 22.2133 26.6667 16.3333 26.6667ZM16.3333 7.99999C13.3867 7.99999 11 10.3867 11 13.3333H13.6667C13.6667 11.8667 14.8667 10.6667 16.3333 10.6667C17.8 10.6667 19 11.8667 19 13.3333C19 16 15 15.6667 15 20H17.6667C17.6667 17 21.6667 16.6667 21.6667 13.3333C21.6667 10.3867 19.28 7.99999 16.3333 7.99999Z",
             settings:
               "M26.8666 17.3372C26.918 16.9086 26.9523 16.4629 26.9523 16C26.9523 15.5371 26.918 15.0914 26.8494 14.6628L29.7466 12.3999C30.0038 12.1942 30.0724 11.8171 29.9181 11.5256L27.1752 6.77693C27.0037 6.46836 26.6437 6.3655 26.3351 6.46836L22.9236 7.83982C22.2036 7.29123 21.4493 6.84551 20.6093 6.50264L20.095 2.86827C20.0436 2.52541 19.7521 2.2854 19.4093 2.2854H13.9234C13.5806 2.2854 13.3063 2.52541 13.2548 2.86827L12.7405 6.50264C11.9005 6.84551 11.1291 7.30838 10.4262 7.83982L7.01469 6.46836C6.70611 6.34835 6.3461 6.46836 6.17467 6.77693L3.43175 11.5256C3.26031 11.8342 3.32889 12.1942 3.60318 12.3999L6.50039 14.6628C6.43182 15.0914 6.38039 15.5543 6.38039 16C6.38039 16.4457 6.41467 16.9086 6.48325 17.3372L3.58603 19.6001C3.32889 19.8058 3.26031 20.183 3.4146 20.4744L6.15752 25.2231C6.32896 25.5317 6.68896 25.6345 6.99754 25.5317L10.4091 24.1602C11.1291 24.7088 11.8834 25.1545 12.7234 25.4974L13.2377 29.1317C13.3063 29.4746 13.5806 29.7146 13.9234 29.7146H19.4093C19.7521 29.7146 20.0436 29.4746 20.0779 29.1317L20.5921 25.4974C21.4322 25.1545 22.2036 24.6916 22.9065 24.1602L26.318 25.5317C26.6266 25.6517 26.9866 25.5317 27.158 25.2231L29.9009 20.4744C30.0724 20.1658 30.0038 19.8058 29.7295 19.6001L26.8666 17.3372V17.3372ZM16.6663 21.143C13.8377 21.143 11.5234 18.8286 11.5234 16C11.5234 13.1714 13.8377 10.857 16.6663 10.857C19.495 10.857 21.8093 13.1714 21.8093 16C21.8093 18.8286 19.495 21.143 16.6663 21.143Z",
             stats:
               "M21.3332 14.6667V4H10.6665V12H2.6665V28H29.3332V14.6667H21.3332ZM13.3332 6.66667H18.6665V25.3333H13.3332V6.66667ZM5.33317 14.6667H10.6665V25.3333H5.33317V14.6667ZM26.6665 25.3333H21.3332V17.3333H26.6665V25.3333Z",
             forum:
               "M15.4538 15.0078C17.2881 13.8544 18.5 11.818 18.5 9.5C18.5 5.91015 15.5899 3 12 3C8.41015 3 5.5 5.91015 5.5 9.5C5.5 11.818 6.71194 13.8544 8.54624 15.0078C9.37338 15.5279 10 16.4687 10 17.6014V20H14V17.6014C14 16.4687 14.6266 15.5279 15.4538 15.0078ZM16.5184 16.7009C16.206 16.8974 16 17.2323 16 17.6014V20C16 21.1046 15.1046 22 14 22H10C8.89543 22 8 21.1046 8 20V17.6014C8 17.2323 7.79404 16.8974 7.48163 16.7009C5.08971 15.1969 3.5 12.5341 3.5 9.5C3.5 4.80558 7.30558 1 12 1C16.6944 1 20.5 4.80558 20.5 9.5C20.5 12.5341 18.9103 15.1969 16.5184 16.7009ZM8 17H16V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V17Z",
-            menu: "M3.93428 18.2929C3.61506 18.2929 3.34567 18.1831 3.1261 17.9636C2.90654 17.744 2.79675 17.4746 2.79675 17.1554C2.79675 16.8362 2.90654 16.5668 3.1261 16.3473C3.34567 16.1277 3.61506 16.0179 3.93428 16.0179H20.0658C20.385 16.0179 20.6544 16.1277 20.874 16.3473C21.0935 16.5668 21.2033 16.8362 21.2033 17.1554C21.2033 17.4746 21.0935 17.744 20.874 17.9636C20.6544 18.1831 20.385 18.2929 20.0658 18.2929H3.93428ZM3.93428 13.1375C3.61506 13.1375 3.34567 13.0277 3.1261 12.8081C2.90654 12.5886 2.79675 12.3192 2.79675 12C2.79675 11.6808 2.90654 11.4114 3.1261 11.1918C3.34567 10.9723 3.61506 10.8625 3.93428 10.8625H20.0658C20.385 10.8625 20.6544 10.9723 20.874 11.1918C21.0935 11.4114 21.2033 11.6808 21.2033 12C21.2033 12.3192 21.0935 12.5886 20.874 12.8081C20.6544 13.0277 20.385 13.1375 20.0658 13.1375H3.93428ZM3.93428 7.98206C3.61506 7.98206 3.34567 7.87227 3.1261 7.65271C2.90654 7.43314 2.79675 7.16375 2.79675 6.84453C2.79675 6.52533 2.90654 6.25595 3.1261 6.03638C3.34567 5.81681 3.61506 5.70703 3.93428 5.70703H20.0658C20.385 5.70703 20.6544 5.81681 20.874 6.03638C21.0935 6.25595 21.2033 6.52533 21.2033 6.84453C21.2033 7.16375 21.0935 7.43314 20.874 7.65271C20.6544 7.87227 20.385 7.98206 20.0658 7.98206H3.93428Z",
+            menu:
+              "M3.93428 18.2929C3.61506 18.2929 3.34567 18.1831 3.1261 17.9636C2.90654 17.744 2.79675 17.4746 2.79675 17.1554C2.79675 16.8362 2.90654 16.5668 3.1261 16.3473C3.34567 16.1277 3.61506 16.0179 3.93428 16.0179H20.0658C20.385 16.0179 20.6544 16.1277 20.874 16.3473C21.0935 16.5668 21.2033 16.8362 21.2033 17.1554C21.2033 17.4746 21.0935 17.744 20.874 17.9636C20.6544 18.1831 20.385 18.2929 20.0658 18.2929H3.93428ZM3.93428 13.1375C3.61506 13.1375 3.34567 13.0277 3.1261 12.8081C2.90654 12.5886 2.79675 12.3192 2.79675 12C2.79675 11.6808 2.90654 11.4114 3.1261 11.1918C3.34567 10.9723 3.61506 10.8625 3.93428 10.8625H20.0658C20.385 10.8625 20.6544 10.9723 20.874 11.1918C21.0935 11.4114 21.2033 11.6808 21.2033 12C21.2033 12.3192 21.0935 12.5886 20.874 12.8081C20.6544 13.0277 20.385 13.1375 20.0658 13.1375H3.93428ZM3.93428 7.98206C3.61506 7.98206 3.34567 7.87227 3.1261 7.65271C2.90654 7.43314 2.79675 7.16375 2.79675 6.84453C2.79675 6.52533 2.90654 6.25595 3.1261 6.03638C3.34567 5.81681 3.61506 5.70703 3.93428 5.70703H20.0658C20.385 5.70703 20.6544 5.81681 20.874 6.03638C21.0935 6.25595 21.2033 6.52533 21.2033 6.84453C21.2033 7.16375 21.0935 7.43314 20.874 7.65271C20.6544 7.87227 20.385 7.98206 20.0658 7.98206H3.93428Z",
             arrow:
               "M11.3301 4.06982H4.73006V5.26982H9.88006L3.81006 11.3398L4.66006 12.1898L10.7301 6.11982V11.2698H11.9301V4.66982C11.9301 4.33982 11.6601 4.06982 11.3301 4.06982Z",
-            more: "M 17.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0 M 9.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0 M 1.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0",
-            back: "M19.3333 24.3199L20.9867 22.6666L14.32 15.9999L20.9867 9.33326L19.3333 7.67993L11.84 15.1733C11.3867 15.6266 11.3867 16.3733 11.84 16.8266L19.3333 24.3199Z",
+            more:
+              "M 17.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0 M 9.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0 M 1.5,12 a 2.5,2.5 0 1,0 5,0 a 2.5,2.5 0 1,0 -5,0",
+            back:
+              "M19.3333 24.3199L20.9867 22.6666L14.32 15.9999L20.9867 9.33326L19.3333 7.67993L11.84 15.1733C11.3867 15.6266 11.3867 16.3733 11.84 16.8266L19.3333 24.3199Z",
           };
           function $d(e) {
             let {
@@ -9849,13 +9840,12 @@ var _global =
                   "data-testid": "icon-".concat(t),
                 },
                 n.createElement("path", {
-                  fill:
-                    i ||
+                  fill: i ||
                     (o
                       ? "var(--icon-disabled)"
                       : l
-                        ? "var(--color-tone-1)"
-                        : "var(--text)"),
+                      ? "var(--color-tone-1)"
+                      : "var(--text)"),
                   d: Zd[t],
                 }),
               ),
@@ -9898,8 +9888,8 @@ var _global =
                       href: s
                         ? "https://iteratehq.com/nytimes/69973703c4cac330500cd849"
                         : l
-                          ? "https://iteratehq.com/nytimes/6776fdbf57ff0d28b15d6a04"
-                          : "https://iteratehq.com/nytimes/677700fc30400c22acac0834",
+                        ? "https://iteratehq.com/nytimes/6776fdbf57ff0d28b15d6a04"
+                        : "https://iteratehq.com/nytimes/677700fc30400c22acac0834",
                       target: "_blank",
                       rel: "noopener noreferrer",
                       className: "xwd__menu--btnlink",
@@ -9936,8 +9926,8 @@ var _global =
                       href: s
                         ? "https://help.nytimes.com/3697860/the-midi-crossword"
                         : l
-                          ? "https://help.nytimes.com/360025912452-The-Mini-Crossword"
-                          : "https://help.nytimes.com/360052406391-The-New-York-Times-Crossword-Puzzle",
+                        ? "https://help.nytimes.com/360025912452-The-Mini-Crossword"
+                        : "https://help.nytimes.com/360052406391-The-New-York-Times-Crossword-Puzzle",
                       target: "_blank",
                       rel: "noopener noreferrer",
                       className: "xwd__menu--btnlink",
@@ -10097,8 +10087,8 @@ var _global =
                 "PENCIL" === e
                   ? v(Ht())
                   : "REBUS" === e
-                    ? v(zi())
-                    : t && v(Ft(t));
+                  ? v(zi())
+                  : t && v(Ft(t));
               },
               y = n.createElement(
                 "div",
@@ -10125,32 +10115,32 @@ var _global =
                     }),
                   s
                     ? n.createElement(
-                        "div",
-                        {
-                          className: zl()("xwd__toolbar--mobileResetButton", e),
-                        },
-                        n.createElement(Id, {
-                          clickHandler: () => b(K),
-                          label: e ? "" : "Reset",
-                          icon: e ? "xwd__toolbar_icon--reset-puzzle" : "",
-                          ariaLabel: "Reset",
-                        }),
-                      )
-                    : n.createElement(Md, {
-                        autoCheckEnabled: c,
-                        activeMenu: o,
-                        execute: b,
-                        toggleMenuAction: h,
-                        menuData: Xd,
+                      "div",
+                      {
+                        className: zl()("xwd__toolbar--mobileResetButton", e),
+                      },
+                      n.createElement(Id, {
+                        clickHandler: () => b(K),
+                        label: e ? "" : "Reset",
+                        icon: e ? "xwd__toolbar_icon--reset-puzzle" : "",
+                        ariaLabel: "Reset",
                       }),
+                    )
+                    : n.createElement(Md, {
+                      autoCheckEnabled: c,
+                      activeMenu: o,
+                      execute: b,
+                      toggleMenuAction: h,
+                      menuData: Xd,
+                    }),
                   e &&
                     n.createElement(Id, {
                       clickHandler: () => {
                         (d && v({ type: Yt, payload: !0 }), v(Ct(Pi.Info)));
                       },
                       icon: zl()("xwd__toolbar_icon--info", {
-                        "xwd__toolbar_icon--info-animation":
-                          d && d.length > 0 && !l,
+                        "xwd__toolbar_icon--info-animation": d &&
+                          d.length > 0 && !l,
                       }),
                       ariaLabel: "Info",
                     }),
@@ -10253,12 +10243,11 @@ var _global =
                     "-progress--",
                   )
                   .concat(l, "-star"),
-                c =
-                  t && a
-                    ? "mini__puzzle-icon"
-                    : r && a
-                      ? "midi__puzzle-icon"
-                      : "xwd__puzzle-icon";
+                c = t && a
+                  ? "mini__puzzle-icon"
+                  : r && a
+                  ? "midi__puzzle-icon"
+                  : "xwd__puzzle-icon";
               return n.createElement("div", {
                 "data-star": o,
                 "data-testid": "puzzle-icon",
@@ -10282,46 +10271,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? mu(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : mu(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : mu(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -10434,86 +10422,91 @@ var _global =
                     o,
                   );
                 }, []),
-                n.createElement(
-                  "div",
-                  { className: "NewsletterOptIn-module_container__rCRzy" },
-                  n.createElement("img", {
-                    src: "".concat(
-                      l.env.assets,
-                      "/assets/newsletters/gameplay-newsletter.svg",
-                    ),
-                    alt: "Gameplay Newsletter",
-                    className: "NewsletterOptIn-module_newsletterIcon__olqps",
-                  }),
                   n.createElement(
                     "div",
-                    { className: "NewsletterOptIn-module_textContent__us6EK" },
-                    n.createElement("span", null, "Newsletter"),
-                    n.createElement(
-                      "p",
-                      { className: "NewsletterOptIn-module_title__FQ47q" },
-                      "Gameplay",
-                    ),
+                    { className: "NewsletterOptIn-module_container__rCRzy" },
+                    n.createElement("img", {
+                      src: "".concat(
+                        l.env.assets,
+                        "/assets/newsletters/gameplay-newsletter.svg",
+                      ),
+                      alt: "Gameplay Newsletter",
+                      className: "NewsletterOptIn-module_newsletterIcon__olqps",
+                    }),
                     n.createElement(
                       "div",
                       {
-                        className: zl()(
-                          Pu,
-                          "NewsletterOptIn-module_description__wYsbw",
-                        ),
+                        className: "NewsletterOptIn-module_textContent__us6EK",
                       },
+                      n.createElement("span", null, "Newsletter"),
                       n.createElement(
                         "p",
-                        { className: zl()(xu, { [Cu]: r }), "aria-hidden": r },
-                        "Puzzles, brain teasers, solving tips and more, delivered to your inbox twice a week.",
+                        { className: "NewsletterOptIn-module_title__FQ47q" },
+                        "Gameplay",
                       ),
                       n.createElement(
-                        "p",
+                        "div",
                         {
-                          className: zl()(xu, { [Cu]: !r }),
-                          "aria-hidden": !r,
+                          className: zl()(
+                            Pu,
+                            "NewsletterOptIn-module_description__wYsbw",
+                          ),
                         },
-                        "Thanks for signing up. We’ve sent you a confirmation email.",
+                        n.createElement(
+                          "p",
+                          {
+                            className: zl()(xu, { [Cu]: r }),
+                            "aria-hidden": r,
+                          },
+                          "Puzzles, brain teasers, solving tips and more, delivered to your inbox twice a week.",
+                        ),
+                        n.createElement(
+                          "p",
+                          {
+                            className: zl()(xu, { [Cu]: !r }),
+                            "aria-hidden": !r,
+                          },
+                          "Thanks for signing up. We’ve sent you a confirmation email.",
+                        ),
                       ),
                     ),
-                  ),
-                  n.createElement(
-                    "button",
-                    {
-                      type: "button",
-                      className: zl()(
-                        Pu,
-                        "NewsletterOptIn-module_optInButton__ZyXiq",
-                      ),
-                      onClick: () => {
-                        ((0, l.ob)({
-                          region: "gameplay-newsletter",
-                          element: { name: "midi-page", label: "opt-in" },
-                          context: o,
-                        }),
-                          t());
+                    n.createElement(
+                      "button",
+                      {
+                        type: "button",
+                        className: zl()(
+                          Pu,
+                          "NewsletterOptIn-module_optInButton__ZyXiq",
+                        ),
+                        onClick: () => {
+                          ((0, l.ob)({
+                            region: "gameplay-newsletter",
+                            element: { name: "midi-page", label: "opt-in" },
+                            context: o,
+                          }),
+                            t());
+                        },
+                        "aria-label": "".concat(
+                          r
+                            ? "Signed up for the Gameplay newsletter"
+                            : "Sign up for the Gameplay newsletter",
+                        ),
+                        disabled: r,
                       },
-                      "aria-label": "".concat(
-                        r
-                          ? "Signed up for the Gameplay newsletter"
-                          : "Sign up for the Gameplay newsletter",
-                      ),
-                      disabled: r,
-                    },
-                    n.createElement("img", {
-                      className: zl()(xu, { [Cu]: r }),
-                      src: ju,
-                      "aria-hidden": "true",
-                      alt: "",
-                    }),
-                    n.createElement("img", {
-                      className: zl()(xu, { [Cu]: !r }),
-                      src: Tu,
-                      "aria-hidden": "true",
-                      alt: "",
-                    }),
-                  ),
-                )
+                      n.createElement("img", {
+                        className: zl()(xu, { [Cu]: r }),
+                        src: ju,
+                        "aria-hidden": "true",
+                        alt: "",
+                      }),
+                      n.createElement("img", {
+                        className: zl()(xu, { [Cu]: !r }),
+                        src: Tu,
+                        "aria-hidden": "true",
+                        alt: "",
+                      }),
+                    ),
+                  )
               );
             };
           var Nu = r(71646);
@@ -10550,27 +10543,27 @@ var _global =
               (0, n.useEffect)(() => {
                 (0, l.hX)(o, a);
               }, [t]),
-              n.createElement(
-                "a",
-                {
-                  className: "midi-cta",
-                  href: "/crosswords/game/midi",
-                  onClick: () =>
-                    (0, l.ob)({
-                      element: { name: a, label: "next-game" },
-                      context: "midi-page",
-                    }),
-                },
-                n.createElement("img", {
-                  src: "".concat(l.env.assets, "/assets/icons/midi.svg"),
-                  alt: "The Midi",
-                  className: "midi-icon",
-                }),
                 n.createElement(
-                  "p",
-                  null,
-                  t
-                    ? n.createElement(
+                  "a",
+                  {
+                    className: "midi-cta",
+                    href: "/crosswords/game/midi",
+                    onClick: () =>
+                      (0, l.ob)({
+                        element: { name: a, label: "next-game" },
+                        context: "midi-page",
+                      }),
+                  },
+                  n.createElement("img", {
+                    src: "".concat(l.env.assets, "/assets/icons/midi.svg"),
+                    alt: "The Midi",
+                    className: "midi-icon",
+                  }),
+                  n.createElement(
+                    "p",
+                    null,
+                    t
+                      ? n.createElement(
                         n.Fragment,
                         null,
                         "Play ",
@@ -10581,24 +10574,24 @@ var _global =
                         t,
                         "”",
                       )
-                    : n.createElement(
+                      : n.createElement(
                         n.Fragment,
                         null,
                         "Solve this themed ",
                         n.createElement("strong", null, "Midi"),
                         " puzzle",
                       ),
-                ),
-                n.createElement("img", {
-                  src: "".concat(
-                    l.env.assets,
-                    "/assets/wordle/arrow-right.svg",
                   ),
-                  "aria-hidden": "true",
-                  className: "arrow",
-                }),
-                n.createElement("span", { className: "new-label" }, "New"),
-              )
+                  n.createElement("img", {
+                    src: "".concat(
+                      l.env.assets,
+                      "/assets/wordle/arrow-right.svg",
+                    ),
+                    "aria-hidden": "true",
+                    className: "arrow",
+                  }),
+                  n.createElement("span", { className: "new-label" }, "New"),
+                )
             );
           };
           var Au = r(82371),
@@ -10606,18 +10599,16 @@ var _global =
             Ru = r(20931);
           function Bu() {
             return (
-              (Bu = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              Bu.apply(this, arguments)
+              (Bu = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), Bu.apply(this, arguments)
             );
           }
           const Uu = (e) => {
@@ -10678,7 +10669,7 @@ var _global =
                         e,
                       ),
                     ),
-                  ),
+                  )
                 ),
               ),
             );
@@ -10708,12 +10699,12 @@ var _global =
                 },
               },
               s = (function (e) {
-                let t =
-                  arguments.length > 1 && void 0 !== arguments[1]
-                    ? arguments[1]
-                    : window;
-                if (!t || !t.navigationLinks || !t.navigationLinks.subscribe)
+                let t = arguments.length > 1 && void 0 !== arguments[1]
+                  ? arguments[1]
+                  : window;
+                if (!t || !t.navigationLinks || !t.navigationLinks.subscribe) {
                   return Yu;
+                }
                 const r = t.navigationLinks.subscribe;
                 return e && r[e] ? r[e] : r.default || Yu;
               })(r, window);
@@ -10731,17 +10722,15 @@ var _global =
                   href: s,
                   onClick: (e) => {
                     var t;
-                    const r =
-                        (null === (t = e.currentTarget) || void 0 === t
-                          ? void 0
-                          : t.getAttribute("href")) || "",
+                    const r = (null === (t = e.currentTarget) || void 0 === t
+                        ? void 0
+                        : t.getAttribute("href")) || "",
                       n = (0, Ul.I3)(r);
                     i
                       ? (0, l[i])()
                       : r && n
-                        ? ((0, Ul.Hu)(r),
-                          (0, Zt.$)("click", "", a, "subscribe"))
-                        : r && !n && (window.location.href = r);
+                      ? ((0, Ul.Hu)(r), (0, Zt.$)("click", "", a, "subscribe"))
+                      : r && !n && (window.location.href = r);
                   },
                   className: "xwd__promotional-content--link",
                 },
@@ -10753,41 +10742,41 @@ var _global =
             (0, n.useEffect)(() => {
               (0, Zt.h)("next-game", "mini-page", "spelling-bee");
             }, []),
-            n.createElement(
-              "a",
-              {
-                href: "/puzzles/spelling-bee",
-                className:
-                  "xwd__nextGameSuggestion--spellingBeeCardEmphasis xwd__nextGameSuggestion--spellingBeeBase",
-                onClick: () => {
-                  (0, Zt.$)(
-                    "",
-                    "spelling-bee",
-                    "mini-page",
-                    "next-game",
-                    "",
-                    !0,
-                  );
-                },
-              },
-              n.createElement(Td.Z, { icon: "spelling-bee" }),
               n.createElement(
-                "div",
-                null,
+                "a",
+                {
+                  href: "/puzzles/spelling-bee",
+                  className:
+                    "xwd__nextGameSuggestion--spellingBeeCardEmphasis xwd__nextGameSuggestion--spellingBeeBase",
+                  onClick: () => {
+                    (0, Zt.$)(
+                      "",
+                      "spelling-bee",
+                      "mini-page",
+                      "next-game",
+                      "",
+                      !0,
+                    );
+                  },
+                },
+                n.createElement(Td.Z, { icon: "spelling-bee" }),
                 n.createElement(
-                  "span",
-                  { className: "xwd__nextGameSuggestion--gameTitle" },
-                  "Spelling Bee",
-                ),
-                n.createElement(
-                  "span",
+                  "div",
                   null,
-                  "Tackle ",
-                  n.createElement("strong", null, "today's puzzle."),
+                  n.createElement(
+                    "span",
+                    { className: "xwd__nextGameSuggestion--gameTitle" },
+                    "Spelling Bee",
+                  ),
+                  n.createElement(
+                    "span",
+                    null,
+                    "Tackle ",
+                    n.createElement("strong", null, "today's puzzle."),
+                  ),
                 ),
-              ),
-              n.createElement(Td.Z, { icon: "caret-right" }),
-            )
+                n.createElement(Td.Z, { icon: "caret-right" }),
+              )
           );
           var qu = () =>
             n.createElement(
@@ -10825,8 +10814,8 @@ var _global =
               y = b
                 ? "mini-congrats-modal"
                 : h
-                  ? "midi-congrats-modal"
-                  : "daily-congrats-modal",
+                ? "midi-congrats-modal"
+                : "daily-congrats-modal",
               w = p && "Newsreader",
               _ = "".concat(r ? "mini" : "daily", "Congrats").concat(w),
               E = (0, a.v9)(Ae),
@@ -10836,8 +10825,10 @@ var _global =
             (0, n.useEffect)(() => {
               i || (0, Zt.h)("softpaywall", y, t);
             }, [i]);
-            if (O && !c) return n.createElement(qu, null);
-            if (k && !c)
+            if (O && !c) {
+              return n.createElement(qu, null);
+            }
+            if (k && !c) {
               return n.createElement(
                 "div",
                 { className: "leaderboard-deprecation" },
@@ -10870,6 +10861,7 @@ var _global =
                     isMini: r,
                   }),
               );
+            }
             if (u && m) {
               const e = r
                   ? "/crosswords/archive/mini"
@@ -10898,22 +10890,22 @@ var _global =
             }
             return s
               ? Hu({
-                  message:
-                    "Have you played our new matching game? It’s mesmerizing.",
-                  eventLabel: v,
-                  clickLabel: "tiles",
-                  subscribeButtonTxt: "Try Tiles >>",
-                  subscribeLinkContext: _,
-                })
+                message:
+                  "Have you played our new matching game? It’s mesmerizing.",
+                eventLabel: v,
+                clickLabel: "tiles",
+                subscribeButtonTxt: "Try Tiles >>",
+                subscribeLinkContext: _,
+              })
               : !c &&
-                  Hu({
-                    message:
-                      "Want to be a better solver? Up your game with puzzles for every skill level.",
-                    eventLabel: v,
-                    clickLabel: "hub",
-                    subscribeButtonTxt: "More Puzzles",
-                    subscribeLinkContext: _,
-                  });
+                Hu({
+                  message:
+                    "Want to be a better solver? Up your game with puzzles for every skill level.",
+                  eventLabel: v,
+                  clickLabel: "hub",
+                  subscribeButtonTxt: "More Puzzles",
+                  subscribeLinkContext: _,
+                });
           }
           function $u(e) {
             let { streakLength: t, verticalStreakLength: r = 0 } = e;
@@ -10923,32 +10915,28 @@ var _global =
               s = r + 1;
             let c;
             return (
-              (c =
-                l >= s
-                  ? "YOU HAVE A ".concat(l, "-DAY STREAK")
-                  : "".concat(s, " ").concat(i, "s in a row")),
-              o
-                ? null
-                : n.createElement(
-                    "div",
-                    { className: "xwd__congrats-modal--streakLength" },
-                    n.createElement("i", {
-                      className: "xwd__congrats-modal--starIcon",
-                    }),
-                    c,
-                  )
+              (c = l >= s
+                ? "YOU HAVE A ".concat(l, "-DAY STREAK")
+                : "".concat(s, " ").concat(i, "s in a row")),
+                o ? null : n.createElement(
+                  "div",
+                  { className: "xwd__congrats-modal--streakLength" },
+                  n.createElement("i", {
+                    className: "xwd__congrats-modal--starIcon",
+                  }),
+                  c,
+                )
             );
           }
           const Vu = function () {
-            let e =
-              arguments.length > 0 && void 0 !== arguments[0]
-                ? arguments[0]
-                : window.navigator.userAgent;
+            let e = arguments.length > 0 && void 0 !== arguments[0]
+              ? arguments[0]
+              : window.navigator.userAgent;
             return /Android/.test(e)
               ? "https://play.google.com/store/apps/details?id=com.nytimes.crossword&referrer=utm_source%3DAndroidReaderMini%26utm_medium%3DCongratsModule%26utm_term%3DgetTheApp%26utm_campaign%3DMiniUpsell&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
               : /|iPad|iPhone|/.test(e)
-                ? "https://itunes.apple.com/us/app/nytimes-crossword-daily-word/id307569751?mt=8"
-                : "";
+              ? "https://itunes.apple.com/us/app/nytimes-crossword-daily-word/id307569751?mt=8"
+              : "";
           };
           function Xu(e) {
             let { appCta: t, HDTest: r } = e;
@@ -10959,25 +10947,25 @@ var _global =
                 type: "button",
                 onClick: r
                   ? () => {
-                      const e = Vu();
-                      (window.open(e, "_blank"),
-                        (0, Zt.$)(
-                          "congrats-modal",
-                          "game-page",
-                          "game-page",
-                          "download-app",
-                          "GUAC_HD_XWORD_UPSELL_TEST_245",
-                          void 0,
-                          void 0,
-                        ),
-                        localStorage.setItem("app-link-clicked", "true"));
-                    }
+                    const e = Vu();
+                    (window.open(e, "_blank"),
+                      (0, Zt.$)(
+                        "congrats-modal",
+                        "game-page",
+                        "game-page",
+                        "download-app",
+                        "GUAC_HD_XWORD_UPSELL_TEST_245",
+                        void 0,
+                        void 0,
+                      ),
+                      localStorage.setItem("app-link-clicked", "true"));
+                  }
                   : () => {
-                      const e = Vu();
-                      (window.open(e, "_blank"),
-                        (0, Zt.$)("click", "".concat(o), "mini-page", t),
-                        localStorage.setItem("app-link-clicked", "true"));
-                    },
+                    const e = Vu();
+                    (window.open(e, "_blank"),
+                      (0, Zt.$)("click", "".concat(o), "mini-page", t),
+                      localStorage.setItem("app-link-clicked", "true"));
+                  },
                 className: "xwd__modal--subtle-button",
               },
               "Get the app",
@@ -11000,46 +10988,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? Ku(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : Ku(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : Ku(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -11106,7 +11093,8 @@ var _global =
               title: "Strands",
               description: "Find hidden words",
             },
-            sm = (e) => Ju(Ju({}, e), {}, { showLock: !0 }),
+            sm = (e) =>
+              Ju(Ju({}, e), {}, { showLock: !0 }),
             cm = [Qu, em, tm, sm(rm), sm(nm), sm(om)],
             dm = [Qu, em, tm, rm, nm, om],
             um = [am, im, om, sm(Qu), sm(em), sm(lm)],
@@ -11152,7 +11140,7 @@ var _global =
                   [u, { loading: m, error: p }] = (0, Nu.D)(Ki),
                   f = (0, n.useCallback)(
                     zu(function* () {
-                      if (!(c || d || s))
+                      if (!(c || d || s)) {
                         try {
                           var e;
                           (i(null),
@@ -11165,9 +11153,9 @@ var _global =
                                   },
                                 },
                               })).data) &&
-                              void 0 !== e &&
-                              e.createNoCaptchaNewsletterSubscription &&
-                              o(!0));
+                            void 0 !== e &&
+                            e.createNoCaptchaNewsletterSubscription &&
+                            o(!0));
                         } catch (e) {
                           (i(e),
                             console.error(
@@ -11175,6 +11163,7 @@ var _global =
                               e,
                             ));
                         }
+                      }
                     }),
                     [s, c, d, l, t, u],
                   );
@@ -11199,10 +11188,9 @@ var _global =
                 );
               })(),
               A = (P || x) && l && (null == z ? void 0 : z.canShow),
-              M =
-                (null == z || null === (t = z.content) || void 0 === t
-                  ? void 0
-                  : t.familyPlanUpgradeRoute) || null,
+              M = (null == z || null === (t = z.content) || void 0 === t
+                ? void 0
+                : t.familyPlanUpgradeRoute) || null,
               R = (0, a.v9)(Ae),
               B = (s || l) && P,
               U = !p || B,
@@ -11240,13 +11228,14 @@ var _global =
                       (0, Zt.$)("share-tools", void 0, "native-share", "share");
                     })
                     .catch((e) =>
-                      console.warn("Sharing ".concat(t, " time failed"), e),
+                      console.warn("Sharing ".concat(t, " time failed"), e)
                     ),
                     i());
-                } else
+                } else {
                   (i(),
                     (0, Zt.$)("congrats", R, "".concat(t, "-page"), "share"),
                     H(Ct(Pi.Share)));
+                }
               },
               [$, V] = (0, n.useState)(!1),
               [X, K] = (0, n.useState)(!1),
@@ -11257,8 +11246,8 @@ var _global =
             (0, n.useEffect)(() => {
               (C("CONV_GUAC_XWord_HDUpsell_Test_0624"),
                 (!re && !ne) ||
-                  l ||
-                  (K(!0),
+                l ||
+                (K(!0),
                   (0, Zt.h)(
                     "congrats-modal",
                     "",
@@ -11276,43 +11265,41 @@ var _global =
               ],
               ae = B
                 ? [
-                    n.createElement(dl.zx, {
-                      key: "share your results",
-                      action: Z,
-                      text: "Share your results",
-                    }),
-                  ]
+                  n.createElement(dl.zx, {
+                    key: "share your results",
+                    action: Z,
+                    text: "Share your results",
+                  }),
+                ]
                 : [
+                  n.createElement(dl.zx, {
+                    key: "share results",
+                    action: Z,
+                    text: "Share your results",
+                    color: "secondary",
+                    className: "xwd__congrats-modal--shareButton",
+                  }),
+                  ...(A ? [] : [
                     n.createElement(dl.zx, {
-                      key: "share results",
-                      action: Z,
-                      text: "Share your results",
-                      color: "secondary",
-                      className: "xwd__congrats-modal--shareButton",
+                      action: E,
+                      text: "View all games",
+                      key: "view all games",
                     }),
-                    ...(A
-                      ? []
-                      : [
-                          n.createElement(dl.zx, {
-                            action: E,
-                            text: "View all games",
-                            key: "view all games",
-                          }),
-                        ]),
-                  ],
+                  ]),
+                ],
               ie = [
                 n.createElement(dl.zx, {
                   action: () => {
                     X
                       ? ((0, Zt.$)(
-                          "congrats-modal",
-                          "game-page",
-                          "game-page",
-                          "admire-puzzle",
-                          "GUAC_HD_XWORD_UPSELL_TEST_245",
-                          void 0,
-                          void 0,
-                        ),
+                        "congrats-modal",
+                        "game-page",
+                        "game-page",
+                        "admire-puzzle",
+                        "GUAC_HD_XWORD_UPSELL_TEST_245",
+                        void 0,
+                        void 0,
+                      ),
                         i())
                       : i();
                   },
@@ -11325,14 +11312,14 @@ var _global =
                   action: () => {
                     X
                       ? ((0, Zt.$)(
-                          "congrats-modal",
-                          "game-page",
-                          "game-page",
-                          "view-games",
-                          "GUAC_HD_XWORD_UPSELL_TEST_245",
-                          void 0,
-                          "https://www.nytimes.com/crosswords",
-                        ),
+                        "congrats-modal",
+                        "game-page",
+                        "game-page",
+                        "view-games",
+                        "GUAC_HD_XWORD_UPSELL_TEST_245",
+                        void 0,
+                        "https://www.nytimes.com/crosswords",
+                      ),
                         E())
                       : E();
                   },
@@ -11362,92 +11349,86 @@ var _global =
                       return (
                         e
                           ? t.push(
-                              _u,
-                              vu,
-                              yu,
-                              pu(pu({}, Eu), {}, { description: "" }),
-                              Ou,
-                              Su,
-                            )
+                            _u,
+                            vu,
+                            yu,
+                            pu(pu({}, Eu), {}, { description: "" }),
+                            Ou,
+                            Su,
+                          )
                           : t.push(
-                              _u,
-                              vu,
-                              yu,
-                              pu(
-                                pu({}, Eu),
-                                {},
-                                { showLock: !0, description: "" },
-                              ),
-                              pu(pu({}, Ou), {}, { showLock: !0 }),
-                              pu(pu({}, Su), {}, { showLock: !0 }),
+                            _u,
+                            vu,
+                            yu,
+                            pu(
+                              pu({}, Eu),
+                              {},
+                              { showLock: !0, description: "" },
                             ),
-                        t
+                            pu(pu({}, Ou), {}, { showLock: !0 }),
+                            pu(pu({}, Su), {}, { showLock: !0 }),
+                          ), t
                       );
                     })(p),
                     r = ((e) => {
                       const t = [];
                       return (
-                        e
-                          ? t.push(gu, fu, Su, _u, vu, hu)
-                          : t.push(
-                              gu,
-                              fu,
-                              Su,
-                              pu(pu({}, _u), {}, { showLock: !0 }),
-                              pu(pu({}, vu), {}, { showLock: !0 }),
-                              pu(pu({}, hu), {}, { showLock: !0 }),
-                            ),
-                        t
+                        e ? t.push(gu, fu, Su, _u, vu, hu) : t.push(
+                          gu,
+                          fu,
+                          Su,
+                          pu(pu({}, _u), {}, { showLock: !0 }),
+                          pu(pu({}, vu), {}, { showLock: !0 }),
+                          pu(pu({}, hu), {}, { showLock: !0 }),
+                        ), t
                       );
                     })(p);
                   (te(e), Q(l ? t : r));
                 }
               }, [P, p]),
-              n.createElement(
-                ss.Z,
-                {
-                  bodyClassName: "xwd__congrats-modal",
-                  close: i,
-                  closeLabel: "Back to puzzle",
-                  footer: s
-                    ? null
-                    : ce
-                      ? n.createElement(
-                          n.Fragment,
-                          null,
-                          r && n.createElement(Xu, { appCta: o, HDTest: X }),
-                          U &&
-                            n.createElement(Zu, {
-                              isMini: l,
-                              isMidi: s,
-                              didRenderGamesCarousel: A,
-                              appCta: o,
-                              registeredNonSub: m,
-                              hasXwd: p,
-                            }),
-                        )
-                      : null,
-                  isClosing: O,
-                  onRemove: S,
-                  containerClassName: de
-                    ? "container-with-inset"
-                    : "xwd__congrats-container",
-                },
                 n.createElement(
-                  "div",
+                  ss.Z,
                   {
-                    className: B
-                      ? "mini__congrats-modal--content"
-                      : "xwd__congrats-modal--content",
-                  },
-                  n.createElement(uu, { isMini: l, isMidi: s, isGold: f }),
-                  n.createElement(dl.Dx, {
-                    size: "large",
-                    text: j ? "See you tomorrow!" : "Congratulations!",
-                  }),
-                  d
-                    ? j
+                    bodyClassName: "xwd__congrats-modal",
+                    close: i,
+                    closeLabel: "Back to puzzle",
+                    footer: s ? null : ce
                       ? n.createElement(
+                        n.Fragment,
+                        null,
+                        r && n.createElement(Xu, { appCta: o, HDTest: X }),
+                        U &&
+                          n.createElement(Zu, {
+                            isMini: l,
+                            isMidi: s,
+                            didRenderGamesCarousel: A,
+                            appCta: o,
+                            registeredNonSub: m,
+                            hasXwd: p,
+                          }),
+                      )
+                      : null,
+                    isClosing: O,
+                    onRemove: S,
+                    containerClassName: de
+                      ? "container-with-inset"
+                      : "xwd__congrats-container",
+                  },
+                  n.createElement(
+                    "div",
+                    {
+                      className: B
+                        ? "mini__congrats-modal--content"
+                        : "xwd__congrats-modal--content",
+                    },
+                    n.createElement(uu, { isMini: l, isMidi: s, isGold: f }),
+                    n.createElement(dl.Dx, {
+                      size: "large",
+                      text: j ? "See you tomorrow!" : "Congratulations!",
+                    }),
+                    d
+                      ? j
+                        ? n.createElement(
                           "div",
                           {
                             className:
@@ -11463,22 +11444,22 @@ var _global =
                           " Crossword",
                           u
                             ? n.createElement(
-                                n.Fragment,
-                                null,
-                                " ",
-                                "in",
-                                " ",
-                                n.createElement(
-                                  "span",
-                                  {
-                                    className: zl()(
-                                      "xwd__bold",
-                                      "xwd__no-wrap",
-                                    ),
-                                  },
-                                  g,
-                                ),
-                              )
+                              n.Fragment,
+                              null,
+                              " ",
+                              "in",
+                              " ",
+                              n.createElement(
+                                "span",
+                                {
+                                  className: zl()(
+                                    "xwd__bold",
+                                    "xwd__no-wrap",
+                                  ),
+                                },
+                                g,
+                              ),
+                            )
                             : "",
                           ".",
                           n.createElement("br", null),
@@ -11488,154 +11469,160 @@ var _global =
                             "Over 18.5 million Midi puzzles solved. Glad you joined the fun!",
                           ),
                         )
-                      : d && "mini" === d.toLowerCase()
+                        : d && "mini" === d.toLowerCase()
                         ? n.createElement(
-                            "div",
-                            {
-                              className: B
-                                ? "xwd__center mini__congrats-modal--message"
-                                : "xwd__center xwd__congrats-modal--message",
-                            },
-                            "You solved",
-                            " ",
-                            n.createElement(
-                              "span",
-                              { className: "xwd__bold" },
-                              "The ",
-                              d,
-                            ),
-                            n.createElement("br", null),
-                            " ",
-                            u && G,
-                          )
-                        : n.createElement(
-                            "div",
-                            {
-                              className:
-                                "xwd__center xwd__congrats-modal--message",
-                            },
-                            "You solved a ",
-                            n.createElement(
-                              "span",
-                              { className: "xwd__bold" },
-                              d,
-                            ),
-                            n.createElement("br", null),
-                            "Crossword ",
-                            u && G,
-                          )
-                    : se,
-                  f &&
-                    (v > 0 || b > 0) &&
-                    n.createElement($u, {
-                      streakLength: v,
-                      verticalStreakLength: b,
-                    }),
-                  n.createElement(du.Z, {
-                    buttons: (() => {
-                      if (le)
-                        return [
-                          n.createElement(dl.zx, {
-                            action: E,
-                            text: "View all games",
-                            key: "view all games",
-                            className: "spacing-top",
-                          }),
-                        ];
-                      let e;
-                      return (
-                        (e = s ? oe : l ? ae : ie),
-                        h ? [...e].reverse() : e
-                      );
-                    })(),
-                    wrapperClassName: B
-                      ? "mini__congrats-modal--buttons-wrapper"
-                      : "xwd__congrats-modal--buttons-wrapper",
-                  }),
-                  j &&
-                    !N &&
-                    n.createElement(Du, { handleOptIn: T, newOptInSuccess: D }),
-                ),
-                $ &&
-                  n.createElement(
-                    "div",
-                    {
-                      className: "xwd__congrats-modal--homeDelivery_container",
-                    },
-                    n.createElement("hr", {
-                      className: "xwd__congrats-modal--homeDelivery_divider",
-                    }),
-                    n.createElement(
-                      "a",
-                      {
-                        href: "https://www.nytimes.com/subscription/home-delivery?source=crossword-complete",
-                        onClick: () => {
-                          (0, Zt.$)(
-                            "congrats-modal",
-                            "game-page",
-                            "goto-subscribe",
-                            "Solve in pencil, too. - Enjoy the Crossword in print.",
-                            "GUAC_HD_XWORD_UPSELL_TEST_245",
-                            void 0,
-                            "https://www.nytimes.com/subscription/home-delivery?source=crossword-complete",
-                          );
-                        },
-                      },
-                      n.createElement(
-                        "div",
-                        {
-                          className:
-                            "xwd__congrats-modal--homeDelivery_testButton",
-                        },
-                        n.createElement("i", {
-                          className:
-                            "xwd__congrats-modal--homeDelivery_newspaper_icon",
-                        }),
-                        n.createElement(
-                          "p",
+                          "div",
                           {
-                            className: "xwd__congrats-modal--homeDelivery_main",
+                            className: B
+                              ? "xwd__center mini__congrats-modal--message"
+                              : "xwd__center xwd__congrats-modal--message",
                           },
-                          "Solve in pencil, too.",
-                          n.createElement("br", null),
+                          "You solved",
+                          " ",
                           n.createElement(
                             "span",
-                            {
-                              className:
-                                "xwd__congrats-modal--homeDelivery_sub",
-                            },
-                            "Enjoy the Crossword in print.",
+                            { className: "xwd__bold" },
+                            "The ",
+                            d,
                           ),
-                        ),
-                        n.createElement("i", {
-                          className:
-                            "xwd__congrats-modal--homeDelivery_caret_icon",
-                        }),
-                      ),
-                    ),
-                  ),
-                q && n.createElement(Iu, { midiTitle: k, isMini: l }),
-                (l || c) &&
-                  !q &&
-                  M &&
-                  n.createElement(
-                    "div",
-                    { className: "xwd_phoenix-congrats-end-screen" },
-                    M &&
-                      n.createElement(au.GamesEndScreenFamilyUpgradeBanner, {
-                        familyPlanUpgradeRoute: M,
-                        unit: z,
-                        topDecorator: n.createElement(au.VerticalSpacer, {
-                          space: 2,
-                        }),
+                          n.createElement("br", null),
+                          " ",
+                          u && G,
+                        )
+                        : n.createElement(
+                          "div",
+                          {
+                            className:
+                              "xwd__center xwd__congrats-modal--message",
+                          },
+                          "You solved a ",
+                          n.createElement(
+                            "span",
+                            { className: "xwd__bold" },
+                            d,
+                          ),
+                          n.createElement("br", null),
+                          "Crossword ",
+                          u && G,
+                        )
+                      : se,
+                    f &&
+                      (v > 0 || b > 0) &&
+                      n.createElement($u, {
+                        streakLength: v,
+                        verticalStreakLength: b,
+                      }),
+                    n.createElement(du.Z, {
+                      buttons: (() => {
+                        if (le) {
+                          return [
+                            n.createElement(dl.zx, {
+                              action: E,
+                              text: "View all games",
+                              key: "view all games",
+                              className: "spacing-top",
+                            }),
+                          ];
+                        }
+                        let e;
+                        return (
+                          (e = s ? oe : l ? ae : ie), h ? [...e].reverse() : e
+                        );
+                      })(),
+                      wrapperClassName: B
+                        ? "mini__congrats-modal--buttons-wrapper"
+                        : "xwd__congrats-modal--buttons-wrapper",
+                    }),
+                    j &&
+                      !N &&
+                      n.createElement(Du, {
+                        handleOptIn: T,
+                        newOptInSuccess: D,
                       }),
                   ),
-                (A || s) &&
-                  n.createElement(
-                    n.Fragment,
-                    null,
-                    I
-                      ? n.createElement(cu.L, {
+                  $ &&
+                    n.createElement(
+                      "div",
+                      {
+                        className:
+                          "xwd__congrats-modal--homeDelivery_container",
+                      },
+                      n.createElement("hr", {
+                        className: "xwd__congrats-modal--homeDelivery_divider",
+                      }),
+                      n.createElement(
+                        "a",
+                        {
+                          href:
+                            "https://www.nytimes.com/subscription/home-delivery?source=crossword-complete",
+                          onClick: () => {
+                            (0, Zt.$)(
+                              "congrats-modal",
+                              "game-page",
+                              "goto-subscribe",
+                              "Solve in pencil, too. - Enjoy the Crossword in print.",
+                              "GUAC_HD_XWORD_UPSELL_TEST_245",
+                              void 0,
+                              "https://www.nytimes.com/subscription/home-delivery?source=crossword-complete",
+                            );
+                          },
+                        },
+                        n.createElement(
+                          "div",
+                          {
+                            className:
+                              "xwd__congrats-modal--homeDelivery_testButton",
+                          },
+                          n.createElement("i", {
+                            className:
+                              "xwd__congrats-modal--homeDelivery_newspaper_icon",
+                          }),
+                          n.createElement(
+                            "p",
+                            {
+                              className:
+                                "xwd__congrats-modal--homeDelivery_main",
+                            },
+                            "Solve in pencil, too.",
+                            n.createElement("br", null),
+                            n.createElement(
+                              "span",
+                              {
+                                className:
+                                  "xwd__congrats-modal--homeDelivery_sub",
+                              },
+                              "Enjoy the Crossword in print.",
+                            ),
+                          ),
+                          n.createElement("i", {
+                            className:
+                              "xwd__congrats-modal--homeDelivery_caret_icon",
+                          }),
+                        ),
+                      ),
+                    ),
+                  q && n.createElement(Iu, { midiTitle: k, isMini: l }),
+                  (l || c) &&
+                    !q &&
+                    M &&
+                    n.createElement(
+                      "div",
+                      { className: "xwd_phoenix-congrats-end-screen" },
+                      M &&
+                        n.createElement(au.GamesEndScreenFamilyUpgradeBanner, {
+                          familyPlanUpgradeRoute: M,
+                          unit: z,
+                          topDecorator: n.createElement(au.VerticalSpacer, {
+                            space: 2,
+                          }),
+                        }),
+                    ),
+                  (A || s) &&
+                    n.createElement(
+                      n.Fragment,
+                      null,
+                      I
+                        ? n.createElement(cu.L, {
                           title: ee,
                           gamesArray: J,
                           tracking: {
@@ -11645,7 +11632,7 @@ var _global =
                             eventDate: "",
                           },
                         })
-                      : n.createElement(
+                        : n.createElement(
                           "div",
                           { className: "xwd__congrats-modal--omaESAContent" },
                           n.createElement(lu(), {
@@ -11654,12 +11641,12 @@ var _global =
                             fromGame: l
                               ? "mini-page"
                               : s
-                                ? "midi-page"
-                                : "game-page",
+                              ? "midi-page"
+                              : "game-page",
                           }),
                         ),
-                  ),
-              )
+                    ),
+                )
             );
           }
           function fm(e) {
@@ -11689,9 +11676,11 @@ var _global =
                     key: "Back to the guide",
                     action: () => {},
                     isLink: !0,
-                    url: "https://www.nytimes.com/guides/crosswords/how-to-solve-a-crossword-puzzle#".concat(
-                      ji(i),
-                    ),
+                    url:
+                      "https://www.nytimes.com/guides/crosswords/how-to-solve-a-crossword-puzzle#"
+                        .concat(
+                          ji(i),
+                        ),
                     text: "Back to the guide",
                   }),
                 ],
@@ -11729,8 +11718,8 @@ var _global =
               return t
                 ? "Continue to The Mini Crossword"
                 : r
-                  ? "Continue to The Midi Crossword"
-                  : "Continue to The Crossword";
+                ? "Continue to The Midi Crossword"
+                : "Continue to The Crossword";
             },
             bm = {
               loading: {
@@ -11743,7 +11732,8 @@ var _global =
                     n.createElement(cl.E, {
                       hasLoaded: t,
                       isActive: o,
-                      transition: () => r("welcome"),
+                      transition: () =>
+                        r("welcome"),
                       transitionTo: "welcome",
                       barBgColor: "rgba(255, 255, 255, 0.6)",
                       barColor: "black",
@@ -11782,21 +11772,20 @@ var _global =
                         if (!mi(o, i, l)) return null;
                         try {
                           return t.checkGate(
-                            "games_freearchiveallusersxwd_0526",
-                          )
+                              "games_freearchiveallusersxwd_0526",
+                            )
                             ? {
-                                isEligibleForFreeFromArchiveCopy: !0,
-                                description:
-                                  "You have free access to this puzzle. Ready to solve it?",
-                              }
+                              isEligibleForFreeFromArchiveCopy: !0,
+                              description:
+                                "You have free access to this puzzle. Ready to solve it?",
+                            }
                             : null;
                         } catch (e) {
                           return (
                             console.error(
                               "Failed to check FreeFromArchive start copy gate:",
                               e,
-                            ),
-                            null
+                            ), null
                           );
                         }
                       }, [e, t, r, o, i, l]);
@@ -11823,13 +11812,13 @@ var _global =
                     } = (0, Za.vB)(),
                     N = C,
                     { shouldShow: L, isLoading: z } = (0, Jl.C)(),
-                    { shouldShowCrossPlayCTA: I, crossPlayBannerProps: A } = (0,
-                    Rl.D)({
-                      gameName: ml(null == o ? void 0 : o.publishStream),
-                      puzzleId: d,
-                      region: "welcome",
-                      hasGameProgress: !1,
-                    }),
+                    { shouldShowCrossPlayCTA: I, crossPlayBannerProps: A } =
+                      (0, Rl.D)({
+                        gameName: ml(null == o ? void 0 : o.publishStream),
+                        puzzleId: d,
+                        region: "welcome",
+                        hasGameProgress: !1,
+                      }),
                     M = i && !(null != o && o.freePuzzle),
                     R = (i && g) || (s && v),
                     B = j || (T && C),
@@ -11843,10 +11832,10 @@ var _global =
                       (w &&
                         (f(
                           ((e = Zl.REGISTRATION_SUCCESS),
-                          { type: na, payload: { name: e } }),
+                            { type: na, payload: { name: e } }),
                         ),
-                        f({ type: _ })),
-                      B &&
+                          f({ type: _ })),
+                        B &&
                         !U &&
                         (0, Zt.h)(
                           "welcome",
@@ -11854,18 +11843,19 @@ var _global =
                           "download-app",
                           d,
                         ),
-                      M && (0, Zt.h)("welcome-modal", "mini-page", "", d),
-                      s && (0, Zt.h)("welcome-modal", "midi-page", "", d));
+                        M && (0, Zt.h)("welcome-modal", "mini-page", "", d),
+                        s && (0, Zt.h)("welcome-modal", "midi-page", "", d));
                   }, [r, s, M, U, w, B]);
                   const W = () => {
-                      if (b)
+                      if (b) {
                         return (
                           f(ki(p)),
-                          f({ type: y }),
-                          Ti(),
-                          f(P(m ? 2e3 : 1e3)),
-                          void t("game")
+                            f({ type: y }),
+                            Ti(),
+                            f(P(m ? 2e3 : 1e3)),
+                            void t("game")
                         );
+                      }
                       const e = (function () {
                         let { entitlement: e, isMobileWeb: t } =
                           arguments.length > 0 && void 0 !== arguments[0]
@@ -11879,7 +11869,7 @@ var _global =
                       let e = window.navigationLinks.register;
                       (N && (e = window.navigationLinks.loginOffer),
                         window.navigationLinks.register &&
-                          ((0, Zt.$)("", "", "mini-page", "register"),
+                        ((0, Zt.$)("", "", "mini-page", "register"),
                           (window.location.href = e)));
                     },
                     H = (e) => {
@@ -11893,49 +11883,44 @@ var _global =
                       });
                       let t = N
                         ? (function () {
-                            var e;
-                            let t =
-                                arguments.length > 0 && void 0 !== arguments[0]
-                                  ? arguments[0]
-                                  : window,
-                              r = arguments.length > 1 ? arguments[1] : void 0;
-                            const n =
-                              (null == t ||
+                          var e;
+                          let t =
+                              arguments.length > 0 && void 0 !== arguments[0]
+                                ? arguments[0]
+                                : window,
+                            r = arguments.length > 1 ? arguments[1] : void 0;
+                          const n = (null == t ||
                               null === (e = t.navigationLinks) ||
                               void 0 === e
-                                ? void 0
-                                : e.login) || "";
-                            return (0, Ul.I3)(n)
-                              ? n
-                              : r
-                                ? (0, l.T0)(ql, r)
-                                : ql;
-                          })(window || void 0)
+                            ? void 0
+                            : e.login) || "";
+                          return (0, Ul.I3)(n) ? n : r ? (0, l.T0)(ql, r) : ql;
+                        })(window || void 0)
                         : (0, Bl.Z)(window || void 0);
                       e && t && window.newsreaderAppPlatform
                         ? (function (e) {
-                            let t =
-                                arguments.length > 1 && void 0 !== arguments[1]
-                                  ? arguments[1]
-                                  : "",
-                              r = arguments.length > 2 ? arguments[2] : void 0;
-                            if (window.isHybridWebView && window.NativeBridge)
-                              (e.preventDefault(),
-                                window.isHybridWebView &&
-                                  window.NativeBridge &&
-                                  window.NativeBridge.gamesAuthenticateUser(
-                                    "login",
-                                  ));
-                            else {
-                              const e = r || (0, Bl.U)(window || void 0, t);
-                              (0, Ul.I3)(e)
-                                ? (0, Ul.Hu)(e)
-                                : window.location.assign(e);
-                            }
-                          })(e, void 0, t)
+                          let t =
+                              arguments.length > 1 && void 0 !== arguments[1]
+                                ? arguments[1]
+                                : "",
+                            r = arguments.length > 2 ? arguments[2] : void 0;
+                          if (window.isHybridWebView && window.NativeBridge) {
+                            (e.preventDefault(),
+                              window.isHybridWebView &&
+                              window.NativeBridge &&
+                              window.NativeBridge.gamesAuthenticateUser(
+                                "login",
+                              ));
+                          } else {
+                            const e = r || (0, Bl.U)(window || void 0, t);
+                            (0, Ul.I3)(e)
+                              ? (0, Ul.Hu)(e)
+                              : window.location.assign(e);
+                          }
+                        })(e, void 0, t)
                         : t
-                          ? (window.location.href = t)
-                          : console.error("Login link is undefined or empty");
+                        ? (window.location.href = t)
+                        : console.error("Login link is undefined or empty");
                     };
                   if (!o) return null;
                   const { publishStream: F } = o,
@@ -11946,15 +11931,15 @@ var _global =
                     ),
                     V = s
                       ? n.createElement(vl(), {
-                          puzzleID: d,
-                          color: "primary",
-                          variant: "extraExtraWide",
-                        })
+                        puzzleID: d,
+                        color: "primary",
+                        variant: "extraExtraWide",
+                      })
                       : n.createElement(fl(), {
-                          puzzleID: d,
-                          color: "primary",
-                          variant: "extraExtraWide",
-                        }),
+                        puzzleID: d,
+                        color: "primary",
+                        variant: "extraExtraWide",
+                      }),
                     X = R ? V : null,
                     K = () => {
                       const e = s ? "midi-page" : i ? "mini-page" : "game-page";
@@ -11973,52 +11958,52 @@ var _global =
                         game: jl(F),
                         icon: J,
                         title: h ? "Welcome to your first Midi puzzle." : jl(F),
-                        description:
-                          s && !p.hasXwd
-                            ? {
-                                text: "Subscribe to play the Midi.",
-                                variant: "small",
-                              }
-                            : M && !p.hasXwd
-                              ? {
-                                  text: "Subscribe to play the Mini.",
-                                  variant: "small",
-                                }
-                              : null != E &&
-                                  E.isEligibleForFreeFromArchiveCopy &&
-                                  !b
-                                ? { text: E.description, variant: "small" }
-                                : Z
-                                  ? {
-                                      text: "Save your progress across devices and compare times with friends.",
-                                      variant: "small",
-                                    }
-                                  : b
-                                    ? {
-                                        text: "You finished the puzzle. <br> Take a look.",
-                                      }
-                                    : x
-                                      ? {
-                                          text: "Go ahead, add another day to your <em>".concat(
-                                            k,
-                                            " day</em> streak.",
-                                          ),
-                                          variant: "crossword",
-                                        }
-                                      : {
-                                          text: h
-                                            ? "Can you solve this perfect-size puzzle?"
-                                            : "Ready to start solving?",
-                                        },
+                        description: s && !p.hasXwd
+                          ? {
+                            text: "Subscribe to play the Midi.",
+                            variant: "small",
+                          }
+                          : M && !p.hasXwd
+                          ? {
+                            text: "Subscribe to play the Mini.",
+                            variant: "small",
+                          }
+                          : null != E &&
+                              E.isEligibleForFreeFromArchiveCopy &&
+                              !b
+                          ? { text: E.description, variant: "small" }
+                          : Z
+                          ? {
+                            text:
+                              "Save your progress across devices and compare times with friends.",
+                            variant: "small",
+                          }
+                          : b
+                          ? {
+                            text: "You finished the puzzle. <br> Take a look.",
+                          }
+                          : x
+                          ? {
+                            text: "Go ahead, add another day to your <em>"
+                              .concat(
+                                k,
+                                " day</em> streak.",
+                              ),
+                            variant: "crossword",
+                          }
+                          : {
+                            text: h
+                              ? "Can you solve this perfect-size puzzle?"
+                              : "Ready to start solving?",
+                          },
                         date: Q ? Dl(o.publicationDate, o.publishStream) : "",
-                        infoText:
-                          (!s && !M) || p.hasXwd
-                            ? Z
-                              ? $
-                                ? n.createElement(Il, { meta: o, showDate: !1 })
-                                : null
-                              : n.createElement(Il, { meta: o, showDate: !1 })
-                            : null,
+                        infoText: (!s && !M) || p.hasXwd
+                          ? Z
+                            ? $
+                              ? n.createElement(Il, { meta: o, showDate: !1 })
+                              : null
+                            : n.createElement(Il, { meta: o, showDate: !1 })
+                          : null,
                         bgColor: "$".concat(J, "-crossword-blue"),
                         customButtons: (() => {
                           const e = n.createElement(bl.default, {
@@ -12051,16 +12036,12 @@ var _global =
                               "Play without an account",
                             );
                           return (!M && !s) || p.hasXwd
-                            ? Z
-                              ? [r, o]
-                              : [e]
+                            ? Z ? [r, o] : [e]
                             : p.isLoggedIn
-                              ? X
-                                ? [X]
-                                : []
-                              : X
-                                ? [X, t]
-                                : [t];
+                            ? X ? [X] : []
+                            : X
+                            ? [X, t]
+                            : [t];
                         })(),
                         meta: o.title ? Cl(o.title) : void 0,
                         promoteMeta: !0,
@@ -12074,15 +12055,17 @@ var _global =
                     n.createElement(Xl, ee),
                     (() => {
                       if (!B || z) return null;
-                      if (U)
+                      if (U) {
                         return n.createElement(ts.N, rs({ onClickLink: K }, G));
+                      }
                       if (L) return n.createElement(Kl.c, { onClickLink: K });
-                      if (I)
+                      if (I) {
                         return n.createElement(
                           Ml.jL,
                           rs({}, A, { position: "fixed" }),
                         );
-                      if (i)
+                      }
+                      if (i) {
                         return n.createElement(Ml.jL, {
                           title: "Mini Leaderboard",
                           message:
@@ -12095,11 +12078,12 @@ var _global =
                           dropShadow: !0,
                           isNew: !0,
                         });
+                      }
                       const e = i
                         ? "The Mini"
                         : s
-                          ? "The Midi"
-                          : "The Crossword";
+                        ? "The Midi"
+                        : "The Crossword";
                       return n.createElement(Ml.jL, {
                         title: "Play ".concat(
                           e,
@@ -12126,19 +12110,19 @@ var _global =
                     s = (0, a.v9)(Ue);
                   return t
                     ? n.createElement(gm.Z, {
-                        id: "intsl",
-                        position: "intsl",
-                        isSpecialAdUnit: !0,
-                        enableCountdown: !0,
-                        onClose: () => {
-                          (i(ki(o)), r("game"));
-                        },
-                        ctaCopy: vm({ isMini: Boolean(l), isMidi: Boolean(s) }),
-                        className: zl()("xwd__ad-interstitial-container"),
-                        skipButtonClassName: zl()(
-                          "xwd__ad-interstitial-skip-button",
-                        ),
-                      })
+                      id: "intsl",
+                      position: "intsl",
+                      isSpecialAdUnit: !0,
+                      enableCountdown: !0,
+                      onClose: () => {
+                        (i(ki(o)), r("game"));
+                      },
+                      ctaCopy: vm({ isMini: Boolean(l), isMidi: Boolean(s) }),
+                      className: zl()("xwd__ad-interstitial-container"),
+                      skipButtonClassName: zl()(
+                        "xwd__ad-interstitial-skip-button",
+                      ),
+                    })
                     : null;
                 },
                 background: "var(--bg-moment)",
@@ -12166,21 +12150,20 @@ var _global =
                         o = () =>
                           ((e, t, r, n) => {
                             (null == e
-                              ? void 0
-                              : e.classList.contains("active")) &&
-                            (null == t
-                              ? void 0
-                              : t.classList.contains("show-mobile-toolbar")) &&
-                            si.tq &&
-                            n <= 375
+                                ? void 0
+                                : e.classList.contains("active")) &&
+                              (null == t ? void 0 : t.classList.contains(
+                                "show-mobile-toolbar",
+                              )) &&
+                              si.tq &&
+                              n <= 375
                               ? null == t ||
                                 t.classList.remove("show-mobile-toolbar")
                               : null == t ||
                                 t.classList.add("show-mobile-toolbar");
                           })(r, n, 0, t);
                       return (
-                        null == r || r.addEventListener("click", o),
-                        () => {
+                        null == r || r.addEventListener("click", o), () => {
                           null == r || r.removeEventListener("click", o);
                         }
                       );
@@ -12199,8 +12182,8 @@ var _global =
                         if (
                           (o &&
                             (o.classList.add("xwd__franklin"),
-                            o.classList.toggle("xwd__focused", i)),
-                          i && o)
+                              o.classList.toggle("xwd__focused", i)),
+                            i && o)
                         ) {
                           const e = document.activeElement;
                           if (e && e !== document.body && e !== o) return;
@@ -12234,8 +12217,8 @@ var _global =
                           );
                           return (
                             null == t || t.focus(),
-                            e.preventDefault(),
-                            void e.stopPropagation()
+                              e.preventDefault(),
+                              void e.stopPropagation()
                           );
                         }
                         const { action: t, payload: r } = ((e) => {
@@ -12293,9 +12276,9 @@ var _global =
                       } = ((e) => {
                         const { key: t, which: r, shiftKey: n } = e;
                         return ((e) => {
-                          let { altKey: t, ctrlKey: r, metaKey: n } = e;
-                          return t || r || n;
-                        })(e)
+                            let { altKey: t, ctrlKey: r, metaKey: n } = e;
+                            return t || r || n;
+                          })(e)
                           ? {}
                           : (e.preventDefault(),
                             { action: Mi, payload: jd(t, r), shiftKey: n });
@@ -12381,16 +12364,17 @@ var _global =
                           u ? "download-app" : void 0,
                         ),
                         r &&
-                          l &&
-                          (0, Zt.h)(
-                            "congrats-modal",
-                            "midi-page",
-                            u ? "download-app" : void 0,
-                          ));
+                        l &&
+                        (0, Zt.h)(
+                          "congrats-modal",
+                          "midi-page",
+                          u ? "download-app" : void 0,
+                        ));
                     }, [r]),
-                    !i)
-                  )
+                      !i)
+                  ) {
                     return null;
+                  }
                   const {
                       publicationDate: k,
                       publishStream: P,
@@ -12400,13 +12384,11 @@ var _global =
                     { hasXwd: j, isLoggedIn: T } = o,
                     D = ((e, t) =>
                       ["daily", "mini", "bonus", "midi"].includes(t)
-                        ? "daily" === t
-                          ? Oe(e, "dddd")
-                          : yl(t)
+                        ? "daily" === t ? Oe(e, "dddd") : yl(t)
                         : "")(k, P),
                     N = ((e) => {
                       return e < 60
-                        ? "".concat((t = e), 1 === t ? " second" : " seconds")
+                        ? "".concat(t = e, 1 === t ? " second" : " seconds")
                         : we(e);
                       var t;
                     })(f),
@@ -12420,48 +12402,51 @@ var _global =
                     U = si.tq && !A ? "congrats-download-app" : "",
                     G = T && !j,
                     W = (() => {
-                      if (c) return 0;
+                      if (c) {
+                        return 0;
+                      }
                       const e = (null == y ? void 0 : y.verticalStreaks) || [];
                       return (e.length && E && e[E].length) || 0;
                     })(),
-                    Y = () => t("game"),
+                    Y = () =>
+                      t("game"),
                     H = I
                       ? n.createElement(fm, {
-                          displayAppLink: B,
-                          appCta: U,
-                          close: Y,
-                          showTimer: u,
-                          puzzleId: C,
-                          puzzleTitle: x || "",
-                          formattedSolveTime: N,
-                          isClosing: !1,
-                          onRemove: () => {},
-                        })
+                        displayAppLink: B,
+                        appCta: U,
+                        close: Y,
+                        showTimer: u,
+                        puzzleId: C,
+                        puzzleTitle: x || "",
+                        formattedSolveTime: N,
+                        isClosing: !1,
+                        onRemove: () => {},
+                      })
                       : n.createElement(pm, {
-                          displayAppLink: B,
-                          appCta: U,
-                          close: Y,
-                          dayIdx: E,
-                          isMidi: c,
-                          isMini: s,
-                          isDaily: L,
-                          streamLabel: D,
-                          showTimer: u,
-                          formattedSolveTime: N,
-                          solveTime: f,
-                          publicationDate: k,
-                          registeredNonSub: G,
-                          hasXwd: j,
-                          isMobile: si.tq,
-                          isNewsreader: A,
-                          isGoldStarEligible: z,
-                          streakLength: h,
-                          verticalStreakLength: W,
-                          navigateBack: () => (0, ou.n)(M),
-                          isClosing: !1,
-                          onRemove: () => {},
-                          midiTitle: w,
-                        });
+                        displayAppLink: B,
+                        appCta: U,
+                        close: Y,
+                        dayIdx: E,
+                        isMidi: c,
+                        isMini: s,
+                        isDaily: L,
+                        streamLabel: D,
+                        showTimer: u,
+                        formattedSolveTime: N,
+                        solveTime: f,
+                        publicationDate: k,
+                        registeredNonSub: G,
+                        hasXwd: j,
+                        isMobile: si.tq,
+                        isNewsreader: A,
+                        isGoldStarEligible: z,
+                        streakLength: h,
+                        verticalStreakLength: W,
+                        navigateBack: () => (0, ou.n)(M),
+                        isClosing: !1,
+                        onRemove: () => {},
+                        midiTitle: w,
+                      });
                   return n.createElement(
                     dl.im,
                     {
@@ -12510,8 +12495,7 @@ var _global =
               i = (0, a.v9)(We),
               { activeMoment: l } = (0, hm.o)(),
               s = !!window.newsreaderAppPlatform,
-              c =
-                window.location.pathname.includes("/paid") &&
+              c = window.location.pathname.includes("/paid") &&
                 [
                   "2026-05-04",
                   "2026-05-05",
@@ -12532,17 +12516,19 @@ var _global =
                       n,
                       o = {},
                       a = Object.keys(e);
-                    for (n = 0; n < a.length; n++)
+                    for (n = 0; n < a.length; n++) {
                       ((r = a[n]), t.indexOf(r) >= 0 || (o[r] = e[r]));
+                    }
                     return o;
                   })(e, t);
                 if (Object.getOwnPropertySymbols) {
                   var a = Object.getOwnPropertySymbols(e);
-                  for (n = 0; n < a.length; n++)
+                  for (n = 0; n < a.length; n++) {
                     ((r = a[n]),
                       t.indexOf(r) >= 0 ||
-                        (Object.prototype.propertyIsEnumerable.call(e, r) &&
-                          (o[r] = e[r])));
+                      (Object.prototype.propertyIsEnumerable.call(e, r) &&
+                        (o[r] = e[r])));
+                  }
                 }
                 return o;
               })(e, wm);
@@ -12594,24 +12580,22 @@ var _global =
                 (0, n.useEffect)(() => {
                   o(r ? Mt() : At());
                 }, [r]),
-                !r || t
-                  ? null
-                  : n.createElement(
-                      "div",
-                      { className: "xwd__landscape-warning" },
-                      n.createElement(Td.Z, { icon: "rotate" }),
+                  !r || t ? null : n.createElement(
+                    "div",
+                    { className: "xwd__landscape-warning" },
+                    n.createElement(Td.Z, { icon: "rotate" }),
+                    n.createElement(
+                      "p",
+                      null,
+                      "Oh no! We can’t fit everything on your screen.",
+                      n.createElement("br", null),
                       n.createElement(
-                        "p",
+                        "span",
                         null,
-                        "Oh no! We can’t fit everything on your screen.",
-                        n.createElement("br", null),
-                        n.createElement(
-                          "span",
-                          null,
-                          "Please rotate your device.",
-                        ),
+                        "Please rotate your device.",
                       ),
-                    )
+                    ),
+                  )
               );
             },
             Sm = r(45697),
@@ -12633,10 +12617,11 @@ var _global =
               } = e;
             const { newsreaderAppPlatform: u } = (0, Za.vB)(),
               { isGamesSaleActive: m } = (0, Cm.Z)(),
-              p =
-                ((f = o.login),
+              p = ((f = o.login),
                 (g = "&asset=".concat(s)),
-                Pm.some((e) => f.startsWith(e)) ? f : "".concat(f).concat(g));
+                Pm.some((e) => f.startsWith(e))
+                  ? f
+                  : "".concat(f).concat(g));
             var f, g;
             switch ((d && (document.title = d), r.status)) {
               case 401:
@@ -12672,17 +12657,15 @@ var _global =
                       xm.sN.getAcquisitionMessage(u),
                     ),
                   n.createElement("br", null),
-                  null != c && c.isLoggedIn
-                    ? null
-                    : n.createElement(
-                        "p",
-                        null,
-                        n.createElement(
-                          "a",
-                          { className: "pz-error__link", href: p },
-                          "Log in",
-                        ),
-                      ),
+                  null != c && c.isLoggedIn ? null : n.createElement(
+                    "p",
+                    null,
+                    n.createElement(
+                      "a",
+                      { className: "pz-error__link", href: p },
+                      "Log in",
+                    ),
+                  ),
                 );
                 break;
               case 404:
@@ -12735,13 +12718,13 @@ var _global =
               t,
               404 === r.status
                 ? n.createElement("div", {
-                    className: "pz-error-img-1",
-                    alt: "",
-                  })
+                  className: "pz-error-img-1",
+                  alt: "",
+                })
                 : n.createElement("div", {
-                    className: "pz-error-img",
-                    alt: "",
-                  }),
+                  className: "pz-error-img",
+                  alt: "",
+                }),
             );
           };
           ((jm.propTypes = {
@@ -12778,34 +12761,30 @@ var _global =
             let { error: r, userType: o } = e;
             return (
               (function () {
-                let e =
-                  arguments.length > 0 && void 0 !== arguments[0]
-                    ? arguments[0]
-                    : "xwd__hide-when-no-data";
+                let e = arguments.length > 0 && void 0 !== arguments[0]
+                  ? arguments[0]
+                  : "xwd__hide-when-no-data";
                 (0, n.useEffect)(() => {
                   const t = Lm("pz-game-title-bar"),
                     r = Lm("pz-game-toolbar");
                   return (
-                    Dm(t, e),
-                    Dm(r, e),
-                    () => {
+                    Dm(t, e), Dm(r, e), () => {
                       (Nm(t, e), Nm(r, e));
                     }
                   );
                 }, []);
               })(),
-              n.createElement(Tm, {
-                error: r,
-                navigationLinks: window.navigationLinks,
-                userType: o,
-                subscriptionCampaign:
-                  "midi" ===
-                  (null === (t = window.gameData) || void 0 === t
-                    ? void 0
-                    : t.stream)
+                n.createElement(Tm, {
+                  error: r,
+                  navigationLinks: window.navigationLinks,
+                  userType: o,
+                  subscriptionCampaign: "midi" ===
+                      (null === (t = window.gameData) || void 0 === t
+                        ? void 0
+                        : t.stream)
                     ? "midi"
                     : void 0,
-              })
+                })
             );
           }
           var Im = () => {
@@ -12864,16 +12843,15 @@ var _global =
                   (c && c < "2026-04-23") ||
                   !i ||
                   !o
-                )
+                ) {
                   return;
-                const g =
-                    (null == l || null === (n = l.timer) || void 0 === n
-                      ? void 0
-                      : n.totalElapsedTime) || 0,
-                  v =
-                    (null == s || null === (d = s.timer) || void 0 === d
-                      ? void 0
-                      : d.totalElapsedTime) || 0,
+                }
+                const g = (null == l || null === (n = l.timer) || void 0 === n
+                    ? void 0
+                    : n.totalElapsedTime) || 0,
+                  v = (null == s || null === (d = s.timer) || void 0 === d
+                    ? void 0
+                    : d.totalElapsedTime) || 0,
                   b = Math.abs(g - v);
                 b > 2 &&
                   (0, Zr.D)("xwd_load_mismatch_timer", {
@@ -12882,14 +12860,14 @@ var _global =
                     timerDiff: b,
                     regiId: a.regiId,
                   });
-                const h =
-                    (null == l || null === (u = l.cells) || void 0 === u
-                      ? void 0
-                      : u.filter((e) => e.guess).length) || 0,
-                  y =
-                    (null == s || null === (m = s.cells) || void 0 === m
-                      ? void 0
-                      : m.filter((e) => e.guess).length) || 0,
+                const h = (null == l || null === (u = l.cells) || void 0 === u
+                    ? void 0
+                    : u.filter((e) => e.guess).length) || 0,
+                  y = (null == s || null === (m = s.cells) || void 0 === m
+                    ? void 0
+                    : m.filter((e) =>
+                      e.guess
+                    ).length) || 0,
                   w = Math.abs(h - y);
                 w > 3 &&
                   (0, Zr.D)("xwd_load_mismatch_cells_filled", {
@@ -12925,13 +12903,11 @@ var _global =
             const P = (0, a.v9)(Te),
               [x, C] = (0, n.useState)(null),
               { isMidiEnabled: j, isReady: T } = (0, di.P)(),
-              D =
-                "mini" ===
+              D = "mini" ===
                 (null === (e = window.gameData) || void 0 === e
                   ? void 0
                   : e.stream),
-              N =
-                "midi" ===
+              N = "midi" ===
                 (null === (t = window.gameData) || void 0 === t
                   ? void 0
                   : t.stream),
@@ -12946,7 +12922,9 @@ var _global =
                 (0, n.useEffect)(() => {
                   if (!e) return;
                   const { hash: r } = window.location;
-                  if (!r) return;
+                  if (!r) {
+                    return;
+                  }
                   const [, n] = r.substring(1).split("=");
                   if (n === ui) {
                     t({ type: w, payload: { webSourceParam: n } });
@@ -12983,11 +12961,11 @@ var _global =
                 var e;
                 o.regiId &&
                   ((e = o.regiId),
-                  Bn()
-                    .removeItem(((e) => "".concat(e, "#pendingCommits"))(e))
-                    .catch((e) => {
-                      console.error("error clearing pending commits", e);
-                    }));
+                    Bn()
+                      .removeItem(((e) => "".concat(e, "#pendingCommits"))(e))
+                      .catch((e) => {
+                        console.error("error clearing pending commits", e);
+                      }));
               }, [o.regiId]),
               (0, n.useEffect)(() => {
                 s(
@@ -13001,8 +12979,8 @@ var _global =
                   f &&
                   p &&
                   (r({ type: fr, payload: o }),
-                  v || r({ type: vr, payload: !0 }),
-                  S && r(En()));
+                    v || r({ type: vr, payload: !0 }),
+                    S && r(En()));
               }, [O, i, p, f, p]),
               (0, n.useEffect)(() => {
                 (!1 !== g || N || C({ status: 403 }), P && C(P));
@@ -13012,9 +12990,7 @@ var _global =
                 i &&
                   p &&
                   (r(
-                    ((e = si.tq),
-                    (t = o),
-                    (r) => {
+                    ((e = si.tq), (t = o), (r) => {
                       const n = e ? ar : ir,
                         o = t.regiId || "anon";
                       return Hn("".concat(o))
@@ -13027,18 +13003,18 @@ var _global =
                         });
                     }),
                   ),
-                  r(
-                    ((e) => (t) => {
-                      Hn("".concat(e.regiId))
-                        .then((e) => {
-                          t({ type: ur, payload: (e && e.printPrefs) || lr });
-                        })
-                        .catch((e) => {
-                          (Cr.error(e), t({ type: ur, payload: lr }));
-                        });
-                    })(o),
-                  ),
-                  (O === Br.LEGACY_ONLY || O === Br.LEGACY_WITH_STATE) &&
+                    r(
+                      ((e) => (t) => {
+                        Hn("".concat(e.regiId))
+                          .then((e) => {
+                            t({ type: ur, payload: (e && e.printPrefs) || lr });
+                          })
+                          .catch((e) => {
+                            (Cr.error(e), t({ type: ur, payload: lr }));
+                          });
+                      })(o),
+                    ),
+                    (O === Br.LEGACY_ONLY || O === Br.LEGACY_WITH_STATE) &&
                     r(Gi(o)));
               }, [i, p, _, O]),
               (0, n.useEffect)(() => {
@@ -13053,26 +13029,26 @@ var _global =
               si.tq && n.createElement(Om, { inRebusMode: E }),
               W
                 ? n.createElement(zm, {
-                    error: null != x ? x : { status: 404 },
-                    userType: o,
-                  })
+                  error: null != x ? x : { status: 404 },
+                  userType: o,
+                })
                 : n.createElement(
-                    li.Z,
-                    {
-                      config: bm,
-                      containerClassName: "xwd-moment-container",
-                      initialMoment: "loading",
-                      hasLoaded: G,
-                      onBackgroundChange: (e) => {
-                        m &&
-                          document.body.style.setProperty(
-                            "background-color",
-                            e || "var(--bg-page, white)",
-                          );
-                      },
+                  li.Z,
+                  {
+                    config: bm,
+                    containerClassName: "xwd-moment-container",
+                    initialMoment: "loading",
+                    hasLoaded: G,
+                    onBackgroundChange: (e) => {
+                      m &&
+                        document.body.style.setProperty(
+                          "background-color",
+                          e || "var(--bg-page, white)",
+                        );
                     },
-                    !si.tq && G && n.createElement(_m, null),
-                  ),
+                  },
+                  !si.tq && G && n.createElement(_m, null),
+                ),
             );
           };
           try {
@@ -13086,17 +13062,17 @@ var _global =
                   });
                 });
             })();
-          } catch (e) {}
+          } catch (e) {
+          }
           const Am = document.getElementById("pz-game-root");
           (() => {
             if ("ios" === window.newsreaderAppPlatform) {
               var e, t;
-              const r =
-                  null ===
-                    (e = document.querySelector('meta[name="viewport"]')) ||
-                  void 0 === e
-                    ? void 0
-                    : e.getAttribute("content"),
+              const r = null ===
+                      (e = document.querySelector('meta[name="viewport"]')) ||
+                    void 0 === e
+                  ? void 0
+                  : e.getAttribute("content"),
                 n = "".concat(
                   r,
                   ", viewport-fit=cover, maximum-scale=1, user-scalable=no",
@@ -13111,63 +13087,60 @@ var _global =
               const n = [Qa, go, po, Ot, Mn, Xt, wr, On],
                 o = (0, m.configureStore)({
                   reducer: ga,
-                  middleware: (e) => e().concat(n),
+                  middleware: (e) =>
+                    e().concat(n),
                 });
               return (
                 o.dispatch(qa(t, r)),
-                o.dispatch((e, t) => {
-                  var r;
-                  const n = Jt(t()),
-                    o = !!window.newsreaderAppPlatform,
-                    a =
-                      "daily" ===
-                      (null === (r = window.gameData) || void 0 === r
-                        ? void 0
-                        : r.stream);
-                  if (n || o || !a) return e(Xo(0));
-                  Ja()
-                    .then((t) => {
-                      t.isOffline
-                        ? e(Xo(0))
-                        : e({ type: $o, payload: { meterResponse: t } });
-                    })
-                    .catch((t) => {
-                      (console.error(t), e(Xo(t.status)));
-                    });
-                }),
-                o
+                  o.dispatch((e, t) => {
+                    var r;
+                    const n = Jt(t()),
+                      o = !!window.newsreaderAppPlatform,
+                      a = "daily" ===
+                        (null === (r = window.gameData) || void 0 === r
+                          ? void 0
+                          : r.stream);
+                    if (n || o || !a) return e(Xo(0));
+                    Ja()
+                      .then((t) => {
+                        t.isOffline
+                          ? e(Xo(0))
+                          : e({ type: $o, payload: { meterResponse: t } });
+                      })
+                      .catch((t) => {
+                        (console.error(t), e(Xo(t.status)));
+                      });
+                  }),
+                  o
               );
             })((0, l.kw)()),
             Rm = (0, s.ND)();
           function Bm() {
             var e, t, r, o;
-            const a =
-                "mini" ===
+            const a = "mini" ===
                 (null === (e = window.gameData) || void 0 === e
                   ? void 0
                   : e.stream),
-              s =
-                "midi" ===
+              s = "midi" ===
                 (null === (t = window.gameData) || void 0 === t
                   ? void 0
                   : t.stream),
               c = a
                 ? "gamesMiniCrossword"
                 : s
-                  ? "gamesMidiCrossword"
-                  : "gamesDailyCrossword";
+                ? "gamesMidiCrossword"
+                : "gamesDailyCrossword";
             return n.createElement(
               i.GamesMessagingContextProvider,
               {
                 client: c,
                 env: l.env.name,
-                pageViewID:
-                  null === (r = window.nyt_et) ||
-                  void 0 === r ||
-                  null === (o = r.get_pageview_id) ||
-                  void 0 === o
-                    ? void 0
-                    : o.call(r),
+                pageViewID: null === (r = window.nyt_et) ||
+                    void 0 === r ||
+                    null === (o = r.get_pageview_id) ||
+                    void 0 === o
+                  ? void 0
+                  : o.call(r),
                 performanceMeasureCallback: () => {},
                 appType: l.env.samizdat.appType,
                 appVersion: l.env.samizdat.appVersion,
@@ -13229,46 +13202,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? o(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : o(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : o(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -13330,8 +13302,31 @@ var _global =
               games: ["connections"],
               levels: [7, 14, 30, 60, 100, 150, 250, 365],
               checkpoints: [
-                2, 3, 5, 8, 10, 12, 18, 21, 25, 35, 45, 50, 70, 80, 90, 110,
-                125, 140, 175, 200, 225, 275, 300, 330, 350,
+                2,
+                3,
+                5,
+                8,
+                10,
+                12,
+                18,
+                21,
+                25,
+                35,
+                45,
+                50,
+                70,
+                80,
+                90,
+                110,
+                125,
+                140,
+                175,
+                200,
+                225,
+                275,
+                300,
+                330,
+                350,
               ],
             },
             cx4: {
@@ -13371,14 +13366,38 @@ var _global =
               badge_type: "milestone",
               games: ["spelling_bee"],
               levels: [
-                5, 10, 15, 25, 50, 75, 100, 150, 200, 300, 500, 750, 1e3,
+                5,
+                10,
+                15,
+                25,
+                50,
+                75,
+                100,
+                150,
+                200,
+                300,
+                500,
+                750,
+                1e3,
               ],
             },
             sb5: {
               badge_type: "milestone",
               games: ["spelling_bee"],
               levels: [
-                5, 10, 15, 25, 50, 75, 100, 150, 200, 300, 500, 750, 1e3,
+                5,
+                10,
+                15,
+                25,
+                50,
+                75,
+                100,
+                150,
+                200,
+                300,
+                500,
+                750,
+                1e3,
               ],
             },
             sb6: {
@@ -13395,7 +13414,19 @@ var _global =
               badge_type: "milestone",
               games: ["spelling_bee"],
               levels: [
-                1, 10, 25, 50, 100, 150, 200, 300, 400, 500, 650, 800, 1e3,
+                1,
+                10,
+                25,
+                50,
+                100,
+                150,
+                200,
+                300,
+                400,
+                500,
+                650,
+                800,
+                1e3,
               ],
             },
             sb9: {
@@ -13431,9 +13462,44 @@ var _global =
               games: ["wordleV2"],
               levels: [7, 14, 30, 60, 100, 150, 250, 365, 500, 750, 1e3],
               checkpoints: [
-                2, 3, 5, 8, 10, 12, 18, 21, 25, 35, 45, 50, 70, 80, 90, 110,
-                125, 140, 175, 200, 225, 275, 300, 330, 350, 400, 425, 450, 475,
-                550, 600, 650, 700, 800, 850, 900, 950, 975,
+                2,
+                3,
+                5,
+                8,
+                10,
+                12,
+                18,
+                21,
+                25,
+                35,
+                45,
+                50,
+                70,
+                80,
+                90,
+                110,
+                125,
+                140,
+                175,
+                200,
+                225,
+                275,
+                300,
+                330,
+                350,
+                400,
+                425,
+                450,
+                475,
+                550,
+                600,
+                650,
+                700,
+                800,
+                850,
+                900,
+                950,
+                975,
               ],
             },
             wr7: { badge_type: "progress", games: ["wordleV2"] },
@@ -13455,8 +13521,31 @@ var _global =
               games: ["strands"],
               levels: [7, 14, 30, 60, 100, 150, 250, 365, 500, 750, 1e3],
               checkpoints: [
-                2, 3, 5, 8, 10, 12, 18, 21, 25, 35, 45, 50, 70, 80, 90, 110,
-                125, 140, 175, 200, 225, 275, 300, 330, 350,
+                2,
+                3,
+                5,
+                8,
+                10,
+                12,
+                18,
+                21,
+                25,
+                35,
+                45,
+                50,
+                70,
+                80,
+                90,
+                110,
+                125,
+                140,
+                175,
+                200,
+                225,
+                275,
+                300,
+                330,
+                350,
               ],
             },
             st3: {
@@ -13468,7 +13557,19 @@ var _global =
               badge_type: "milestone",
               games: ["strands"],
               levels: [
-                25, 50, 75, 100, 250, 500, 750, 1e3, 1250, 1500, 2e3, 2500, 5e3,
+                25,
+                50,
+                75,
+                100,
+                250,
+                500,
+                750,
+                1e3,
+                1250,
+                1500,
+                2e3,
+                2500,
+                5e3,
               ],
             },
           };
@@ -13510,46 +13611,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? l(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : l(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : l(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -13560,111 +13660,104 @@ var _global =
               return "off" !== e.mockMode ? e : null;
             },
             u = function (e, t) {
-              let r =
-                arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
-              return "off" === e.mockMode
-                ? []
-                : Object.keys(e.badges)
-                    .filter((n) => {
-                      const o = a.D[n];
-                      if (!o) return !1;
-                      const { earned_at: i, notify: l } = e.badges[n];
-                      return (
-                        o.games.includes(t) &&
-                        i &&
-                        (l || r) &&
-                        (i[i.length - 1] > 0 || r)
-                      );
-                    })
-                    .map((t) => {
-                      const { badge_type: r, games: n, levels: o } = a.D[t],
-                        {
-                          earned_at: l = [],
-                          progress: s = 0,
-                          earnedYears: c,
-                        } = e.badges[t],
-                        d = l.length;
-                      return {
-                        id: t,
-                        badge_type: r,
-                        games: n,
-                        levels: o,
-                        earned_at: l,
-                        progress: s,
-                        earned_level:
-                          "holiday" === r
-                            ? (null == c ? void 0 : c[c.length - 1]) || 0
-                            : o && o[d - 1],
-                        earned_years: c,
-                        puzzle_id: i._,
-                        earned: !0,
-                      };
-                    });
+              let r = arguments.length > 2 && void 0 !== arguments[2] &&
+                arguments[2];
+              return "off" === e.mockMode ? [] : Object.keys(e.badges)
+                .filter((n) => {
+                  const o = a.D[n];
+                  if (!o) return !1;
+                  const { earned_at: i, notify: l } = e.badges[n];
+                  return (
+                    o.games.includes(t) &&
+                    i &&
+                    (l || r) &&
+                    (i[i.length - 1] > 0 || r)
+                  );
+                })
+                .map((t) => {
+                  const { badge_type: r, games: n, levels: o } = a.D[t],
+                    {
+                      earned_at: l = [],
+                      progress: s = 0,
+                      earnedYears: c,
+                    } = e.badges[t],
+                    d = l.length;
+                  return {
+                    id: t,
+                    badge_type: r,
+                    games: n,
+                    levels: o,
+                    earned_at: l,
+                    progress: s,
+                    earned_level: "holiday" === r
+                      ? (null == c ? void 0 : c[c.length - 1]) || 0
+                      : o && o[d - 1],
+                    earned_years: c,
+                    puzzle_id: i._,
+                    earned: !0,
+                  };
+                });
             },
             m = (e, t) =>
-              "off" === e.mockMode
-                ? []
-                : Object.keys(e.checkpoints)
-                    .filter((e) => {
-                      const r = a.D[e];
-                      return !!r && r.games.includes(t);
-                    })
-                    .map((t) => {
-                      const {
-                          levels: r,
-                          badge_type: n,
-                          games: o,
-                        } = a.D[t] || {},
-                        { progress: l } = e.checkpoints[t],
-                        s = r || [],
-                        c = l || 0;
-                      let d = -1,
-                        u = 0;
-                      for (let e = 0; e < s.length; e++) {
-                        const t = s[e];
-                        if (t > c) break;
-                        ((u = t), d++);
-                      }
-                      return {
-                        id: t,
-                        earned_level: u || 0,
-                        badge_type: n,
-                        games: o,
-                        levels: r,
-                        earned: u > 0,
-                        earned_at: d >= 1 ? new Array(d).fill(-1) : [],
-                        progress: c,
-                        puzzle_id: i._,
-                      };
-                    }),
+              "off" === e.mockMode ? [] : Object.keys(e.checkpoints)
+                .filter((e) => {
+                  const r = a.D[e];
+                  return !!r && r.games.includes(t);
+                })
+                .map((t) => {
+                  const {
+                      levels: r,
+                      badge_type: n,
+                      games: o,
+                    } = a.D[t] || {},
+                    { progress: l } = e.checkpoints[t],
+                    s = r || [],
+                    c = l || 0;
+                  let d = -1,
+                    u = 0;
+                  for (let e = 0; e < s.length; e++) {
+                    const t = s[e];
+                    if (t > c) break;
+                    ((u = t), d++);
+                  }
+                  return {
+                    id: t,
+                    earned_level: u || 0,
+                    badge_type: n,
+                    games: o,
+                    levels: r,
+                    earned: u > 0,
+                    earned_at: d >= 1 ? new Array(d).fill(-1) : [],
+                    progress: c,
+                    puzzle_id: i._,
+                  };
+                }),
             p = (e, t) => {
               const r = u(e, t, !0)
                   .filter((t) => !!e.shelf[t.id])
                   .map((e) => s(s({}, e), {}, { earned: !0 })),
                 n = ((e, t) =>
-                  "off" === e.mockMode
-                    ? []
-                    : Object.keys(e.shelf)
-                        .filter((e) => {
-                          const r = a.D[e];
-                          return !!r && r.games.includes(t);
-                        })
-                        .map((t) => {
-                          const { badge_type: r, games: n, levels: o } = a.D[t],
-                            { progress: l = 0 } = e.shelf[t],
-                            s = o ? o[o.findIndex((e) => e === l) - 1] : l;
-                          return {
-                            id: t,
-                            badge_type: r,
-                            games: n,
-                            levels: o,
-                            progress: l,
-                            earned_at: [0],
-                            puzzle_id: i._,
-                            earned_level: s,
-                            notify: !1,
-                          };
-                        }))(e, t).filter((e) => !r.some((t) => t.id === e.id));
+                  "off" === e.mockMode ? [] : Object.keys(e.shelf)
+                    .filter((e) => {
+                      const r = a.D[e];
+                      return !!r && r.games.includes(t);
+                    })
+                    .map((t) => {
+                      const { badge_type: r, games: n, levels: o } = a.D[t],
+                        { progress: l = 0 } = e.shelf[t],
+                        s = o ? o[o.findIndex((e) => e === l) - 1] : l;
+                      return {
+                        id: t,
+                        badge_type: r,
+                        games: n,
+                        levels: o,
+                        progress: l,
+                        earned_at: [0],
+                        puzzle_id: i._,
+                        earned_level: s,
+                        notify: !1,
+                      };
+                    }))(e, t).filter((e) => !r.some((t) => t.id === e.id));
               return [...r, ...n].map((t) => {
                 var r;
                 return s(
@@ -13672,10 +13765,9 @@ var _global =
                   {},
                   {
                     earned_at: t.earned_at || [],
-                    earned_years:
-                      (null === (r = e.badges[t.id]) || void 0 === r
-                        ? void 0
-                        : r.earnedYears) || [],
+                    earned_years: (null === (r = e.badges[t.id]) || void 0 === r
+                      ? void 0
+                      : r.earnedYears) || [],
                     last_earned_level: t.earned_level,
                   },
                 );
@@ -13899,25 +13991,25 @@ var _global =
                 ? "ios" === window.newsreaderAppPlatform
                   ? null
                   : n.createElement(s.Z, {
-                      onClick: () => {
-                        var e;
-                        if (r) r();
-                        else {
-                          if (t) {
-                            const {
-                                elementName: e,
-                                context: r,
-                                moduleLabel: n,
-                              } = t,
-                              o = "back";
-                            (0, i.$g)("click", r, e, o, n);
-                          }
-                          null === (e = window.NativeBridge) ||
-                            void 0 === e ||
-                            e.gamesBackToHub();
+                    onClick: () => {
+                      var e;
+                      if (r) r();
+                      else {
+                        if (t) {
+                          const {
+                              elementName: e,
+                              context: r,
+                              moduleLabel: n,
+                            } = t,
+                            o = "back";
+                          (0, i.$g)("click", r, e, o, n);
                         }
-                      },
-                    })
+                        null === (e = window.NativeBridge) ||
+                          void 0 === e ||
+                          e.gamesBackToHub();
+                      }
+                    },
+                  })
                 : null;
             },
             u = (e) => {
@@ -14059,7 +14151,7 @@ var _global =
                   (t || []).map((e, t) =>
                     n.cloneElement(e, {
                       key: "button-group-button-".concat(t),
-                    }),
+                    })
                   ),
                 ),
               );
@@ -14079,13 +14171,13 @@ var _global =
               let { editor: t } = e;
               return t
                 ? n.createElement(
-                    "span",
-                    {
-                      "data-testid": "pz-moment__editor",
-                      className: "pz-moment__info-editor",
-                    },
-                    "Edited by ".concat(t),
-                  )
+                  "span",
+                  {
+                    "data-testid": "pz-moment__editor",
+                    className: "pz-moment__info-editor",
+                  },
+                  "Edited by ".concat(t),
+                )
                 : null;
             },
             w = (e) => {
@@ -14104,15 +14196,15 @@ var _global =
               let { promo: t } = e;
               return "oxford" === t
                 ? n.createElement(
-                    "p",
-                    null,
-                    n.createElement("a", {
-                      href: "https://www.oxforddictionaries.com",
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                      className: "pz-moment__promo",
-                    }),
-                  )
+                  "p",
+                  null,
+                  n.createElement("a", {
+                    href: "https://www.oxforddictionaries.com",
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "pz-moment__promo",
+                  }),
+                )
                 : null;
             };
         },
@@ -14121,18 +14213,16 @@ var _global =
           var n = r(67294);
           function o() {
             return (
-              (o = Object.assign
-                ? Object.assign.bind()
-                : function (e) {
-                    for (var t = 1; t < arguments.length; t++) {
-                      var r = arguments[t];
-                      for (var n in r)
-                        Object.prototype.hasOwnProperty.call(r, n) &&
-                          (e[n] = r[n]);
-                    }
-                    return e;
-                  }),
-              o.apply(this, arguments)
+              (o = Object.assign ? Object.assign.bind() : function (e) {
+                for (var t = 1; t < arguments.length; t++) {
+                  var r = arguments[t];
+                  for (var n in r) {
+                    Object.prototype.hasOwnProperty.call(r, n) &&
+                      (e[n] = r[n]);
+                  }
+                }
+                return e;
+              }), o.apply(this, arguments)
             );
           }
           t.Z = (e) =>
@@ -14242,29 +14332,29 @@ var _global =
           const _ = "prod" === u.win.env.name ? "prd" : "dev";
           if (
             ((0, d.U9)(),
-            (0, p.ZP)(u.win.sentryConfig),
-            (0, b.Z)(u.win.datadogRumConfig),
-            (0, o.Z)(),
-            f.abra.init(),
-            (0, n.IT)({ env: _ }).catch((e) => {
-              console.error("Error refreshing Purr cache:", e);
-            }),
-            "connections" === u.win.pageName &&
+              (0, p.ZP)(u.win.sentryConfig),
+              (0, b.Z)(u.win.datadogRumConfig),
+              (0, o.Z)(),
+              f.abra.init(),
+              (0, n.IT)({ env: _ }).catch((e) => {
+                console.error("Error refreshing Purr cache:", e);
+              }),
+              "connections" === u.win.pageName &&
               "prod" !== u.win.env.name &&
               (0, y.Z)(),
-            (0, s.t6)(),
-            (0, c.q)(),
-            a.G7)
-          )
+              (0, s.t6)(),
+              (0, c.q)(),
+              a.G7)
+          ) {
             u.win.dataLayer = [];
-          else {
+          } else {
             const e = (0, i.pg)();
             (e ||
               ((0, i.He)(),
-              (0, g.Z)((0, i.Qx)()),
-              (0, h.YU)(),
-              (0, h.J5)(),
-              (0, i.I5)(f.abra.getTests())),
+                (0, g.Z)((0, i.Qx)()),
+                (0, h.YU)(),
+                (0, h.J5)(),
+                (0, i.I5)(f.abra.getTests())),
               u.win.addEventListener("load", () => {
                 ((0, l.IX)(),
                   (0, m.Z)(),
@@ -14282,12 +14372,13 @@ var _global =
             },
           });
           const n = (e, t) => {
-            if ("undefined" != typeof DD_RUM)
+            if ("undefined" != typeof DD_RUM) {
               try {
                 DD_RUM.addAction(e, t);
               } catch (e) {
                 console.error("Error adding RUM action:", e);
               }
+            }
           };
           t.Z = (e) => {
             const {
@@ -14320,12 +14411,12 @@ var _global =
                 defaultPrivacyLevel: "mask-user-input",
                 useSecureSessionCookie: !0,
               }),
-              DD_RUM.setGlobalContextProperty("nyt", {
-                billing: {
-                  environment: n,
-                  deployment: { id: "gcp-nyt-dv-shared-prd" },
-                },
-              }));
+                DD_RUM.setGlobalContextProperty("nyt", {
+                  billing: {
+                    environment: n,
+                    deployment: { id: "gcp-nyt-dv-shared-prd" },
+                  },
+                }));
           };
         },
         73649: function (e, t, r) {
@@ -14416,16 +14507,16 @@ var _global =
                           var r;
                           (e.preventDefault(),
                             null === (r = window.NativeBridge) ||
-                              void 0 === r ||
-                              r.gamesAuthenticateUser(t).then((e) => {
-                                if (!e.success) throw new Error(e.error);
-                                window.dispatchEvent(
-                                  new CustomEvent(
-                                    "gamesUserCredentialChanged",
-                                    { detail: e },
-                                  ),
-                                );
-                              }));
+                            void 0 === r ||
+                            r.gamesAuthenticateUser(t).then((e) => {
+                              if (!e.success) throw new Error(e.error);
+                              window.dispatchEvent(
+                                new CustomEvent(
+                                  "gamesUserCredentialChanged",
+                                  { detail: e },
+                                ),
+                              );
+                            }));
                         });
                       });
                     };
@@ -14461,8 +14552,8 @@ var _global =
               function s() {
                 ((e = !0),
                   r &&
-                    n &&
-                    ((0, a.cn)(n, "open"),
+                  n &&
+                  ((0, a.cn)(n, "open"),
                     (0, a.cn)(r, "active"),
                     (0, i.ob)({
                       name: (0, o.j0)(),
@@ -14475,8 +14566,8 @@ var _global =
               function c() {
                 ((e = !1),
                   r &&
-                    n &&
-                    ((0, a.IV)(n, "open"),
+                  n &&
+                  ((0, a.IV)(n, "open"),
                     (0, a.cn)(n, "closing"),
                     setTimeout(() => {
                       (0, a.IV)(n, "closing");
@@ -14491,15 +14582,16 @@ var _global =
                 (0, a.Oo)(r, "keydown", (r) => {
                   const { key: n, keyCode: o } = r;
                   if ("Escape" !== n && "Esc" !== n) {
-                    if ("Enter" !== n && "Space" !== n && 32 !== o)
+                    if ("Enter" !== n && "Space" !== n && 32 !== o) {
                       return "ArrowDown" === n
                         ? (r.preventDefault(), s(), (t = 0), void l[t].focus())
                         : "ArrowUp" === n
-                          ? (r.preventDefault(),
-                            s(),
-                            (t = l.length - 1),
-                            void l[t].focus())
-                          : void 0;
+                        ? (r.preventDefault(),
+                          s(),
+                          (t = l.length - 1),
+                          void l[t].focus())
+                        : void 0;
+                    }
                     e ? c() : (s(), (t = 0), l[t].focus());
                   } else c();
                 }),
@@ -14521,14 +14613,13 @@ var _global =
                         name: "click",
                         context: "",
                         element: {
-                          name:
-                            null !== (e = window) &&
-                            void 0 !== e &&
-                            null !== (e = e.location) &&
-                            void 0 !== e &&
-                            e.pathname.startsWith("/puzzles/leaderboards")
-                              ? "your-leaderboard"
-                              : (0, o.j0)(),
+                          name: null !== (e = window) &&
+                              void 0 !== e &&
+                              null !== (e = e.location) &&
+                              void 0 !== e &&
+                              e.pathname.startsWith("/puzzles/leaderboards")
+                            ? "your-leaderboard"
+                            : (0, o.j0)(),
                           label: "games-logo",
                         },
                       },
@@ -14537,12 +14628,12 @@ var _global =
                   },
                 ));
               const d = document.querySelector("#js-nav-actions"),
-                u =
-                  null == d
-                    ? void 0
-                    : d.querySelectorAll("a.js-nav-subscribe")[0],
-                m =
-                  null == d ? void 0 : d.querySelectorAll("a.js-nav-login")[0];
+                u = null == d
+                  ? void 0
+                  : d.querySelectorAll("a.js-nav-subscribe")[0],
+                m = null == d
+                  ? void 0
+                  : d.querySelectorAll("a.js-nav-login")[0];
               (null == u ||
                 u.addEventListener("click", () => {
                   const e = (0, o.j0)();
@@ -14556,17 +14647,17 @@ var _global =
                   });
                 }),
                 null == m ||
-                  m.addEventListener("click", () => {
-                    const e = (0, o.j0)();
-                    (0, i.j)("moduleInteraction", {
-                      eventData: {
-                        pagetype: "game",
-                        trigger: "module",
-                        type: "ob_click",
-                      },
-                      module: { element: { name: e, label: "log-in-header" } },
-                    });
-                  }));
+                m.addEventListener("click", () => {
+                  const e = (0, o.j0)();
+                  (0, i.j)("moduleInteraction", {
+                    eventData: {
+                      pagetype: "game",
+                      trigger: "module",
+                      type: "ob_click",
+                    },
+                    module: { element: { name: e, label: "log-in-header" } },
+                  });
+                }));
             },
             c = (0, o.iU)("global-nav"),
             d = (0, o.iU)("mobile-toolbar"),
@@ -14621,46 +14712,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? c(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : c(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : c(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -14668,16 +14758,16 @@ var _global =
             m = "games-crosswords";
           ((o.win[u] = o.win[u] || []),
             window.isHybridWebView ||
-              o.win[u].push({ event: "gtm.js", "gtm.start": (0, i.zO)() }));
+            o.win[u].push({ event: "gtm.js", "gtm.start": (0, i.zO)() }));
           const p = (0, a.R2)("link[rel=canonical]"),
             f = p ? p.href : o.JU.location.href,
             g = (e, t) => {
-              if (void 0 !== typeof window)
+              if (void 0 !== typeof window) {
                 if (window.isHybridWebView && window.NativeBridge) {
                   const r = "moduleInteraction" === e ? "interaction" : e;
                   if ("heartbeat" === r) return;
                   window.NativeBridge.sendAnalytic(r, t);
-                } else
+                } else {
                   (o.win[u].push(d({ event: e }, t)),
                     ((e) => {
                       var t, r;
@@ -14693,6 +14783,8 @@ var _global =
                             });
                       }
                     })(e));
+                }
+              }
             };
           window.foundationTrack = g;
           const v = (e, t, r, n, o, a, i) => {
@@ -14902,46 +14994,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? c(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : c(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : c(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -14966,10 +15057,11 @@ var _global =
                     { withStatus: !0 },
                   );
                 if (403 === a.status) throw new Error(i.F);
-                if (!a.states)
+                if (!a.states) {
                   throw new Error(
                     "fetchMultiStates: ".concat(a.error || "Invalid response"),
                   );
+                }
                 const l = (0, o.qs)();
                 return l && "off" !== l.mockMode ? u(a, l, e) : a;
               });
@@ -14986,30 +15078,32 @@ var _global =
                     withStatus: !0,
                     headers: {
                       "x-games-client-time": new Date().toISOString(),
-                      "x-games-aws":
-                        ((i = e.game),
+                      "x-games-aws": ((i = e.game),
                         "connections" === i
                           ? "cxn"
                           : "strands" === i
-                            ? "strands"
-                            : "wordleV2" === i
-                              ? "wrd"
-                              : "spelling_bee" === i
-                                ? "sb"
-                                : "trivia" === i
-                                  ? "trivia"
-                                  : ""),
+                          ? "strands"
+                          : "wordleV2" === i
+                          ? "wrd"
+                          : "spelling_bee" === i
+                          ? "sb"
+                          : "trivia" === i
+                          ? "trivia"
+                          : ""),
                       "x-games-save-trigger": t,
                       "x-games-user-type": (0, a.e)(),
                     },
                   },
                 );
                 var i;
-                if (null != r && r.error) throw new Error(r.error);
-                if (!r || !r.version)
+                if (null != r && r.error) {
+                  throw new Error(r.error);
+                }
+                if (!r || !r.version) {
                   throw new Error(
                     "missing version in games-state POST response",
                   );
+                }
                 const l = (0, o.qs)();
                 return l && "off" !== l.mockMode ? u(r, l, e.game) : r;
               });
@@ -15022,8 +15116,9 @@ var _global =
                 const t = yield n.Be.get(
                   "".concat(n.env.moogle, "/svc/games/settings/").concat(e),
                 );
-                if ("forbidden" === t.error)
+                if ("forbidden" === t.error) {
                   throw new Error("not authenticated");
+                }
                 if (t.user_id) return t;
                 throw new Error(
                   "fetchSettings: ".concat(t.error || "Invalid response"),
@@ -15041,10 +15136,11 @@ var _global =
                   { withStatus: !0 },
                 );
                 if (null != t && t.error) throw new Error(t.error);
-                if (201 !== (null == t ? void 0 : t.status))
+                if (201 !== (null == t ? void 0 : t.status)) {
                   throw new Error(
                     "status code ".concat(t.status, " from settings POST"),
                   );
+                }
                 return t;
               });
               return function (t) {
@@ -15080,46 +15176,45 @@ var _global =
               var r = null != arguments[t] ? arguments[t] : {};
               t % 2
                 ? o(Object(r), !0).forEach(function (t) {
-                    var n, o, a, i;
-                    ((n = e),
-                      (o = t),
-                      (a = r[t]),
-                      (o =
-                        "symbol" ==
-                        typeof (i = (function (e, t) {
-                          if ("object" != typeof e || !e) return e;
-                          var r = e[Symbol.toPrimitive];
-                          if (void 0 !== r) {
-                            var n = r.call(e, "string");
-                            if ("object" != typeof n) return n;
-                            throw new TypeError(
-                              "@@toPrimitive must return a primitive value.",
-                            );
-                          }
-                          return String(e);
-                        })(o))
-                          ? i
-                          : i + "") in n
-                        ? Object.defineProperty(n, o, {
-                            value: a,
-                            enumerable: !0,
-                            configurable: !0,
-                            writable: !0,
-                          })
-                        : (n[o] = a));
-                  })
+                  var n, o, a, i;
+                  ((n = e),
+                    (o = t),
+                    (a = r[t]),
+                    (o = "symbol" ==
+                          typeof (i = (function (e, t) {
+                            if ("object" != typeof e || !e) return e;
+                            var r = e[Symbol.toPrimitive];
+                            if (void 0 !== r) {
+                              var n = r.call(e, "string");
+                              if ("object" != typeof n) return n;
+                              throw new TypeError(
+                                "@@toPrimitive must return a primitive value.",
+                              );
+                            }
+                            return String(e);
+                          })(o))
+                        ? i
+                        : i + "") in n
+                      ? Object.defineProperty(n, o, {
+                        value: a,
+                        enumerable: !0,
+                        configurable: !0,
+                        writable: !0,
+                      })
+                      : (n[o] = a));
+                })
                 : Object.getOwnPropertyDescriptors
-                  ? Object.defineProperties(
-                      e,
-                      Object.getOwnPropertyDescriptors(r),
-                    )
-                  : o(Object(r)).forEach(function (t) {
-                      Object.defineProperty(
-                        e,
-                        t,
-                        Object.getOwnPropertyDescriptor(r, t),
-                      );
-                    });
+                ? Object.defineProperties(
+                  e,
+                  Object.getOwnPropertyDescriptors(r),
+                )
+                : o(Object(r)).forEach(function (t) {
+                  Object.defineProperty(
+                    e,
+                    t,
+                    Object.getOwnPropertyDescriptor(r, t),
+                  );
+                });
             }
             return e;
           }
@@ -15306,9 +15401,9 @@ var _global =
               () =>
                 e
                   ? {
-                      isMidiEnabled: t.checkGate("games_midi_web_1125"),
-                      isReady: !0,
-                    }
+                    isMidiEnabled: t.checkGate("games_midi_web_1125"),
+                    isReady: !0,
+                  }
                   : { isMidiEnabled: !1, isReady: !1 },
               [e, t],
             );
@@ -15483,9 +15578,7 @@ var _global =
       if (void 0 !== t) return t.exports;
       var r = (o[e] = { id: e, loaded: !1, exports: {} });
       return (
-        n[e].call(r.exports, r, r.exports, a),
-        (r.loaded = !0),
-        r.exports
+        n[e].call(r.exports, r, r.exports, a), (r.loaded = !0), r.exports
       );
     }
     ((a.m = n),
@@ -15495,13 +15588,14 @@ var _global =
           var i = 1 / 0;
           for (d = 0; d < e.length; d++) {
             ((r = e[d][0]), (n = e[d][1]), (o = e[d][2]));
-            for (var l = !0, s = 0; s < r.length; s++)
+            for (var l = !0, s = 0; s < r.length; s++) {
               (!1 & o || i >= o) &&
-              Object.keys(a.O).every(function (e) {
-                return a.O[e](r[s]);
-              })
+                Object.keys(a.O).every(function (e) {
+                  return a.O[e](r[s]);
+                })
                 ? r.splice(s--, 1)
                 : ((l = !1), o < i && (i = o));
+            }
             if (l) {
               e.splice(d--, 1);
               var c = n();
@@ -15515,23 +15609,22 @@ var _global =
         e[d] = [r, n, o];
       }),
       (a.n = function (e) {
-        var t =
-          e && e.__esModule
-            ? function () {
-                return e.default;
-              }
-            : function () {
-                return e;
-              };
+        var t = e && e.__esModule
+          ? function () {
+            return e.default;
+          }
+          : function () {
+            return e;
+          };
         return (a.d(t, { a: t }), t);
       }),
       (r = Object.getPrototypeOf
         ? function (e) {
-            return Object.getPrototypeOf(e);
-          }
+          return Object.getPrototypeOf(e);
+        }
         : function (e) {
-            return e.__proto__;
-          }),
+          return e.__proto__;
+        }),
       (a.t = function (e, n) {
         if ((1 & n && (e = this(e)), 8 & n)) return e;
         if ("object" == typeof e && e) {
@@ -15546,25 +15639,27 @@ var _global =
           var l = 2 & n && e;
           "object" == typeof l && !~t.indexOf(l);
           l = r(l)
-        )
+        ) {
           Object.getOwnPropertyNames(l).forEach(function (t) {
             i[t] = function () {
               return e[t];
             };
           });
+        }
         return (
           (i.default = function () {
             return e;
           }),
-          a.d(o, i),
-          o
+            a.d(o, i),
+            o
         );
       }),
       (a.d = function (e, t) {
-        for (var r in t)
+        for (var r in t) {
           a.o(t, r) &&
             !a.o(e, r) &&
             Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
+        }
       }),
       (a.g = (function () {
         if ("object" == typeof globalThis) return globalThis;
@@ -15604,22 +15699,49 @@ var _global =
               })
             ) {
               for (n in l) a.o(l, n) && (a.m[n] = l[n]);
-              if (s) var d = s(a);
+              if (s) { var d = s(a); }
             }
-            for (t && t(r); c < i.length; c++)
+            for (t && t(r); c < i.length; c++) {
               ((o = i[c]), a.o(e, o) && e[o] && e[o][0](), (e[o] = 0));
+            }
             return a.O(d);
           },
-          r = (self.webpackChunk_xwords_phoenix =
-            self.webpackChunk_xwords_phoenix || []);
+          r =
+            (self.webpackChunk_xwords_phoenix =
+              self.webpackChunk_xwords_phoenix || []);
         (r.forEach(t.bind(null, 0)), (r.push = t.bind(null, r.push.bind(r))));
       })(),
       a.O(
         void 0,
         [
-          1946, 9821, 8986, 6441, 655, 3739, 1425, 6166, 381, 7955, 1741, 9829,
-          3692, 7868, 6337, 9050, 1836, 3902, 1447, 4026, 2818, 1036, 2318,
-          7422, 3741, 7426, 4784, 2375,
+          1946,
+          9821,
+          8986,
+          6441,
+          655,
+          3739,
+          1425,
+          6166,
+          381,
+          7955,
+          1741,
+          9829,
+          3692,
+          7868,
+          6337,
+          9050,
+          1836,
+          3902,
+          1447,
+          4026,
+          2818,
+          1036,
+          2318,
+          7422,
+          3741,
+          7426,
+          4784,
+          2375,
         ],
         function () {
           return a(13214);
@@ -15628,9 +15750,34 @@ var _global =
     var i = a.O(
       void 0,
       [
-        1946, 9821, 8986, 6441, 655, 3739, 1425, 6166, 381, 7955, 1741, 9829,
-        3692, 7868, 6337, 9050, 1836, 3902, 1447, 4026, 2818, 1036, 2318, 7422,
-        3741, 7426, 4784, 2375,
+        1946,
+        9821,
+        8986,
+        6441,
+        655,
+        3739,
+        1425,
+        6166,
+        381,
+        7955,
+        1741,
+        9829,
+        3692,
+        7868,
+        6337,
+        9050,
+        1836,
+        3902,
+        1447,
+        4026,
+        2818,
+        1036,
+        2318,
+        7422,
+        3741,
+        7426,
+        4784,
+        2375,
       ],
       function () {
         return a(39351);

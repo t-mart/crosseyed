@@ -1,5 +1,6 @@
 import "./style.css";
 import { spamLetters } from "./spam.ts";
+import { startAutoPlay } from "./auto-play.ts";
 
 const READY_CLASS = "crosseyed-ready";
 
@@ -42,7 +43,8 @@ const ACTIONS: ToolbarAction[] = [
 
 function makeButton(action: ToolbarAction): HTMLLIElement {
   const item = document.createElement("li");
-  item.className = `xwd__tool--button xwd__tool--texty crosseyed-tool ${action.className}`;
+  item.className =
+    `xwd__tool--button xwd__tool--texty crosseyed-tool ${action.className}`;
 
   const button = document.createElement("button");
   button.type = "button";
@@ -88,4 +90,5 @@ function whenReady(run: () => void): void {
   observer.observe(document.body, { subtree: true, childList: true });
 }
 
+startAutoPlay();
 whenReady(activate);

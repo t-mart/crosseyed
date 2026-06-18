@@ -92,7 +92,7 @@ body.crosseyed-ready .xwd__toolbar--wrapper {
 body.crosseyed-ready .xwd__clue-list--wrapper {
   width: calc(50% - 1px);
   padding-left: 1px;
-  font-size: 1.25em;
+  font-size: 2em;
 }
 
 /* Frame each scrollable clue list so its bottom edge is obvious. */
@@ -100,7 +100,6 @@ body.crosseyed-ready .xwd__clue-list--list {
   outline: 1px solid #a8a8a8;
   /* outline-offset: -1px; */
 }
-
 
 /*
  * Cell-state colors, re-themed so the four states are easy to tell apart.

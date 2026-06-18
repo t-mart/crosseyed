@@ -1,9 +1,11 @@
 {
   "nodeModulesDir": "auto",
   "tasks": {
-    "check:lint": "deno run -A npm:eslint src",
+    "check:lint-eslint": "deno run -A npm:eslint src",
+    "check:lint-deno": "deno lint",
     "check:types": "deno check",
-    "dev": "deno run -A scripts/serve.ts",
+    "dev:watch": "deno run -A npm:vite build --watch",
+    "dev:serve": "deno run -A scripts/serve.ts",
     "build": "deno run -A npm:vite build"
   },
   "compilerOptions": {

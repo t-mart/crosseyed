@@ -2,20 +2,30 @@ import { defineConfig, type Plugin } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import packageJson from "./package.json" with { type: "json" };
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
-const userscriptHeader = `// ==UserScript==
-// @name         Crosseyed
-// @namespace    crosseyed
-// @version      0.1.0
-// @description  Make the NYT Crossword fill the window
-// @author       crosseyed
-// @match        https://www.nytimes.com/crosswords/game/*
-// @run-at       document-idle
-// @grant        none
-// ==/UserScript==
-`;
+function buildHeader(): string {
+  const { name, version, description, author, userscript } = packageJson;
+  const { namespace, match, "run-at": runAt, grant } = userscript;
+  const displayName = name.at(0)!.toUpperCase() + name.slice(1);
+  return [
+    "// ==UserScript==",
+    `// @name         ${displayName}`,
+    `// @namespace    ${namespace}`,
+    `// @version      ${version}`,
+    `// @description  ${description}`,
+    `// @author       ${author}`,
+    `// @match        ${match}`,
+    `// @run-at       ${runAt}`,
+    `// @grant        ${grant}`,
+    "// ==/UserScript==",
+    "",
+  ].join("\n");
+}
+
+const userscriptHeader = buildHeader();
 
 function userscriptHeaderPlugin(): Plugin {
   return {
@@ -32,6 +42,7 @@ function userscriptHeaderPlugin(): Plugin {
 }
 
 export default defineConfig({
+  clearScreen: false,
   plugins: [cssInjectedByJsPlugin(), userscriptHeaderPlugin()],
   build: {
     outDir: "dist",
@@ -40,7 +51,7 @@ export default defineConfig({
       entry: path.resolve(root, "src/main.ts"),
       formats: ["iife"],
       name: "Crosseyed",
-      fileName: () => "crosseyed.user.js"
+      fileName: () => "crosseyed.user.js",
     },
   },
 });

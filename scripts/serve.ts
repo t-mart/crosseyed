@@ -7,22 +7,12 @@
  * revisit the URL, reinstall.
  */
 
-const PORT = Number(Deno.env.get("PORT") ?? 8842);
-const SCRIPT = "dist/crosseyed.user.js";
-const SCRIPT_URL = `http://localhost:${PORT}/crosseyed.user.js`;
-
-const vite = new Deno.Command("deno", {
-  args: ["run", "-A", "npm:vite", "build", "--watch"],
-  stdout: "inherit",
-  stderr: "inherit",
-}).spawn();
+const PORT = 5174;
+const SCRIPT = new URL("../dist/crosseyed.user.js", import.meta.url);
+const SCRIPT_PATH = "/dist/crosseyed.user.js";
+const SCRIPT_URL = new URL(`http://localhost:${PORT}${SCRIPT_PATH}`).href;
 
 function shutdown() {
-  try {
-    vite.kill("SIGTERM");
-  } catch {
-    // already gone
-  }
   Deno.exit(0);
 }
 
@@ -74,32 +64,16 @@ async function serveScript(request: Request): Promise<Response> {
   };
 
   if (isFresh(request, etag, mtimeMs)) {
-    console.log("Not modified");
-    return new Response(null, { status: 304, headers });
+    return new Response(undefined, { status: 304, headers });
   }
-  console.log("Serving updated script");
+  console.log("Got request for updated script; serving fresh copy");
   return new Response(code, { headers });
 }
 
-const landing = `<!doctype html>
-<meta charset="utf-8">
-<title>Crosseyed</title>
-<body style="font-family: system-ui; max-width: 40rem; margin: 4rem auto;">
-  <h1>Crosseyed</h1>
-  <p><a href="/crosseyed.user.js">Install / update the userscript</a></p>
-  <p>Your userscript manager should intercept that link. After editing source,
-     the file rebuilds automatically; revisit the link to reinstall.</p>
-</body>`;
-
 Deno.serve({ port: PORT }, (request) => {
-  const { pathname } = new URL(request.url);
-  if (pathname === "/crosseyed.user.js") return serveScript(request);
-  if (pathname === "/") {
-    return new Response(landing, {
-      headers: { "content-type": "text/html; charset=utf-8" },
-    });
-  }
-  return new Response("not found", { status: 404 });
+  const path = new URL(request.url).pathname;
+  if (path === SCRIPT_PATH) return serveScript(request);
+  return Response.redirect(new URL(SCRIPT_PATH, request.url), 302);
 });
 
 console.log(`\nServing userscript at ${SCRIPT_URL}\n`);

@@ -42,7 +42,6 @@ function dispatchPointer(target: Element, type: string): void {
 function selectCell(cell: Element): void {
   for (const type of ["click"]) {
     dispatchPointer(cell, type);
-    const foo = 1+1;
   }
 }
 

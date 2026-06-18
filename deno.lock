@@ -2,12 +2,14 @@
   "version": "5",
   "specifiers": {
     "npm:@eslint/js@^10.0.1": "10.0.1_eslint@10.5.0",
+    "npm:@types/deno@^2.7.0": "2.7.0",
     "npm:eslint-plugin-perfectionist@^5.9.1": "5.9.1_eslint@10.5.0_typescript@6.0.3",
     "npm:eslint-plugin-unicorn@67": "67.0.0_eslint@10.5.0",
     "npm:eslint@*": "10.5.0",
     "npm:eslint@^10.5.0": "10.5.0",
     "npm:globals@^17.6.0": "17.6.0",
     "npm:typescript-eslint@^8.61.1": "8.61.1_eslint@10.5.0_typescript@6.0.3",
+    "npm:typescript@*": "6.0.3",
     "npm:typescript@^6.0.3": "6.0.3",
     "npm:vite-plugin-css-injected-by-js@^5.0.1": "5.0.1_vite@8.0.16",
     "npm:vite@*": "8.0.16",
@@ -206,6 +208,9 @@
       "dependencies": [
         "tslib"
       ]
+    },
+    "@types/deno@2.7.0": {
+      "integrity": "sha512-Y6fWcV8KpYeO3Lik/RiYnUxtr/LWqoeACciU0CA+dr1U/45tGgaX3HWQQAPCNN53raN4Rr4Fht4y6qsUH57fDA=="
     },
     "@types/esrecurse@4.3.1": {
       "integrity": "sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw=="
@@ -930,6 +935,11 @@
       "npm:typescript@^6.0.3",
       "npm:vite-plugin-css-injected-by-js@^5.0.1",
       "npm:vite@^8.0.16"
-    ]
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@types/deno@^2.7.0"
+      ]
+    }
   }
 }
