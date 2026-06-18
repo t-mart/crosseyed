@@ -5,22 +5,116 @@
  * rendered. After scrolling to #pz-game-root, the game area (timer bar, board,
  * clues) fills the viewport. The site header is taken out of sticky positioning
  * so it sits in normal flow and scrolls away above the game.
+ *
+ * Rules are grouped under nested `body.crosseyed-ready { }` blocks so the scope
+ * prefix is not repeated on every selector. The few rules that are not
+ * descendants of that scope (html:has, our .crosseyed-tool buttons) stay flat.
  */
 
-/* Header flows normally instead of sticking to the top. */
-body.crosseyed-ready .pz-header {
-  position: static;
+/* === Page layout: fill the window === */
+body.crosseyed-ready {
+  /* Header flows normally instead of sticking to the top. */
+  & .pz-header {
+    position: static;
+  }
+
+  /* The game area becomes a full-height column: the timer bar keeps its natural
+   * height and the puzzle layout fills the rest of the viewport. */
+  & #pz-game-root main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  & .xwd__layout_container {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* The unnamed wrapper between the layout container and the puzzle article. */
+  & .xwd__layout_container > * {
+    height: 100%;
+    min-height: 0;
+  }
+
+  /* The two-pane cage. Drop the width/height caps and fill the layout area. */
+  & .xwd__layout_puzzle--desktop {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  /* Left pane (board + clue bar) gets the lion's share; right pane (clues) takes
+   * the rest. The board is square and scales to the smaller of its pane's
+   * width/height, so a tall left pane yields a big board. */
+  & .xwd__layout_puzzle--desktop > * {
+    height: 100%;
+    width: auto;
+  }
+
+  & .xwd__layout_clueBarAndBoard {
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+
+  /* Clue lists area: a fixed-height row that never scrolls itself; each of its
+   * two lists scrolls internally instead (drops the site's 625px cap). */
+  & .xwd__layout--cluelists {
+    flex: 1 1 40%;
+    max-height: none;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Give each clue list half the pane, drop the left inset, and enlarge the
+   * text. As a column, the title keeps its natural height and the list fills the
+   * rest. */
+  & .xwd__clue-list--wrapper {
+    width: calc(50% - 1px);
+    padding-left: 1px;
+    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  & .xwd__clue-bar-desktop--bar {
+    font-size: 2em;
+  }
+
+  /* The only element that scrolls: each list fills the wrapper below its title.
+   * Framed so its bottom edge is obvious. */
+  & .xwd__clue-list--list {
+    flex: 1;
+    height: auto;
+    min-height: 0;
+    overflow-y: auto;
+    outline: 1px solid #a8a8a8;
+    /* outline-offset: -1px; */
+  }
+
+  & .xwd__clue-bar-desktop--number {
+    margin-inline: 2rem;
+  }
 }
 
 /* The site sets html { scroll-padding-top: 56px } to clear its sticky header.
- * With the header now in normal flow we scroll the game to the very top, so
- * that padding is just an unwanted gap. */
+ * With the header now in normal flow we scroll the game to the very top, so that
+ * padding is just an unwanted gap. (Not a descendant of the scope.) */
 html:has(body.crosseyed-ready) {
   scroll-padding-top: 0;
 }
 
-/* The buttons we inject into the timer bar. They borrow the toolbar's texty
- * button styling; we only relax the fixed width so longer labels fit. */
+/* === Toolbar buttons we inject ===
+ * .crosseyed-tool is on the <li> we add to the timer bar. It borrows the
+ * toolbar's texty button styling; we only relax the fixed width so longer
+ * labels fit. These live on our own elements, not under the body scope. */
 .crosseyed-tool {
   width: auto;
 }
@@ -30,79 +124,100 @@ html:has(body.crosseyed-ready) {
   white-space: nowrap;
 }
 
-/* The game area becomes a full-height column: the timer bar keeps its natural
- * height and the puzzle layout fills the rest of the viewport. */
-body.crosseyed-ready #pz-game-root main {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+/* Inline-SVG icon buttons: size and center the glyph; its color comes from
+ * currentColor on the toolbar button. */
+.crosseyed-tool button svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: 0 auto;
 }
 
-body.crosseyed-ready .xwd__layout_container {
-  flex: 1;
-  min-height: 0;
-}
+body.crosseyed-ready {
+  /* Bump the toolbar button text size, covering our buttons, NYT's texty
+   * buttons, and the timer (the timer text inherits its button's size). */
+  & .xwd__toolbar--tools button {
+    font-size: 1.5em;
+  }
 
-/* The unnamed wrapper between the layout container and the puzzle article. */
-body.crosseyed-ready .xwd__layout_container > * {
-  height: 100%;
-  min-height: 0;
-}
-
-/* The two-pane cage. Drop the width/height caps and fill the layout area. */
-body.crosseyed-ready .xwd__layout_puzzle--desktop {
-  max-width: none;
-  max-height: none;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-/* Left pane (board + clue bar) gets the lion's share; right pane (clues) takes
- * the rest. The board is square and scales to the smaller of its pane's
- * width/height, so a tall left pane yields a big board. */
-body.crosseyed-ready .xwd__layout_puzzle--desktop > * {
-  height: 100%;
-  width: auto;
-}
-
-body.crosseyed-ready .xwd__layout_clueBarAndBoard {
-  flex: 1 1 60%;
-  min-width: 0;
-}
-
-/* Clue lists: fill the pane height and scroll internally instead of being
- * capped at 625px. */
-body.crosseyed-ready .xwd__layout--cluelists {
-  flex: 1 1 40%;
-  max-height: none;
-  height: 100%;
-  overflow-y: auto;
-}
-
-/* Widen the toolbar that sits above the board. */
-body.crosseyed-ready .xwd__toolbar--wrapper {
-  max-width: none;
-}
-
-/* Give each clue list half the pane, drop the left inset, and enlarge the text. */
-body.crosseyed-ready .xwd__clue-list--wrapper {
-  width: calc(50% - 1px);
-  padding-left: 1px;
-  font-size: 2em;
-}
-
-/* Frame each scrollable clue list so its bottom edge is obvious. */
-body.crosseyed-ready .xwd__clue-list--list {
-  outline: 1px solid #a8a8a8;
-  /* outline-offset: -1px; */
+  /* Widen the toolbar that sits above the board. */
+  & .xwd__toolbar--wrapper {
+    max-width: none;
+  }
 }
 
 /*
- * Cell-state colors, re-themed so the four states are easy to tell apart.
+ * === Side menu (the games nav drawer) ===
+ * Each row pairs a link (a.customNavLink) with, on collapsible rows, an
+ * accordion toggle (button.customNavLink) as its sibling. By default the link
+ * stretches across the whole row, so its empty whitespace swallows clicks meant
+ * for the accordion toggle.
+ *
+ * These classes live in NYT's nav stylesheet, not in reference/crossword.css;
+ * we hook the stable, non-hashed customNavLink class rather than the hashed
+ * *-module_* names so the rules survive a rebuild.
+ */
+body.crosseyed-ready {
+  /* Shrink the link to its own content (icon + text), so only that is clickable
+   * and the surrounding whitespace is inert. flex:0 0 auto covers the case where
+   * the link is a flex child; width:fit-content covers the plain block case.
+   * Also drops the background-fill hover in favor of an underline. */
+  & a.customNavLink,
+  & a.customNavLink:hover {
+    background: none;
+  }
+
+  & a.customNavLink {
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* The text label is always underlined; the underline thickens on hover. */
+  & a.customNavLink > div {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+  }
+
+  & a.customNavLink:hover > div {
+    text-decoration-thickness: 3px;
+  }
+
+  /* Accordion toggle: give it the interactive-element cursor it is missing. */
+  & button.customNavLink {
+    cursor: pointer;
+  }
+
+  /* The site's arrow SVGs draw the caret in the top-left of their 26x26 viewBox,
+   * so it renders off-center in the icon box and no box positioning can fix it.
+   * Swap in centered chevrons (lucide chevron-up / chevron-down). A
+   * background-image SVG renders in isolation, so the color is hardcoded here
+   * rather than inheriting currentColor. */
+  & button.customNavLink .pz-icon-arrow-up,
+  & button.customNavLink .pz-icon-arrow-down {
+    background-position: center;
+    background-size: 100%;
+  }
+
+  & button.customNavLink .pz-icon-arrow-up {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 15-6-6-6 6'/%3E%3C/svg%3E");
+  }
+
+  & button.customNavLink .pz-icon-arrow-down {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  }
+
+  /* Hover highlight on the square icon box itself, so the circle is concentric
+   * with the now-centered chevron regardless of the button's padding/margins. */
+  & button.customNavLink:hover .pz-icon {
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+  }
+}
+
+/*
+ * === Cell-state colors ===
+ * Re-themed so the four states are easy to tell apart.
  *
  * The states, in isolation:
  *   shaded      - emphasized for a thematic reason       (was gray  #dcdcdc)
@@ -122,53 +237,52 @@ body.crosseyed-ready {
   --cell-highlighted: oklch(80.9% 0.105 251.813);
   --cell-selected: oklch(87.9% 0.169 91.605);
   --cell-related: oklch(89.7% 0.196 126.665);
-}
 
-/* shaded: thematic cell, not part of the current clue. */
-body.crosseyed-ready .xwd__cell--shaded {
-  fill: var(--cell-shaded);
-}
+  /* shaded: thematic cell, not part of the current clue. */
+  & .xwd__cell--shaded {
+    fill: var(--cell-shaded);
+  }
 
-/* highlighted: a cell of the current clue. */
-body.crosseyed-ready .xwd__cell--highlighted {
-  fill: var(--cell-highlighted);
-}
+  /* highlighted: a cell of the current clue. */
+  & .xwd__cell--highlighted {
+    fill: var(--cell-highlighted);
+  }
 
-/* highlighted + shaded: current-clue cell that is also thematic (blue + fuchsia). */
-body.crosseyed-ready .xwd__cell--highlighted.xwd__cell--shaded {
-  fill: color-mix(in oklab, var(--cell-highlighted) 45%, var(--cell-shaded));
-}
+  /* highlighted + shaded: current-clue cell that is also thematic (blue + fuchsia). */
+  & .xwd__cell--highlighted.xwd__cell--shaded {
+    fill: color-mix(in oklab, var(--cell-highlighted) 45%, var(--cell-shaded));
+  }
 
-/* selected: the active cell. Listed after highlighted so it wins (the selected
- * cell also carries the highlighted class). */
-body.crosseyed-ready .xwd__cell--selected {
-  fill: var(--cell-selected);
-}
+  /* selected: the active cell. Listed after highlighted so it wins (the selected
+   * cell also carries the highlighted class). */
+  & .xwd__cell--selected {
+    fill: var(--cell-selected);
+  }
 
-/* selected + shaded: active cell that is also thematic (mostly yellow). */
-body.crosseyed-ready .xwd__cell--selected.xwd__cell--shaded {
-  fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-shaded));
-}
+  /* selected + shaded: active cell that is also thematic (mostly yellow). */
+  & .xwd__cell--selected.xwd__cell--shaded {
+    fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-shaded));
+  }
 
-/* related: tied to the current clue but sitting elsewhere in the grid. */
-body.crosseyed-ready .xwd__cell--related {
-  fill: var(--cell-related);
-}
+  /* related: tied to the current clue but sitting elsewhere in the grid. */
+  & .xwd__cell--related {
+    fill: var(--cell-related);
+  }
 
-/* related + highlighted: related cell that is also in the current clue's line
- * (lime + blue). */
-body.crosseyed-ready .xwd__cell--related.xwd__cell--highlighted {
-  fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-highlighted));
-}
+  /* related + highlighted: related cell that is also in the current clue's line
+   * (lime + blue). */
+  & .xwd__cell--related.xwd__cell--highlighted {
+    fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-highlighted));
+  }
 
-/* related + shaded: related cell that is also thematic (lime + fuchsia). */
-body.crosseyed-ready .xwd__cell--related.xwd__cell--shaded {
-  fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-shaded));
-}
+  /* related + shaded: related cell that is also thematic (lime + fuchsia). */
+  & .xwd__cell--related.xwd__cell--shaded {
+    fill: color-mix(in oklab, var(--cell-related) 60%, var(--cell-shaded));
+  }
 
-/* related + highlighted + selected: the active cell when it is also related.
- * Selected dominates so it still reads as the focus. */
-body.crosseyed-ready
-  .xwd__cell--related.xwd__cell--highlighted.xwd__cell--selected {
-  fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-related));
+  /* related + highlighted + selected: the active cell when it is also related.
+   * Selected dominates so it still reads as the focus. */
+  & .xwd__cell--related.xwd__cell--highlighted.xwd__cell--selected {
+    fill: color-mix(in oklab, var(--cell-selected) 75%, var(--cell-related));
+  }
 }

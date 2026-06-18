@@ -1,0 +1,43 @@
+name: Publish userscript
+
+# Build on every push to master and cut a GitHub Release with the bundle
+# attached. Greasy Fork syncs from the release "latest" asset URL; the repo
+# webhook (Settings -> Webhooks, Releases event) pokes it to re-fetch.
+on:
+  push:
+    branches: [master]
+
+# Needed so the job can create releases and tags.
+permissions:
+  contents: write
+
+# Serialize publishes (don't cancel) so rapid pushes each get a release and the
+# newest ends up marked "latest".
+concurrency:
+  group: publish-userscript
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Build
+        run: deno task build
+
+      - name: Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_SHA::7}"
+          # Make re-runs of the same commit idempotent.
+          gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$tag" dist/crosseyed.user.js \
+            --title "$tag" \
+            --notes "Automated build of ${GITHUB_SHA}." \
+            --latest

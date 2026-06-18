@@ -8,7 +8,7 @@ import globals from "globals";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 
 export default defineConfig(
-  { ignores: ["dist/**", "node_modules/**"] },
+  { ignores: ["dist/**", "node_modules/**", "reference/**"] },
   // Shared: every TypeScript and mjs file gets the same rule set, parser, and
   // type-aware linting. Platform-specific globals are layered on below.
   {

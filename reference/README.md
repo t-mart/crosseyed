@@ -1,4 +1,4 @@
-# host
+# reference
 
 Files here are things we've pulled directly from NYT Crossword to see how it
 works, for reference

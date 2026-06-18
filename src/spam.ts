@@ -8,6 +8,8 @@
  * selection) and then dispatching a key press.
  */
 
+import type { ToolbarItem } from "./toolbar.ts";
+
 const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const SELECTED_CELL = ".xwd__cell--selected";
 // i don't know if this franklin selector is important, this is just a vestige
@@ -40,9 +42,7 @@ function dispatchPointer(target: Element, type: string): void {
 // Reselect the cell the way a click would: typing advances the selection, so we
 // click the same cell again before each letter.
 function selectCell(cell: Element): void {
-  for (const type of ["click"]) {
-    dispatchPointer(cell, type);
-  }
+  dispatchPointer(cell, "click");
 }
 
 function pressLetter(target: Element, letter: string): void {
@@ -88,3 +88,9 @@ export async function spamLetters(): Promise<void> {
     isSpamming = false;
   }
 }
+
+export const spamItem: ToolbarItem = {
+  className: "crosseyed-spam-button",
+  run: () => void spamLetters(),
+  view: () => ({ label: "Spam" }),
+};

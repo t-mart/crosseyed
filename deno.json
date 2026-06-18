@@ -16,6 +16,9 @@
       "esnext"
     ]
   },
+    "lint": {
+    "include": ["src/", "eslint.config.mjs", "scripts/", "vite.config.ts"],
+  },
   "imports": {
     "@eslint/js": "npm:@eslint/js@^10.0.1",
     "eslint": "npm:eslint@^10.5.0",
