@@ -1,14 +1,36 @@
 import { defineConfig, type Plugin } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+import { execFileSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import packageJson from "./package.json" with { type: "json" };
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
+function gitShortSha(): string {
+  try {
+    return execFileSync("git", ["rev-parse", "--short", "HEAD"], {
+      cwd: root,
+      stdio: ["ignore", "pipe", "ignore"],
+    })
+      .toString()
+      .trim();
+  } catch {
+    return "unknown";
+  }
+}
+
 function buildHeader(): string {
-  const { name, version, description, author, homepage, bugs, license, userscript } =
-    packageJson;
+  const {
+    name,
+    version,
+    description,
+    author,
+    homepage,
+    bugs,
+    license,
+    userscript,
+  } = packageJson;
   const { namespace, match, "run-at": runAt, grant } = userscript;
   const displayName = name.at(0)!.toUpperCase() + name.slice(1);
 
@@ -18,8 +40,13 @@ function buildHeader(): string {
     ["name", displayName],
     ["namespace", namespace],
     ["version", version],
+    ["commit", gitShortSha()],
     ["description", description],
     ["author", author],
+    [
+      "releaseURL",
+      `https://github.com/t-mart/crosseyed/releases/tag/${gitShortSha()}`,
+    ],
     ["homepageURL", homepage],
     ["supportURL", bugs.url],
     ["license", license],
