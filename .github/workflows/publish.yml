@@ -34,10 +34,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          tag="${GITHUB_SHA::7}"
-          # Make re-runs of the same commit idempotent.
-          gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
-          gh release create "$tag" dist/crosseyed.user.js \
-            --title "$tag" \
-            --notes "Automated build of ${GITHUB_SHA}." \
+          # Tag and title the release after the CalVer the build wrote to
+          # dist/version.txt, so they never drift from the userscript's @version (the
+          # header's releaseURL points at this tag). version.txt is not uploaded.
+          version=$(cat dist/version.txt)
+          # Make re-runs of the same commit idempotent: the CalVer is reproducible
+          # from the commit timestamp, so the tag is stable per commit.
+          gh release delete "$version" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$version" dist/crosseyed.user.js \
+            --title "$version" \
+            --notes "Build of ${GITHUB_SHA}." \
             --latest
