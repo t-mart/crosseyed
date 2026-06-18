@@ -85,8 +85,26 @@ body.crosseyed-ready {
     min-height: 0;
   }
 
-  & .xwd__clue--label {
-    padding-right: 0.5em;
+  /* Clue rows: a fixed number gutter plus the wrapping clue text. The site fixes
+   * the label at 24px; at our larger font that is too narrow for multi-digit
+   * numbers, so we size the gutter in ch (scales with font-size) and keep it from
+   * shrinking. margin-inline:0 drops the site's inter-span margins in favor of
+   * column-gap; baseline alignment pins the number to the text's first line. */
+  & .xwd__clue--li {
+    align-items: baseline;
+    column-gap: 0.5ch;
+
+    & .xwd__clue--label {
+      font-size: 0.75em;
+      margin-inline: 0;
+      width: 3ch;
+      min-width: 0;
+      flex: none;
+    }
+
+    & .xwd__clue--text {
+      margin-inline: 0;
+    }
   }
 
   & .xwd__clue-bar-desktop--bar {
