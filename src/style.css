@@ -7,8 +7,9 @@
  * so it sits in normal flow and scrolls away above the game.
  *
  * Rules are grouped under nested `body.crosseyed-ready { }` blocks so the scope
- * prefix is not repeated on every selector. The few rules that are not
- * descendants of that scope (html:has, our .crosseyed-tool buttons) stay flat.
+ * prefix is not repeated on every selector. The rules that are not descendants
+ * of that scope (html:has, our .crosseyed-tool buttons, and the side menu, which
+ * appears beyond the game page) stay flat.
  */
 
 /* === Page layout: fill the window === */
@@ -148,6 +149,11 @@ body.crosseyed-ready {
 
 /*
  * === Side menu (the games nav drawer) ===
+ * Deliberately NOT scoped to body.crosseyed-ready: this drawer shows up across
+ * NYT puzzle pages, not just the crossword game, and body.crosseyed-ready is
+ * only set on the game page. These rules apply wherever the script runs (per the
+ * @match) and the menu is present.
+ *
  * Each row pairs a link (a.customNavLink) with, on collapsible rows, an
  * accordion toggle (button.customNavLink) as its sibling. By default the link
  * stretches across the whole row, so its empty whitespace swallows clicks meant
@@ -157,62 +163,61 @@ body.crosseyed-ready {
  * we hook the stable, non-hashed customNavLink class rather than the hashed
  * *-module_* names so the rules survive a rebuild.
  */
-body.crosseyed-ready {
-  /* Shrink the link to its own content (icon + text), so only that is clickable
-   * and the surrounding whitespace is inert. flex:0 0 auto covers the case where
-   * the link is a flex child; width:fit-content covers the plain block case.
-   * Also drops the background-fill hover in favor of an underline. */
-  & a.customNavLink,
-  & a.customNavLink:hover {
-    background: none;
-  }
 
-  & a.customNavLink {
-    flex: 0 0 auto;
-    width: fit-content;
-    max-width: 100%;
-  }
+/* Shrink the link to its own content (icon + text), so only that is clickable
+ * and the surrounding whitespace is inert. flex:0 0 auto covers the case where
+ * the link is a flex child; width:fit-content covers the plain block case. Also
+ * drops the background-fill hover in favor of an underline. */
+a.customNavLink,
+a.customNavLink:hover {
+  background: none;
+}
 
-  /* The text label is always underlined; the underline thickens on hover. */
-  & a.customNavLink > div {
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-  }
+a.customNavLink {
+  flex: 0 0 auto;
+  width: fit-content;
+  max-width: 100%;
+}
 
-  & a.customNavLink:hover > div {
-    text-decoration-thickness: 3px;
-  }
+/* The text label is always underlined; the underline thickens on hover. */
+a.customNavLink > div {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
 
-  /* Accordion toggle: give it the interactive-element cursor it is missing. */
-  & button.customNavLink {
-    cursor: pointer;
-  }
+a.customNavLink:hover > div {
+  text-decoration-thickness: 3px;
+}
 
-  /* The site's arrow SVGs draw the caret in the top-left of their 26x26 viewBox,
-   * so it renders off-center in the icon box and no box positioning can fix it.
-   * Swap in centered chevrons (lucide chevron-up / chevron-down). A
-   * background-image SVG renders in isolation, so the color is hardcoded here
-   * rather than inheriting currentColor. */
-  & button.customNavLink .pz-icon-arrow-up,
-  & button.customNavLink .pz-icon-arrow-down {
-    background-position: center;
-    background-size: 100%;
-  }
+/* Accordion toggle: give it the interactive-element cursor it is missing. */
+button.customNavLink {
+  cursor: pointer;
+}
 
-  & button.customNavLink .pz-icon-arrow-up {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 15-6-6-6 6'/%3E%3C/svg%3E");
-  }
+/* The site's arrow SVGs draw the caret in the top-left of their 26x26 viewBox,
+ * so it renders off-center in the icon box and no box positioning can fix it.
+ * Swap in centered chevrons (lucide chevron-up / chevron-down). A
+ * background-image SVG renders in isolation, so the color is hardcoded here
+ * rather than inheriting currentColor. */
+button.customNavLink .pz-icon-arrow-up,
+button.customNavLink .pz-icon-arrow-down {
+  background-position: center;
+  background-size: 100%;
+}
 
-  & button.customNavLink .pz-icon-arrow-down {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  }
+button.customNavLink .pz-icon-arrow-up {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m18 15-6-6-6 6'/%3E%3C/svg%3E");
+}
 
-  /* Hover highlight on the square icon box itself, so the circle is concentric
-   * with the now-centered chevron regardless of the button's padding/margins. */
-  & button.customNavLink:hover .pz-icon {
-    background-color: rgba(0, 0, 0, 0.08);
-    border-radius: 50%;
-  }
+button.customNavLink .pz-icon-arrow-down {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* Hover highlight on the square icon box itself, so the circle is concentric
+ * with the now-centered chevron regardless of the button's padding/margins. */
+button.customNavLink:hover .pz-icon {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
 }
 
 /*

@@ -15,7 +15,7 @@
   },
   "userscript": {
     "namespace": "crosseyed",
-    "match": "https://www.nytimes.com/crosswords/game/*",
+    "match": "https://www.nytimes.com/crosswords/*",
     "run-at": "document-idle",
     "grant": "none"
   },
