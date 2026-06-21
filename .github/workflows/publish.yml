@@ -1,18 +1,25 @@
 name: Publish userscript
 
-# Build on every push to master and cut a GitHub Release with the bundle
-# attached. Greasy Fork syncs from the release "latest" asset URL; the repo
-# webhook (Settings -> Webhooks, Releases event) pokes it to re-fetch.
+# Build on every push to master, then publish two ways:
+#   1. A GitHub Release (tag + attached bundle) as the human-facing artifact.
+#   2. The same bundle committed to a dedicated `release` branch for Greasy Fork.
+#
+# Greasy Fork's webhook pulls the script from a git tree, not from Release
+# assets, even for "release" events. To keep build artifacts out of master, the
+# built userscript is committed to a `release` branch that holds only that file
+# and an explanatory README. Greasy Fork's sync URL points at the raw file on
+# that branch, and the push to it (Settings -> Webhooks, Push event) pokes
+# Greasy Fork to re-fetch.
 on:
   push:
     branches: [master]
 
-# Needed so the job can create releases and tags.
+# Needed so the job can push the `release` branch.
 permissions:
   contents: write
 
-# Serialize publishes (don't cancel) so rapid pushes each get a release and the
-# newest ends up marked "latest".
+# Serialize publishes (don't cancel) so rapid pushes each update the branch in
+# order.
 concurrency:
   group: publish-userscript
   cancel-in-progress: false
@@ -34,15 +41,50 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Tag and title the release after the CalVer the build wrote to
-          # dist/version.txt, so they never drift from the userscript's @version (the
-          # header's releaseURL points at this tag). version.txt is not uploaded.
-          version=$(cat dist/version.txt)
-          # Make re-runs of the same commit idempotent: the CalVer is reproducible
+          # Tag and title the release with the CalVer the build stamped into the
+          # header, so they never drift from the userscript's @version.
+          version="$(cat dist/version.txt)"
+          # Re-runs of the same commit are idempotent: the CalVer is reproducible
           # from the commit timestamp, so the tag is stable per commit.
           gh release delete "$version" --yes --cleanup-tag 2>/dev/null || true
-          mv dist/crosseyed.user.js dist/script.user.js
-          gh release create "$version" dist/script.user.js \
+          gh release create "$version" "dist/crosseyed.user.js" \
             --title "$version" \
             --notes "Build of ${GITHUB_SHA}." \
             --latest
+
+      - name: Publish to release branch
+        run: |
+          set -euo pipefail
+
+          # CalVer the build stamped into the userscript header; used here only
+          # for the commit message.
+          version="$(cat dist/version.txt)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Work in a separate worktree so master's checkout is left untouched.
+          if git ls-remote --exit-code --heads origin release >/dev/null 2>&1; then
+            # Branch exists: build on top of it so the push reports the userscript
+            # as a modified file (what Greasy Fork looks for in push events).
+            git fetch --no-tags --depth=1 origin release
+            git worktree add -B release wt origin/release
+          else
+            # First publish: start the branch with no history from master.
+            git worktree add --detach wt
+            git -C wt switch --orphan release
+            git -C wt rm -rf . >/dev/null 2>&1 || true
+          fi
+
+          cp dist/crosseyed.user.js wt/crosseyed.user.js
+          cp .github/release-branch-README.md wt/README.md
+
+          git -C wt add -A
+          if git -C wt diff --cached --quiet; then
+            echo "No changes to publish."
+          else
+            git -C wt commit -m "release: ${version}"
+            git -C wt push origin HEAD:release
+          fi
+
+          git worktree remove --force wt
