@@ -42,7 +42,7 @@ jobs:
           # from the commit timestamp, so the tag is stable per commit.
           gh release delete "$version" --yes --cleanup-tag 2>/dev/null || true
           mv dist/crosseyed.user.js dist/script.user.js
-          gh release create "$version" dist/script.user.js#whatisdisplay-label \
+          gh release create "$version" dist/script.user.js \
             --title "$version" \
             --notes "Build of ${GITHUB_SHA}." \
             --latest
