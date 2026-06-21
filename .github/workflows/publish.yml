@@ -41,7 +41,8 @@ jobs:
           # Make re-runs of the same commit idempotent: the CalVer is reproducible
           # from the commit timestamp, so the tag is stable per commit.
           gh release delete "$version" --yes --cleanup-tag 2>/dev/null || true
-          gh release create "$version" dist/crosseyed.user.js \
+          mv dist/crosseyed.user.js dist/script.user.js
+          gh release create "$version" dist/script.user.js#whatisdisplay-label \
             --title "$version" \
             --notes "Build of ${GITHUB_SHA}." \
             --latest
