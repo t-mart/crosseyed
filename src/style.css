@@ -169,6 +169,19 @@ body.crosseyed-ready {
   }
 }
 
+/* === Version badge in the global nav ===
+ * "crosseyed v<version> loaded" appended to #js-global-nav. Not scoped to
+ * body.crosseyed-ready: the global nav is page chrome present across NYT puzzle
+ * pages, not just the game page. align-self centers it if the nav is a flex row;
+ * a small, muted style keeps it unobtrusive. */
+.crosseyed-version-badge {
+  align-self: center;
+  margin-left: auto;
+  padding: 0 12px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
 /*
  * === Side menu (the games nav drawer) ===
  * Deliberately NOT scoped to body.crosseyed-ready: this drawer shows up across

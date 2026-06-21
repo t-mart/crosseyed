@@ -6,6 +6,7 @@ import { autoResume } from "./auto-resume.ts";
 import { startSettingsPanel } from "./settings-panel.ts";
 import { fullscreenItem, startFullscreen } from "./fullscreen.ts";
 import { xwstatsItem } from "./xwstats.ts";
+import { startVersionBadge } from "./version-badge.ts";
 import { makeButton } from "./toolbar.ts";
 import { keepApplied, onPresent } from "./dom.ts";
 
@@ -50,6 +51,7 @@ const starters = [
   autoResume.start,
   startSettingsPanel,
   startFullscreen,
+  startVersionBadge,
 ];
 for (const start of starters) start();
 onPresent(TOOLBAR_TOOLS, activate);
