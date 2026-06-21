@@ -27,6 +27,18 @@ Vite (`vite.config.ts`) bundles `src/main.ts` as an IIFE library into
 CSS into the JS bundle, and a custom plugin prepends the `// ==UserScript==`
 metadata header.
 
+## Releases
+
+Pushing to `master` runs `.github/workflows/publish.yml`, which builds the
+userscript and publishes it two ways: a GitHub Release (tag plus attached
+bundle) and a copy committed to the `release` branch.
+
+The `release` branch exists for Greasy Fork. Its webhook pulls the script out of
+a git tree, not from Release assets, so the built file has to be committed
+somewhere; keeping it on `release` keeps build artifacts off `master`. Greasy
+Fork's sync URL points at the raw file on that branch, and a Push-event webhook
+tells it to re-fetch.
+
 ## Deno Tasks
 
 | Task          | What it does                                         |
