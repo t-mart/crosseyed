@@ -2,6 +2,8 @@
 
 A userscript that enhances the New York Times Crossword.
 
+Published to [Greasy Fork](https://greasyfork.org/en/scripts/583262-crosseyed).
+
 ## Features
 
 - **Full-window layout.** The puzzle fills the browser window: the board scales
