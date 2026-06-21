@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Crosseyed
 // @namespace    crosseyed
-// @version      2026.06.21.094358
-// @commit       c6a505d
+// @version      2026.06.21.094806
+// @commit       8c269cb
 // @description  NYT Crossword enhancements
 // @author       Tim Martin
-// @releaseURL   https://github.com/t-mart/crosseyed/releases/tag/2026.06.21.094358
+// @releaseURL   https://github.com/t-mart/crosseyed/releases/tag/2026.06.21.094806
 // @homepageURL  https://github.com/t-mart/crosseyed
 // @supportURL   https://github.com/t-mart/crosseyed/issues
 // @license      MIT
